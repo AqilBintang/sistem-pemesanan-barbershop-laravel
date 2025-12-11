@@ -1,205 +1,513 @@
-<div class="pt-20 min-h-screen bg-background">
-    <!-- Header -->
-    <section class="bg-gradient-to-r from-black to-gray-800 text-white py-16">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Layanan Kami</h1>
-                <p class="text-xl opacity-90 max-w-2xl mx-auto">
-                    Pilih layanan terbaik sesuai kebutuhan Anda dengan kualitas profesional
+<!-- Layanan Section - Premium Minimalis -->
+<div class="pt-20 min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
+    
+    <!-- Header Section - Konsisten dengan Home -->
+    <section class="relative py-20 text-white overflow-hidden">
+        <!-- Subtle Background Elements -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-20 right-20 w-64 h-64 border border-accent/20 rounded-full"></div>
+            <div class="absolute bottom-20 left-20 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <!-- Premium Badge -->
+                <div class="mb-8">
+                    <span class="bg-accent text-black px-6 py-2 rounded-full text-sm font-semibold">
+                        Layanan Premium
+                    </span>
+                </div>
+                
+                <!-- Main Heading -->
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="bg-gradient-to-r from-white via-accent to-white bg-clip-text text-transparent">
+                        Layanan Kami
+                    </span>
+                </h1>
+                
+                <!-- Subtitle -->
+                <p class="text-xl text-gray-300 mb-12 leading-relaxed">
+                    Pilih layanan terbaik untuk penampilan sempurna Anda dengan <span class="text-accent font-medium">standar kualitas premium</span>
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- Services Grid -->
-    <section class="py-16">
+    <!-- Services Grid - Premium Cards -->
+    <section class="relative py-16">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Basic Haircut -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                        <span class="text-6xl">✂️</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Potong Rambut Basic</h3>
-                        <p class="text-gray-600 mb-4">Potong rambut standar dengan gaya klasik dan modern</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 35.000</span>
-                            <span class="text-sm text-gray-500">30 menit</span>
+            <!-- Grid 3 Kolom Simetris -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                
+                <!-- Service Card 1 - Potong Rambut Basic -->
+                <div class="group relative">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                        
+                        <!-- Gold Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <!-- Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                
+                                <!-- Premium Scissors Icon -->
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.848 8.25l1.536.887M7.848 8.25a3 3 0 11-5.196-3 3 3 0 015.196 3zm1.536.887a2.165 2.165 0 011.083 1.839c.005.351.054.695.14 1.024M9.384 9.137l2.077 1.199M7.848 15.75l1.536-.887m-1.536.887a3 3 0 11-5.196 3 3 3 0 015.196-3zm1.536-.887a2.165 2.165 0 001.083-1.839c.005-.351.054-.695.14-1.024M9.384 14.863L11.461 13.664M16.652 8.25l-1.536.887M16.652 8.25a3 3 0 105.196-3 3 3 0 00-5.196 3zm-1.536.887a2.165 2.165 0 00-1.083 1.839c-.005.351-.054.695-.14 1.024m1.223-.863L12.539 9.137M16.652 15.75l-1.536-.887m1.536.887a3 3 0 105.196 3 3 3 0 00-5.196-3zm-1.536-.887a2.165 2.165 0 01-1.083-1.839c-.005-.351-.054-.695-.14-1.024m1.223.863L12.539 14.863" />
+                                </svg>
+                            </div>
                         </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Konsultasi gaya rambut</li>
-                            <li>✓ Potong rambut profesional</li>
-                            <li>✓ Styling dasar</li>
-                        </ul>
-                        <button data-select-service="basic-haircut" data-navigate="barbers" 
-                                class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-accent mb-2">Potong Rambut Basic</h3>
+                            <!-- Gold Divider Line -->
+                            <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Gaya klasik dan modern untuk penampilan sehari-hari yang rapi dan profesional</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-accent">Rp 35.000</span>
+                                    <div class="text-xs text-gray-500">Harga terjangkau</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">30 menit</div>
+                                    <div class="text-xs text-gray-500">Efisien</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Konsultasi gaya rambut gratis</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Potong rambut profesional</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Styling dasar & finishing</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button data-select-service="basic-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
                             Pilih Layanan
                         </button>
                     </div>
                 </div>
 
-                <!-- Premium Haircut -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow border-2 border-accent">
-                    <div class="bg-accent text-black text-center py-2 text-sm font-semibold">POPULER</div>
-                    <div class="h-48 bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
-                        <span class="text-6xl">💇‍♂️</span>
+                <!-- Service Card 2 - Potong Rambut Premium -->
+                <div class="group relative">
+                    <!-- Popular Badge -->
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                        <span class="bg-accent text-black px-4 py-1 rounded-full text-xs font-bold">POPULER</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Potong Rambut Premium</h3>
-                        <p class="text-gray-600 mb-4">Layanan lengkap dengan styling dan treatment rambut</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 55.000</span>
-                            <span class="text-sm text-gray-500">45 menit</span>
+                    
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border-2 border-accent/40 group-hover:border-accent/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/20">
+                        
+                        <!-- Gold Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors duration-300 relative">
+                                <!-- Enhanced Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-accent/50 group-hover:border-accent/70 transition-colors duration-300"></div>
+                                <div class="absolute inset-1 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                
+                                <!-- Premium Star Icon -->
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                                </svg>
+                            </div>
                         </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Konsultasi mendalam</li>
-                            <li>✓ Potong rambut + styling</li>
-                            <li>✓ Hair treatment</li>
-                            <li>✓ Produk styling premium</li>
-                        </ul>
-                        <button data-select-service="premium-haircut" data-navigate="barbers"
-                                class="w-full bg-accent text-black py-3 rounded-lg hover:bg-yellow-400 transition-colors font-semibold">
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-accent mb-2">Potong Rambut Premium</h3>
+                            <!-- Enhanced Gold Divider Line -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Layanan lengkap dengan styling profesional dan treatment untuk hasil maksimal</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-accent">Rp 55.000</span>
+                                    <div class="text-xs text-accent/80">Nilai terbaik</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">45 menit</div>
+                                    <div class="text-xs text-accent/80">Premium</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Konsultasi mendalam & analisis</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Styling profesional premium</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Hair treatment & vitamin</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Premium Button -->
+                        <button data-select-service="premium-haircut" data-navigate="barbers" class="w-full bg-accent text-black py-3 rounded-lg font-bold hover:bg-accent/90 transition-all duration-300">
+                            Pilih Premium
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 - Cukur Jenggot -->
+                <div class="group relative">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-gray-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-gray-500/10">
+                        
+                        <!-- Side Gold Accent Bar -->
+                        <div class="absolute left-0 top-6 bottom-6 w-0.5 bg-gradient-to-b from-transparent via-gray-400/60 to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-gray-600/10 rounded-full flex items-center justify-center group-hover:bg-gray-600/20 transition-colors duration-300 relative">
+                                <!-- Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-gray-500/30 group-hover:border-gray-400/50 transition-colors duration-300"></div>
+                                
+                                <!-- Beard Icon -->
+                                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-300 mb-2">Cukur Jenggot</h3>
+                            <!-- Gray Divider Line -->
+                            <div class="w-12 h-px bg-gray-500/60 mx-auto mb-4"></div>
+                            <p class="text-gray-400 text-sm leading-relaxed">Perawatan jenggot profesional dengan teknik tradisional untuk tampilan maskulin</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-accent">Rp 25.000</span>
+                                    <div class="text-xs text-gray-500">Cepat & presisi</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">20 menit</div>
+                                    <div class="text-xs text-gray-500">Efisien</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Trimming jenggot presisi</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Shaping profesional</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Aftercare treatment</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button data-select-service="beard-trim" data-navigate="barbers" class="w-full bg-gray-600/10 border border-gray-600/30 text-gray-300 py-3 rounded-lg font-semibold hover:bg-gray-600 hover:text-white transition-all duration-300">
                             Pilih Layanan
                         </button>
                     </div>
                 </div>
 
-                <!-- Beard Trim -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                        <span class="text-6xl">🧔</span>
+                <!-- Service Card 4 - Paket Lengkap -->
+                <div class="group relative">
+                    <!-- Hemat Badge -->
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                        <span class="bg-green-500 text-white px-4 py-1 rounded-full text-xs font-bold">HEMAT</span>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Cukur Jenggot</h3>
-                        <p class="text-gray-600 mb-4">Perawatan jenggot profesional untuk tampilan rapi</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 25.000</span>
-                            <span class="text-sm text-gray-500">20 menit</span>
+                    
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border-2 border-green-500/40 group-hover:border-green-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-green-500/20">
+                        
+                        <!-- Green Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-green-500/60 to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center group-hover:bg-green-500/20 transition-colors duration-300 relative">
+                                <!-- Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-green-500/30 group-hover:border-green-500/50 transition-colors duration-300"></div>
+                                
+                                <!-- Package Icon -->
+                                <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                </svg>
+                            </div>
                         </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Trimming jenggot</li>
-                            <li>✓ Shaping profesional</li>
-                            <li>✓ Aftercare treatment</li>
-                        </ul>
-                        <button data-select-service="beard-trim" data-navigate="barbers"
-                                class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-green-400 mb-2">Paket Lengkap</h3>
+                            <!-- Green Divider Line -->
+                            <div class="w-12 h-px bg-green-500/60 mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Kombinasi semua layanan premium dengan harga hemat untuk pengalaman terbaik</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-green-500">Rp 75.000</span>
+                                    <div class="text-xs text-red-400 line-through">Rp 95.000</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">60 menit</div>
+                                    <div class="text-xs text-green-400">Hemat 20rb</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Potong rambut premium</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Cukur jenggot</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-green-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Hair treatment</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button data-select-service="complete-package" data-navigate="barbers" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600 transition-all duration-300">
+                            Pilih Paket
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 - Keramas + Creambath -->
+                <div class="group relative">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                        
+                        <!-- Gold Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <!-- Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                
+                                <!-- Heart Icon -->
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-accent mb-2">Keramas + Creambath</h3>
+                            <!-- Gold Divider Line -->
+                            <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Perawatan rambut relaksasi dengan produk premium untuk kesehatan rambut optimal</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-accent">Rp 30.000</span>
+                                    <div class="text-xs text-gray-500">Relaksasi</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">25 menit</div>
+                                    <div class="text-xs text-gray-500">Santai</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Shampo premium</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Creambath treatment</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Pijat kepala relaksasi</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button data-select-service="hair-wash" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
                             Pilih Layanan
                         </button>
                     </div>
                 </div>
 
-                <!-- Complete Package -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                        <span class="text-6xl">💆‍♂️</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Paket Lengkap</h3>
-                        <p class="text-gray-600 mb-4">Kombinasi potong rambut, cukur jenggot, dan treatment</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 75.000</span>
-                            <span class="text-sm text-gray-500">60 menit</span>
+                <!-- Service Card 6 - Potong Rambut Anak -->
+                <div class="group relative">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                        
+                        <!-- Gold Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
+                        
+                        <!-- Icon Container -->
+                        <div class="flex justify-center mb-6">
+                            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <!-- Halo Glow -->
+                                <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                
+                                <!-- Child Icon -->
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                                </svg>
+                            </div>
                         </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Potong rambut premium</li>
-                            <li>✓ Cukur jenggot</li>
-                            <li>✓ Creambath</li>
-                            <li>✓ Facial treatment</li>
-                        </ul>
-                        <button data-select-service="complete-package" data-navigate="barbers"
-                                class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                        
+                        <!-- Heading -->
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-bold text-accent mb-2">Potong Rambut Anak</h3>
+                            <!-- Gold Divider Line -->
+                            <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Layanan khusus untuk anak-anak dengan pendekatan ramah dan suasana nyaman</p>
+                        </div>
+                        
+                        <!-- Price Section -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-2xl font-bold text-accent">Rp 25.000</span>
+                                    <div class="text-xs text-gray-500">Usia 3-12 tahun</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-white text-sm">25 menit</div>
+                                    <div class="text-xs text-gray-500">Ramah anak</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Features -->
+                        <div class="space-y-2 mb-8">
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Barber berpengalaman</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Suasana ramah anak</span>
+                            </div>
+                            <div class="flex items-center text-sm text-gray-400">
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                <span>Gaya sesuai usia</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Button -->
+                        <button data-select-service="kids-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
                             Pilih Layanan
                         </button>
                     </div>
                 </div>
 
-                <!-- Hair Wash -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                        <span class="text-6xl">🚿</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Keramas + Creambath</h3>
-                        <p class="text-gray-600 mb-4">Perawatan rambut dengan produk berkualitas tinggi</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 30.000</span>
-                            <span class="text-sm text-gray-500">25 menit</span>
-                        </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Keramas dengan shampo premium</li>
-                            <li>✓ Creambath treatment</li>
-                            <li>✓ Pijat kepala relaksasi</li>
-                        </ul>
-                        <button data-select-service="hair-wash" data-navigate="barbers"
-                                class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
-                            Pilih Layanan
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Kids Haircut -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="h-48 bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
-                        <span class="text-6xl">👶</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-2">Potong Rambut Anak</h3>
-                        <p class="text-gray-600 mb-4">Layanan khusus untuk anak-anak dengan pendekatan ramah</p>
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-2xl font-bold text-accent">Rp 25.000</span>
-                            <span class="text-sm text-gray-500">25 menit</span>
-                        </div>
-                        <ul class="text-sm text-gray-600 mb-6 space-y-1">
-                            <li>✓ Barber berpengalaman dengan anak</li>
-                            <li>✓ Suasana ramah dan nyaman</li>
-                            <li>✓ Gaya rambut sesuai usia</li>
-                        </ul>
-                        <button data-select-service="kids-haircut" data-navigate="barbers"
-                                class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition-colors">
-                            Pilih Layanan
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Additional Info -->
-    <section class="py-16 bg-gray-50">
+    <!-- CTA Section -->
+    <section class="relative py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">Informasi Tambahan</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Semua layanan sudah termasuk konsultasi gratis dan menggunakan produk berkualitas premium
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">🕐</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Jam Operasional</h3>
-                    <p class="text-gray-600">Senin - Sabtu: 09:00 - 21:00<br>Minggu: 10:00 - 18:00</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">💳</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Metode Pembayaran</h3>
-                    <p class="text-gray-600">Cash, Debit, Credit Card<br>E-wallet (GoPay, OVO, DANA)</p>
-                </div>
-
-                <div class="text-center">
-                    <div class="bg-accent w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <span class="text-2xl">📞</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Reservasi</h3>
-                    <p class="text-gray-600">Online booking atau<br>Telepon: +62 123 456 789</p>
-                </div>
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">Siap untuk Transformasi?</h2>
+                <p class="text-gray-400 mb-8">Booking sekarang dan rasakan pengalaman barbershop premium yang berbeda</p>
+                <button data-navigate="booking" class="bg-accent text-black px-8 py-3 rounded-lg font-semibold hover:bg-accent/90 transition-colors">
+                    Book Sekarang
+                </button>
             </div>
         </div>
     </section>
+
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Service selection functionality
+    const serviceButtons = document.querySelectorAll('[data-select-service]');
+    
+    serviceButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const service = this.getAttribute('data-select-service');
+            const navigate = this.getAttribute('data-navigate');
+            
+            // Store selected service in localStorage
+            localStorage.setItem('selectedService', service);
+            
+            // Add loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="flex items-center justify-center"><span class="animate-spin mr-2">⏳</span>Memproses...</span>';
+            this.disabled = true;
+            
+            // Navigate after short delay for better UX
+            setTimeout(() => {
+                if (navigate === 'barbers') {
+                    window.location.href = '/barbers';
+                }
+            }, 1000);
+        });
+    });
+    
+    // Smooth scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe service cards for scroll animations
+    const serviceCards = document.querySelectorAll('.group');
+    serviceCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+    });
+});
+</script>

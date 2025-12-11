@@ -52,3 +52,7 @@ Route::get('/notifications', function () {
 Route::get('/admin', function () {
     return view('barbershop.index');
 });
+
+Route::get('/gallery', function () {
+    return view('barbershop.index');
+});
