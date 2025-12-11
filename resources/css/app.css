@@ -1,10 +1,15 @@
 @import 'tailwindcss';
 
 :root {
-  --accent: #D4AF37;
+  --accent: #FCD34D;
   --accent-foreground: #000000;
-  --background: #ffffff;
-  --foreground: #1A1A1A;
+  --background: #000000;
+  --foreground: #ffffff;
+  --yellow-primary: #FCD34D;
+  --yellow-secondary: #F59E0B;
+  --black-primary: #000000;
+  --black-secondary: #1F2937;
+  --gray-dark: #374151;
 }
 
 .dark {
@@ -308,27 +313,62 @@ button:hover {
 /* Hero Background Enhancements */
 .hero-background {
   background: 
-    linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.9) 100%),
-    radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
-    linear-gradient(-45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
-  background-position: 0 0, 0 0, 0 0, 0 0, 30px 30px;
+    linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%);
+}
+
+/* Diamond Pattern Background - Like in Screenshot */
+.diamond-pattern {
+  background-image: 
+    linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
+    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  opacity: 0.6;
+  animation: diamondMove 20s linear infinite;
+}
+
+/* Moving Diamonds Layer */
+.moving-diamonds {
+  background-image: 
+    linear-gradient(45deg, rgba(212, 175, 55, 0.1) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.1) 75%),
+    linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.05) 75%);
+  background-size: 80px 80px;
+  background-position: 0 0, 40px 40px;
+  opacity: 0.3;
+  animation: diamondMoveReverse 30s linear infinite;
+}
+
+/* Diamond Animation */
+@keyframes diamondMove {
+  0% { 
+    background-position: 0 0, 20px 20px; 
+  }
+  100% { 
+    background-position: 40px 40px, 60px 60px; 
+  }
+}
+
+@keyframes diamondMoveReverse {
+  0% { 
+    background-position: 0 0, 40px 40px; 
+  }
+  100% { 
+    background-position: -80px -80px, -40px -40px; 
+  }
 }
 
 .barbershop-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.08) 1px, transparent 1px),
-    linear-gradient(45deg, transparent 40%, rgba(212, 175, 55, 0.03) 50%, transparent 60%);
-  background-size: 100px 100px, 150px 150px, 200px 200px;
-  animation: patternMove 20s linear infinite;
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.15) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px, 120px 120px;
+  opacity: 0.4;
+  animation: patternMove 25s linear infinite;
 }
 
 @keyframes patternMove {
-  0% { background-position: 0 0, 0 0, 0 0; }
-  100% { background-position: 100px 100px, -150px -150px, 200px 200px; }
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 60px 60px, -120px -120px; }
 }
 
 /* Barbershop Interior Elements */
@@ -753,4 +793,1115 @@ button:hover {
   filter: blur(10px);
   opacity: 0.7;
   z-index: -1;
+}
+/* Barber Image Enhancements */
+.barber-image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.barber-image-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.1) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+}
+
+.barber-image-container:hover::before {
+  opacity: 1;
+}
+
+/* Professional Badge Animation */
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+  }
+}
+
+.professional-badge {
+  animation: badgePulse 2s infinite;
+}
+
+/* Enhanced Image Shine Effect */
+@keyframes imageShine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+.image-shine {
+  animation: imageShine 3s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Barber Tools Floating Animation */
+@keyframes toolFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-8px) rotate(2deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg);
+    opacity: 0.8;
+  }
+}
+
+.tool-float {
+  animation: toolFloat 4s ease-in-out infinite;
+}
+
+.tool-float-delayed {
+  animation: toolFloat 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Professional Info Box Animation */
+@keyframes infoSlideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.info-slide-up {
+  animation: infoSlideUp 0.8s ease-out;
+  animation-delay: 1s;
+  animation-fill-mode: both;
+}
+
+/* Enhanced Border Glow for Image */
+@keyframes imageBorderGlow {
+  0%, 100% {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.1),
+      inset 0 0 20px rgba(212, 175, 55, 0.05);
+  }
+  50% {
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 
+      0 0 40px rgba(212, 175, 55, 0.3),
+      inset 0 0 30px rgba(212, 175, 55, 0.1);
+  }
+}
+
+.image-border-glow {
+  animation: imageBorderGlow 4s ease-in-out infinite;
+}
+
+/* Backdrop Blur Enhancement */
+.backdrop-blur-enhanced {
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+}
+
+/* Professional Badge Hover Effect */
+.professional-badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Image Container Responsive Enhancements */
+@media (max-width: 768px) {
+  .barber-image-container {
+    margin-top: 2rem;
+  }
+  
+  .tool-float,
+  .tool-float-delayed {
+    font-size: 1.5rem;
+  }
+}
+
+/* Luxury Image Frame */
+.luxury-frame {
+  position: relative;
+}
+
+.luxury-frame::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  filter: blur(15px);
+}
+
+.luxury-frame:hover::before {
+  opacity: 0.6;
+}
+
+/* Enhanced Fallback Animation */
+@keyframes fallbackPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.fallback-content {
+  animation: fallbackPulse 2s ease-in-out infinite;
+}
+
+/* Professional Service Indicator */
+@keyframes serviceIndicator {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+}
+
+.service-indicator {
+  animation: serviceIndicator 3s ease-in-out infinite;
+}
+
+/* Image Loading State */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark mode image enhancements */
+.dark .barber-image-container {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.dark .professional-badge {
+  background: linear-gradient(45deg, var(--accent), #f59e0b);
+  color: #000;
+}
+
+.dark .info-slide-up {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+/* Responsive Enhancements for Barber Image */
+@media (max-width: 1024px) {
+  .barber-image-container {
+    margin-top: 3rem;
+  }
+  
+  .professional-badge {
+    font-size: 0.875rem;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .tool-float,
+  .tool-float-delayed {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-image-container {
+    margin-top: 2rem;
+  }
+  
+  .professional-badge {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.625rem;
+  }
+  
+  .info-slide-up {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+  
+  .tool-float {
+    top: 20%;
+    left: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .tool-float-delayed {
+    bottom: 25%;
+    right: 1rem;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .barber-image-container {
+    aspect-ratio: 1;
+  }
+  
+  .professional-badge {
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .info-slide-up h3 {
+    font-size: 1rem;
+  }
+  
+  .info-slide-up p {
+    font-size: 0.75rem;
+  }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .barber-image-container img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  .tool-float,
+  .tool-float-delayed,
+  .professional-badge,
+  .image-shine,
+  .service-indicator {
+    animation: none;
+  }
+  
+  .barber-image-container:hover img {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .barber-image-container {
+    break-inside: avoid;
+  }
+  
+  .professional-badge,
+  .tool-float,
+  .tool-float-delayed {
+    display: none;
+  }
+}
+
+/* Focus Accessibility */
+.barber-image-container:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Loading State Enhancement */
+.barber-image-container.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+/* Hover State Enhancements */
+.barber-image-container:hover .professional-badge {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.barber-image-container:hover .tool-float,
+.barber-image-container:hover .tool-float-delayed {
+  animation-duration: 2s;
+}
+
+/* Color Scheme Adaptations */
+@media (prefers-color-scheme: dark) {
+  .fallback-content {
+    background: linear-gradient(135deg, #1a1a1a, #000, #1a1a1a);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .fallback-content {
+    background: linear-gradient(135deg, #f5f5f5, #e0e0e0, #f5f5f5);
+    color: #333;
+  }
+  
+  .fallback-content .text-accent {
+    color: #d4af37;
+  }
+}
+/* Executive Minimalist Design */
+.executive-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Scale Animation */
+.group:hover .group-hover\:scale-102 {
+  transform: scale(1.02);
+}
+
+/* Executive Quality Badge */
+.executive-badge {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.executive-badge:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Executive Info Panel */
+.executive-info {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.executive-info:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Minimalist Pulse Animation */
+@keyframes minimalistPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.minimalist-pulse {
+  animation: minimalistPulse 2s ease-in-out infinite;
+}
+
+/* Executive Corner Accents */
+@keyframes cornerGlow {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.corner-accent {
+  animation: cornerGlow 3s ease-in-out infinite;
+}
+
+/* Subtle Hover Effects */
+.executive-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Executive Typography */
+.executive-text {
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  line-height: 1.4;
+}
+
+/* Minimalist Border Animation */
+@keyframes borderFade {
+  0%, 100% {
+    border-color: rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+}
+
+.border-fade {
+  animation: borderFade 4s ease-in-out infinite;
+}
+
+/* Executive Gradient Overlay */
+.executive-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+/* Smooth Backdrop Blur */
+.backdrop-blur-executive {
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+
+/* Executive Status Indicator */
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 0.7;
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0);
+  }
+}
+
+.status-indicator {
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Executive Image Enhancements */
+.executive-image {
+  filter: contrast(1.05) brightness(1.02) saturate(1.1);
+  transition: filter 0.7s ease;
+}
+
+.executive-image:hover {
+  filter: contrast(1.1) brightness(1.05) saturate(1.15);
+}
+
+/* Minimalist Responsive Design */
+@media (max-width: 1024px) {
+  .executive-badge {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .executive-info {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .executive-badge {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.625rem;
+    padding: 0.25rem 0.5rem;
+  }
+  
+  .executive-info {
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    padding: 0.625rem;
+  }
+  
+  .executive-info h3 {
+    font-size: 0.875rem;
+  }
+  
+  .executive-info p {
+    font-size: 0.625rem;
+  }
+}
+
+/* Executive Focus States */
+.executive-container:focus-within {
+  outline: 2px solid rgba(212, 175, 55, 0.5);
+  outline-offset: 4px;
+  border-radius: 1rem;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .minimalist-pulse,
+  .corner-accent,
+  .border-fade,
+  .status-indicator {
+    animation: none;
+  }
+  
+  .group:hover .group-hover\:scale-102 {
+    transform: none;
+  }
+  
+  .executive-hover:hover {
+    transform: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .executive-badge {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: var(--accent);
+  }
+  
+  .executive-info {
+    background: rgba(0, 0, 0, 0.9);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Executive Loading State */
+.executive-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+}
+
+/* Dark Mode Executive Enhancements */
+.dark .executive-badge {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.dark .executive-info {
+  background: rgba(0, 0, 0, 0.6);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Executive Performance Optimizations */
+.executive-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.executive-image {
+  will-change: filter, transform;
+}
+
+/* Executive Accessibility */
+.executive-container[aria-label] {
+  cursor: pointer;
+}
+
+.executive-container:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Executive Print Styles */
+@media print {
+  .executive-badge,
+  .corner-accent {
+    display: none;
+  }
+  
+  .executive-container {
+    break-inside: avoid;
+  }
+}
+/* Elegant Typography - Inspired by Barber King Indonesia */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Elegant Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* Display Font for Special Elements */
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Font Weight Classes */
+.font-extralight { font-weight: 200; }
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+/* Letter Spacing */
+.tracking-tighter { letter-spacing: -0.05em; }
+.tracking-tight { letter-spacing: -0.025em; }
+.tracking-normal { letter-spacing: 0; }
+.tracking-wide { letter-spacing: 0.025em; }
+.tracking-wider { letter-spacing: 0.05em; }
+.tracking-widest { letter-spacing: 0.1em; }
+
+/* Elegant Section Styling */
+.elegant-section {
+  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+}
+
+/* Stylish Cards */
+.stylish-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stylish-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+/* Elegant Animations */
+@keyframes elegantFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.elegant-fade-in {
+  animation: elegantFadeIn 0.8s ease-out;
+}
+
+/* Smooth Hover Transitions */
+.elegant-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elegant-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* Stylish Buttons */
+.btn-elegant {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  padding: 12px 32px;
+}
+
+.btn-elegant:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* Elegant Text Styles */
+.text-elegant {
+  font-family: var(--font-primary);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #4a5568;
+}
+
+.text-elegant-dark {
+  color: #2d3748;
+}
+
+/* Stylish Borders */
+.border-elegant {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+.border-elegant-hover:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+/* Elegant Shadows */
+.shadow-elegant {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-elegant-hover:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .text-elegant {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* Elegant Grid Layouts */
+.elegant-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 640px) {
+  .elegant-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Stylish Icon Containers */
+.icon-elegant {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
+}
+
+.icon-elegant:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.1));
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
+}
+
+/* Elegant Stats Counter */
+.stats-elegant {
+  font-family: var(--font-primary);
+  font-weight: 200;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.stats-elegant:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Elegant Section Dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  margin: 4rem 0;
+}
+
+/* Stylish Background Patterns */
+.bg-elegant-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+}
+
+/* Elegant Content Spacing */
+.content-elegant {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .content-elegant {
+    padding: 0 1rem;
+  }
+}
+
+/* Stylish Focus States */
+.focus-elegant:focus {
+  outline: 2px solid rgba(212, 175, 55, 0.5);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Elegant Loading States */
+.loading-elegant {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: elegantLoading 1.5s infinite;
+}
+
+@keyframes elegantLoading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Elegant Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Stylish Selection */
+::selection {
+  background: rgba(212, 175, 55, 0.2);
+  color: #2d3748;
+}
+
+::-moz-selection {
+  background: rgba(212, 175, 55, 0.2);
+  color: #2d3748;
+}
+
+/* Elegant Print Styles */
+@media print {
+  .elegant-section {
+    background: white !important;
+  }
+  
+  .stylish-card {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Dark Mode Elegant Styles */
+@media (prefers-color-scheme: dark) {
+  .elegant-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .stylish-card {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .text-elegant {
+    color: #a0aec0;
+  }
+  
+  .text-elegant-dark {
+    color: #e2e8f0;
+  }
+}
+/* Refined Diagonal Stripe */
+.-skew-y-0\.5 {
+  --tw-skew-y: -0.5deg;
+  transform: skewY(-0.5deg);
+}
+
+/* Better Text Formatting */
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Improved Section Spacing */
+.section-refined {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Better Typography Hierarchy */
+.text-hierarchy-1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.text-hierarchy-2 {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.text-hierarchy-3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Refined Yellow Accent */
+.bg-yellow-refined {
+  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+}
+
+/* Better Card Spacing */
+.card-refined {
+  padding: 2rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-refined:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Improved Grid Gaps */
+.grid-refined {
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .grid-refined {
+    gap: 1.5rem;
+  }
+}
+
+/* Better Icon Sizing */
+.icon-refined {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+/* Refined Stats Layout */
+.stats-refined {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.stats-refined::before {
+  content: '';
+  position: absolute;
+  top: -0.75rem;
+  left: -0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid #FCD34D;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+/* Better Image Containers */
+.image-refined {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-refined:hover {
+  transform: scale(1.02);
+}
+
+/* Refined Responsive Typography */
+@media (max-width: 768px) {
+  .text-hierarchy-1 {
+    font-size: 2.25rem;
+  }
+  
+  .text-hierarchy-2 {
+    font-size: 1rem;
+  }
+  
+  .-skew-y-0\.5 {
+    --tw-skew-y: -0.25deg;
+    transform: skewY(-0.25deg);
+  }
+}
+
+/* Better Section Transitions */
+.section-transition {
+  position: relative;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(252, 211, 77, 0.3), transparent);
+}
+
+/* Improved Content Spacing */
+.content-refined {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .content-refined {
+    padding: 0 2rem;
+  }
+}
+
+/* Better Button Styling */
+.btn-refined {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-refined:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(252, 211, 77, 0.4);
+}
+
+/* Refined Grid System */
+.grid-system-refined {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .grid-system-refined {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
