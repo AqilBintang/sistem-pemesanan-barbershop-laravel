@@ -26,6 +26,10 @@
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Kapster
                     </a>
+                    <a href="#" data-navigate="gallery" data-nav-item="gallery"
+                       class="nav-link text-white hover:text-accent transition-colors font-medium">
+                        Gallery
+                    </a>
                     <a href="#" data-navigate="booking" data-nav-item="booking"
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Booking
@@ -57,6 +61,7 @@
             <a href="#" data-navigate="home" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Home</a>
             <a href="#" data-navigate="services" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
             <a href="#" data-navigate="barbers" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Kapster</a>
+            <a href="#" data-navigate="gallery" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Gallery</a>
             <a href="#" data-navigate="booking" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Booking</a>
             <a href="#" data-navigate="notifications" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Notifikasi</a>
             <a href="#" data-navigate="admin" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Admin</a>

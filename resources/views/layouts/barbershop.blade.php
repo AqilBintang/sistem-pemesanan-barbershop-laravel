@@ -45,6 +45,11 @@
             @include('components.notification-template')
         </div>
 
+        <!-- Gallery Page -->
+        <div data-page="gallery" style="display: {{ request()->is('gallery*') ? 'block' : 'none' }}">
+            @include('components.gallery-section')
+        </div>
+
         <!-- Admin Dashboard -->
         <div data-page="admin" style="display: {{ request()->is('admin*') ? 'block' : 'none' }}">
             @include('components.admin-dashboard')

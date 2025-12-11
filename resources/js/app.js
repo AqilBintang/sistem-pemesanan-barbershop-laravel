@@ -77,6 +77,9 @@ class BarbershopApp {
                 <button data-navigate="confirmation" class="nav-btn quick-nav-item">
                     <span>✅</span> Confirmation
                 </button>
+                <button data-navigate="gallery" class="nav-btn quick-nav-item">
+                    <span>📸</span> Gallery
+                </button>
                 <button data-navigate="notifications" class="nav-btn quick-nav-item">
                     <span>🔔</span> Notifications
                 </button>
