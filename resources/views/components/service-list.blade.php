@@ -143,11 +143,11 @@
                             <div class="flex items-center justify-between">
                                 <div>
                                     <span class="text-2xl font-bold text-accent">Rp 55.000</span>
-                                    <div class="text-xs text-accent/80">Nilai terbaik</div>
+                                    <div class="text-xs text-yellow-300 font-medium">Nilai terbaik</div>
                                 </div>
                                 <div class="text-right">
                                     <div class="text-white text-sm">45 menit</div>
-                                    <div class="text-xs text-accent/80">Premium</div>
+                                    <div class="text-xs text-yellow-300 font-medium">Premium</div>
                                 </div>
                             </div>
                         </div>
@@ -177,19 +177,19 @@
 
                 <!-- Service Card 3 - Cukur Jenggot -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-gray-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-gray-500/10">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg p-8 h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
                         
-                        <!-- Side Gold Accent Bar -->
-                        <div class="absolute left-0 top-6 bottom-6 w-0.5 bg-gradient-to-b from-transparent via-gray-400/60 to-transparent"></div>
+                        <!-- Gold Accent Bar -->
+                        <div class="absolute top-0 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
                         
                         <!-- Icon Container -->
                         <div class="flex justify-center mb-6">
-                            <div class="w-16 h-16 bg-gray-600/10 rounded-full flex items-center justify-center group-hover:bg-gray-600/20 transition-colors duration-300 relative">
+                            <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
                                 <!-- Halo Glow -->
-                                <div class="absolute inset-0 rounded-full border border-gray-500/30 group-hover:border-gray-400/50 transition-colors duration-300"></div>
+                                <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
                                 
                                 <!-- Beard Icon -->
-                                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                                <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                                 </svg>
                             </div>
@@ -197,10 +197,10 @@
                         
                         <!-- Heading -->
                         <div class="text-center mb-4">
-                            <h3 class="text-xl font-bold text-gray-300 mb-2">Cukur Jenggot</h3>
-                            <!-- Gray Divider Line -->
-                            <div class="w-12 h-px bg-gray-500/60 mx-auto mb-4"></div>
-                            <p class="text-gray-400 text-sm leading-relaxed">Perawatan jenggot profesional dengan teknik tradisional untuk tampilan maskulin</p>
+                            <h3 class="text-xl font-bold text-accent mb-2">Cukur Jenggot</h3>
+                            <!-- Gold Divider Line -->
+                            <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed">Perawatan jenggot profesional dengan teknik tradisional untuk tampilan maskulin</p>
                         </div>
                         
                         <!-- Price Section -->
@@ -220,21 +220,21 @@
                         <!-- Features -->
                         <div class="space-y-2 mb-8">
                             <div class="flex items-center text-sm text-gray-400">
-                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
                                 <span>Trimming jenggot presisi</span>
                             </div>
                             <div class="flex items-center text-sm text-gray-400">
-                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
                                 <span>Shaping profesional</span>
                             </div>
                             <div class="flex items-center text-sm text-gray-400">
-                                <div class="w-1.5 h-1.5 bg-gray-500 rounded-full mr-3 flex-shrink-0"></div>
+                                <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
                                 <span>Aftercare treatment</span>
                             </div>
                         </div>
                         
                         <!-- Button -->
-                        <button data-select-service="beard-trim" data-navigate="barbers" class="w-full bg-gray-600/10 border border-gray-600/30 text-gray-300 py-3 rounded-lg font-semibold hover:bg-gray-600 hover:text-white transition-all duration-300">
+                        <button data-select-service="beard-trim" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
                             Pilih Layanan
                         </button>
                     </div>
