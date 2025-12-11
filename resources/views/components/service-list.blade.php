@@ -41,11 +41,11 @@
                 
                 <!-- Service Card 1 - Potong Rambut Basic -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-yellow-500/40 group-hover:border-yellow-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-yellow-500/20">
                         
                         <!-- Image Section -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop&crop=face" 
+                            <img src="{{ asset('images/basic haircut.jpeg') }}" 
                                  alt="Potong Rambut Basic" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -55,11 +55,14 @@
                             <!-- Gold Accent Bar -->
                             <div class="absolute top-48 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
                         
+                            <!-- Decorative Line Above Icon -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent mx-auto mb-4"></div>
+                            
                             <!-- Icon Container -->
                             <div class="flex justify-center mb-6">
-                                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-500/30 group-hover:to-amber-500/20 transition-colors duration-300 relative">
                                     <!-- Halo Glow -->
-                                    <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 rounded-full border border-yellow-500/40 group-hover:border-yellow-500/60 transition-colors duration-300"></div>
                                     
                                     <!-- Premium Scissors Icon -->
                                     <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -72,7 +75,7 @@
                             <div class="text-center mb-4">
                                 <h3 class="text-xl font-bold text-accent mb-2">Potong Rambut Basic</h3>
                                 <!-- Gold Divider Line -->
-                                <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                                <div class="w-12 h-px bg-gradient-to-r from-transparent via-yellow-500/60 to-transparent mx-auto mb-4"></div>
                                 <p class="text-gray-300 text-sm leading-relaxed">Gaya klasik dan modern untuk penampilan sehari-hari yang rapi dan profesional</p>
                             </div>
                             
@@ -107,9 +110,12 @@
                             </div>
                             
                             <!-- Button -->
-                            <button data-select-service="basic-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
+                            <button data-select-service="basic-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20 active:scale-95 active:bg-accent/90 transition-all duration-300 cursor-pointer">
                                 Pilih Layanan
                             </button>
+                            
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent mx-auto"></div>
                         </div>
                     </div>
                 </div>
@@ -121,11 +127,11 @@
                         <span class="bg-accent text-black px-4 py-1 rounded-full text-xs font-bold">POPULER</span>
                     </div>
                     
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-accent/40 group-hover:border-accent/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/20">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-yellow-500/40 group-hover:border-yellow-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-yellow-500/20">
                         
                         <!-- Image Section -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1622286346003-c2d4e4a8e9b0?w=400&h=300&fit=crop&crop=face" 
+                            <img src="{{ asset('images/premium haircut.jpg') }}" 
                                  alt="Potong Rambut Premium" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -135,12 +141,15 @@
                             <!-- Gold Accent Bar -->
                             <div class="absolute top-48 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent"></div>
                         
+                            <!-- Decorative Line Above Icon -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent mx-auto mb-4"></div>
+                            
                             <!-- Icon Container -->
                             <div class="flex justify-center mb-6">
-                                <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center group-hover:bg-accent/30 transition-colors duration-300 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/25 to-amber-500/15 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-500/35 group-hover:to-amber-500/25 transition-colors duration-300 relative">
                                     <!-- Enhanced Halo Glow -->
-                                    <div class="absolute inset-0 rounded-full border border-accent/50 group-hover:border-accent/70 transition-colors duration-300"></div>
-                                    <div class="absolute inset-1 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 rounded-full border border-yellow-500/60 group-hover:border-yellow-500/80 transition-colors duration-300"></div>
+                                    <div class="absolute inset-1 rounded-full border border-yellow-500/40 group-hover:border-yellow-500/60 transition-colors duration-300"></div>
                                     
                                     <!-- Premium Star Icon -->
                                     <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -153,7 +162,7 @@
                             <div class="text-center mb-4">
                                 <h3 class="text-xl font-bold text-accent mb-2">Potong Rambut Premium</h3>
                                 <!-- Enhanced Gold Divider Line -->
-                                <div class="w-16 h-px bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-4"></div>
+                                <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/60 to-transparent mx-auto mb-4"></div>
                                 <p class="text-gray-300 text-sm leading-relaxed">Layanan lengkap dengan styling profesional dan treatment untuk hasil maksimal</p>
                             </div>
                             
@@ -188,20 +197,23 @@
                             </div>
                             
                             <!-- Premium Button -->
-                            <button data-select-service="premium-haircut" data-navigate="barbers" class="w-full bg-accent text-black py-3 rounded-lg font-bold hover:bg-accent/90 transition-all duration-300">
+                            <button data-select-service="premium-haircut" data-navigate="barbers" class="w-full bg-accent text-black py-3 rounded-lg font-bold hover:bg-accent/90 hover:shadow-lg hover:shadow-accent/25 active:scale-95 active:bg-accent/80 transition-all duration-300 cursor-pointer">
                                 Pilih Premium
                             </button>
+                            
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent mx-auto"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Service Card 3 - Cukur Jenggot -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-yellow-500/40 group-hover:border-yellow-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-yellow-500/20">
                         
                         <!-- Image Section -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop&crop=face" 
+                            <img src="{{ asset('images/shave beard.jpg') }}" 
                                  alt="Cukur Jenggot" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -211,11 +223,14 @@
                             <!-- Gold Accent Bar -->
                             <div class="absolute top-48 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
                         
+                            <!-- Decorative Line Above Icon -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent mx-auto mb-4"></div>
+                            
                             <!-- Icon Container -->
                             <div class="flex justify-center mb-6">
-                                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-500/30 group-hover:to-amber-500/20 transition-colors duration-300 relative">
                                     <!-- Halo Glow -->
-                                    <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 rounded-full border border-yellow-500/40 group-hover:border-yellow-500/60 transition-colors duration-300"></div>
                                     
                                     <!-- Beard Icon -->
                                     <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -228,7 +243,7 @@
                             <div class="text-center mb-4">
                                 <h3 class="text-xl font-bold text-accent mb-2">Cukur Jenggot</h3>
                                 <!-- Gold Divider Line -->
-                                <div class="w-12 h-px bg-accent/60 mx-auto mb-4"></div>
+                                <div class="w-12 h-px bg-gradient-to-r from-transparent via-yellow-500/60 to-transparent mx-auto mb-4"></div>
                                 <p class="text-gray-300 text-sm leading-relaxed">Perawatan jenggot profesional dengan teknik tradisional untuk tampilan maskulin</p>
                             </div>
                             
@@ -263,9 +278,12 @@
                             </div>
                             
                             <!-- Button -->
-                            <button data-select-service="beard-trim" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
+                            <button data-select-service="beard-trim" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20 active:scale-95 active:bg-accent/90 transition-all duration-300 cursor-pointer">
                                 Pilih Layanan
                             </button>
+                            
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent mx-auto"></div>
                         </div>
                     </div>
                 </div>
@@ -343,7 +361,7 @@
                             </div>
                             
                             <!-- Button -->
-                            <button data-select-service="complete-package" data-navigate="barbers" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600 transition-all duration-300">
+                            <button data-select-service="complete-package" data-navigate="barbers" class="w-full bg-green-500 text-white py-3 rounded-lg font-bold hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/25 active:scale-95 active:bg-green-700 transition-all duration-300 cursor-pointer">
                                 Pilih Paket
                             </button>
                         </div>
@@ -352,11 +370,11 @@
 
                 <!-- Service Card 5 - Keramas + Creambath -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-yellow-500/40 group-hover:border-yellow-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-yellow-500/20">
                         
                         <!-- Image Section -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&h=300&fit=crop&crop=face" 
+                            <img src="{{ asset('images/shampoo and cream bath.avif') }}" 
                                  alt="Keramas + Creambath" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -366,11 +384,14 @@
                             <!-- Gold Accent Bar -->
                             <div class="absolute top-48 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
                         
+                            <!-- Decorative Line Above Icon -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent mx-auto mb-4"></div>
+                            
                             <!-- Icon Container -->
                             <div class="flex justify-center mb-6">
-                                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-500/30 group-hover:to-amber-500/20 transition-colors duration-300 relative">
                                     <!-- Halo Glow -->
-                                    <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 rounded-full border border-yellow-500/40 group-hover:border-yellow-500/60 transition-colors duration-300"></div>
                                     
                                     <!-- Heart Icon -->
                                     <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -418,20 +439,23 @@
                             </div>
                             
                             <!-- Button -->
-                            <button data-select-service="hair-wash" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
+                            <button data-select-service="hair-wash" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20 active:scale-95 active:bg-accent/90 transition-all duration-300 cursor-pointer">
                                 Pilih Layanan
                             </button>
+                            
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent mx-auto"></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Service Card 6 - Potong Rambut Anak -->
                 <div class="group relative">
-                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border border-gray-700/50 group-hover:border-accent/40 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-accent/10">
+                    <div class="relative bg-gradient-to-br from-gray-800/80 to-gray-900/90 backdrop-blur-sm rounded-lg overflow-hidden h-full border-2 border-yellow-500/40 group-hover:border-yellow-500/60 transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:shadow-yellow-500/20">
                         
                         <!-- Image Section -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="child haircut.jpg" 
+                            <img src="{{ asset('images/child haircut.webp') }}" 
                                  alt="Potong Rambut Anak" 
                                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -441,11 +465,14 @@
                             <!-- Gold Accent Bar -->
                             <div class="absolute top-48 left-6 right-6 h-0.5 bg-gradient-to-r from-transparent via-accent/60 to-transparent"></div>
                         
+                            <!-- Decorative Line Above Icon -->
+                            <div class="w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/40 to-transparent mx-auto mb-4"></div>
+                            
                             <!-- Icon Container -->
                             <div class="flex justify-center mb-6">
-                                <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-full flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-yellow-500/30 group-hover:to-amber-500/20 transition-colors duration-300 relative">
                                     <!-- Halo Glow -->
-                                    <div class="absolute inset-0 rounded-full border border-accent/30 group-hover:border-accent/50 transition-colors duration-300"></div>
+                                    <div class="absolute inset-0 rounded-full border border-yellow-500/40 group-hover:border-yellow-500/60 transition-colors duration-300"></div>
                                     
                                     <!-- Child Icon -->
                                     <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
@@ -493,9 +520,12 @@
                             </div>
                             
                             <!-- Button -->
-                            <button data-select-service="kids-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black transition-all duration-300">
+                            <button data-select-service="kids-haircut" data-navigate="barbers" class="w-full bg-accent/10 border border-accent/30 text-accent py-3 rounded-lg font-semibold hover:bg-accent hover:text-black hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20 active:scale-95 active:bg-accent/90 transition-all duration-300 cursor-pointer">
                                 Pilih Layanan
                             </button>
+                            
+                            <!-- Bottom Decorative Line -->
+                            <div class="mt-6 w-16 h-px bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent mx-auto"></div>
                         </div>
                     </div>
                 </div>
@@ -504,3 +534,50 @@
         </div>
     </section>
 </div>
+<!-- Foo
+ter Section -->
+<footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-6">
+            <!-- Brand Section -->
+            <div>
+                <div class="flex items-center mb-4">
+                    <div class="w-6 h-6 bg-accent rounded flex items-center justify-center mr-2">
+                        <span class="text-black font-bold text-xs">P</span>
+                    </div>
+                    <span class="text-lg font-bold">Pangling Hairstudio</span>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Premium barbershop untuk pria modern
+                </p>
+            </div>
+
+            <!-- Navigation -->
+            <div>
+                <h3 class="text-base font-bold mb-4">Navigasi</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" data-navigate="home" class="text-gray-400 hover:text-accent transition-colors text-sm">Home</a></li>
+                    <li><a href="#" data-navigate="services" class="text-gray-400 hover:text-accent transition-colors text-sm">Layanan</a></li>
+                    <li><a href="#" data-navigate="barbers" class="text-gray-400 hover:text-accent transition-colors text-sm">Kapster</a></li>
+                    <li><a href="#" data-navigate="booking" class="text-gray-400 hover:text-accent transition-colors text-sm">Booking</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div>
+                <h3 class="text-base font-bold mb-4">Kontak</h3>
+                <div class="space-y-2 text-gray-400 text-sm">
+                    <p>Email: info@panglinghairstudio.com</p>
+                    <p>Telepon: +62 812 3456 7890</p>
+                    <p>Alamat: Jl. Premium No. 123, Jakarta</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+            <p class="text-gray-400 text-sm">
+                © {{ date('Y') }} <span class="text-accent font-semibold">Pangling Hairstudio</span>. All rights reserved.
+            </p>
+        </div>
+    </div>
+</footer>
