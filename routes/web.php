@@ -45,8 +45,9 @@ Route::get('/test-services', function() {
 
 
 Route::get('/barbers', function () {
-    return view('barbershop.index');
-});
+    $barbers = App\Models\Barber::active()->orderBy('level', 'desc')->orderBy('rating', 'desc')->get();
+    return view('barbershop.index', compact('barbers'));
+})->name('barbers');
 
 Route::get('/confirmation', function () {
     return view('barbershop.index');
@@ -72,6 +73,9 @@ Route::prefix('admin')->group(function () {
         Route::delete('/services/{id}', [App\Http\Controllers\AdminController::class, 'destroyService'])->name('admin.services.destroy');
         Route::get('/barbers', [App\Http\Controllers\AdminController::class, 'barbers'])->name('admin.barbers');
         Route::post('/barbers', [App\Http\Controllers\AdminController::class, 'storeBarber'])->name('admin.barbers.store');
+        Route::get('/barbers/{id}/edit', [App\Http\Controllers\AdminController::class, 'editBarber'])->name('admin.barbers.edit');
+        Route::put('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'updateBarber'])->name('admin.barbers.update');
+        Route::delete('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'destroyBarber'])->name('admin.barbers.destroy');
         Route::post('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
     });
 });
@@ -79,3 +83,14 @@ Route::prefix('admin')->group(function () {
 Route::get('/gallery', function () {
     return view('barbershop.index');
 });
+
+// Booking routes
+Route::get('/booking', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+Route::post('/booking/available-barbers', [App\Http\Controllers\BookingController::class, 'getAvailableBarbers'])->name('booking.available-barbers');
+Route::post('/booking/check-availability', [App\Http\Controllers\BookingController::class, 'checkAvailability'])->name('booking.check-availability');
+
+// Test route for schedule system
+Route::get('/test-schedule', function () {
+    $allBarbers = App\Models\Barber::with('schedules')->get();
+    return view('test-schedule', compact('allBarbers'));
+})->name('test.schedule');
