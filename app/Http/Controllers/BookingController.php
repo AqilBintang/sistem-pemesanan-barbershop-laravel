@@ -13,6 +13,11 @@ class BookingController extends Controller
 {
     public function index()
     {
+        // Check if this is test booking route
+        if (request()->is('test-booking')) {
+            return view('test-booking');
+        }
+        
         return view('booking.index');
     }
 
@@ -110,11 +115,11 @@ class BookingController extends Controller
             // Get service price
             $service = Service::findOrFail($request->service_id);
 
-            // Create booking with authenticated user data
+            // Create booking (handle both authenticated and test users)
             $booking = Booking::create([
-                'customer_name' => $request->customer_name ?: auth()->user()->name,
+                'customer_name' => $request->customer_name ?: (auth()->check() ? auth()->user()->name : 'Test User'),
                 'customer_phone' => $request->customer_phone,
-                'customer_email' => $request->customer_email ?: auth()->user()->email,
+                'customer_email' => $request->customer_email ?: (auth()->check() ? auth()->user()->email : 'test@gmail.com'),
                 'barber_id' => $request->barber_id,
                 'service_id' => $request->service_id,
                 'booking_date' => $request->booking_date,
@@ -128,16 +133,29 @@ class BookingController extends Controller
                 'success' => true,
                 'message' => 'Booking berhasil dibuat! Kami akan menghubungi Anda untuk konfirmasi.',
                 'booking_id' => $booking->id,
-                'redirect_url' => route('booking.confirmation', ['booking_id' => $booking->id]),
                 'booking' => [
                     'id' => $booking->id,
                     'customer_name' => $booking->customer_name,
+                    'customer_phone' => $booking->customer_phone,
+                    'customer_email' => $booking->customer_email,
                     'barber_name' => $booking->barber->name,
                     'service_name' => $booking->service->name,
                     'date' => $booking->formatted_date,
                     'time' => $booking->formatted_time,
                     'total_price' => $booking->total_price,
-                    'status' => $booking->status_display
+                    'status' => $booking->status_display,
+                    'notes' => $booking->notes,
+                    'booking_date' => $booking->booking_date,
+                    'booking_time' => $booking->booking_time,
+                    'service' => [
+                        'name' => $booking->service->name,
+                        'duration' => $booking->service->duration,
+                        'price' => $booking->service->price
+                    ],
+                    'barber' => [
+                        'name' => $booking->barber->name,
+                        'level' => $booking->barber->level_display
+                    ]
                 ]
             ]);
 

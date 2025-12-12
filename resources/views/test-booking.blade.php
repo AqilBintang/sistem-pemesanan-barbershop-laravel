@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Booking Appointment - Sisbar Hairstudio')
+@section('title', 'Test Booking - Sisbar Hairstudio')
 
 @section('content')
 <div class="min-h-screen bg-black pt-20">
@@ -13,11 +13,20 @@
         <div class="max-w-4xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-12">
-                <h1 class="text-5xl font-bold text-white mb-6">Booking Appointment</h1>
-                <p class="text-gray-300 text-xl">Pilih tanggal untuk melihat kapster yang tersedia</p>
+                <h1 class="text-5xl font-bold text-white mb-6">Test Booking System</h1>
+                <p class="text-gray-300 text-xl">Testing booking tanpa authentication</p>
                 <div class="flex justify-center mt-8">
                     <div class="w-32 h-1 bg-linear-to-r from-yellow-400 to-yellow-600 rounded-full"></div>
                 </div>
+            </div>
+
+            <!-- Test Info -->
+            <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-8">
+                <h3 class="text-blue-400 font-semibold mb-2">🧪 Mode Testing</h3>
+                <p class="text-gray-300 text-sm">
+                    Ini adalah halaman test booking tanpa perlu login. 
+                    Data user akan menggunakan default test user.
+                </p>
             </div>
 
             <!-- Booking Form -->
@@ -75,7 +84,7 @@
                                 <input type="text" id="customer-name" name="customer_name" required
                                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
                                        placeholder="Masukkan nama lengkap"
-                                       value="{{ auth()->user()->name }}">
+                                       value="Test User">
                             </div>
                             <div>
                                 <label for="customer-phone" class="block text-sm font-medium text-gray-300 mb-2">Nomor Telepon *</label>
@@ -88,8 +97,8 @@
                                 <input type="email" id="customer-email" name="customer_email"
                                        class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-xl text-white focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
                                        placeholder="email@example.com"
-                                       value="{{ auth()->user()->email }}" readonly>
-                                <p class="text-gray-400 text-xs mt-1">Email dari akun Google Anda</p>
+                                       value="test@gmail.com">
+                                <p class="text-gray-400 text-xs mt-1">Email test user</p>
                             </div>
                             <div class="md:col-span-2">
                                 <label for="notes" class="block text-sm font-medium text-gray-300 mb-2">Catatan (Opsional)</label>
@@ -110,7 +119,7 @@
                         </div>
                         <button type="submit" 
                                 class="w-full px-8 py-4 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-xl transition-colors">
-                            Konfirmasi Booking
+                            Konfirmasi Booking (Test)
                         </button>
                     </div>
 
@@ -128,36 +137,16 @@
                 </form>
             </div>
 
-            <!-- Loading State -->
-            <div id="loading" class="hidden text-center py-8">
-                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-400"></div>
-                <p class="text-gray-300 mt-2">Mencari kapster yang tersedia...</p>
-            </div>
-
-            <!-- Results -->
-            <div id="results" class="hidden">
-                <div class="bg-slate-800 rounded-3xl shadow-2xl p-8">
-                    <h2 class="text-2xl font-bold text-white mb-6">Kapster Tersedia</h2>
-                    <div id="selected-date-info" class="mb-6 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl">
-                        <p class="text-yellow-400 font-medium"></p>
-                    </div>
-                    <div id="barbers-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Barbers will be populated here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- No Results -->
-            <div id="no-results" class="hidden">
-                <div class="bg-slate-800 rounded-3xl shadow-2xl p-8 text-center">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Tidak Ada Kapster Tersedia</h3>
-                    <p class="text-gray-300">Maaf, tidak ada kapster yang tersedia pada tanggal yang dipilih. Silakan pilih tanggal lain.</p>
-                </div>
+            <!-- Back to Home -->
+            <div class="text-center">
+                <a href="/" 
+                   class="inline-block px-8 py-3 bg-slate-600 hover:bg-slate-500 text-white font-bold rounded-xl transition-colors mr-4">
+                    Kembali ke Beranda
+                </a>
+                <a href="/test-login" 
+                   class="inline-block px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl transition-colors">
+                    Test Login System
+                </a>
             </div>
         </div>
     </div>
@@ -182,10 +171,8 @@ async function searchAvailableBarbers() {
         return;
     }
 
-    showLoading();
-
     try {
-        const response = await fetch('{{ route("booking.available-barbers") }}', {
+        const response = await fetch('/test-booking/available-barbers', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -195,17 +182,15 @@ async function searchAvailableBarbers() {
         });
 
         const data = await response.json();
-        hideLoading();
 
         if (data.success && data.barbers.length > 0) {
             populateBarbers(data.barbers);
             showStep(2);
         } else {
-            showNoResults();
+            alert('Tidak ada kapster tersedia pada tanggal tersebut');
         }
     } catch (error) {
         console.error('Error:', error);
-        hideLoading();
         alert('Terjadi kesalahan saat mencari kapster. Silakan coba lagi.');
     }
 }
@@ -268,7 +253,7 @@ async function loadTimeSlots() {
     const date = document.getElementById('booking-date').value;
     
     try {
-        const response = await fetch('{{ route("booking.time-slots") }}', {
+        const response = await fetch('/test-booking/time-slots', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -328,7 +313,7 @@ function selectTime(timeSlot) {
 
 async function loadServices() {
     try {
-        const response = await fetch('{{ route("booking.services") }}');
+        const response = await fetch('/test-booking/services');
         const data = await response.json();
         
         if (data.success) {
@@ -456,7 +441,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     Object.assign(data, bookingData);
     
     try {
-        const response = await fetch('{{ route("booking.store") }}', {
+        const response = await fetch('/test-booking/store', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -468,7 +453,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         const result = await response.json();
         
         if (result.success) {
-            // Store booking data in localStorage for receipt page
+            // Store booking data for receipt
             localStorage.setItem('lastBooking', JSON.stringify(result.booking));
             
             // Redirect to receipt page
@@ -481,17 +466,5 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         alert('Terjadi kesalahan saat membuat booking. Silakan coba lagi.');
     }
 });
-
-function showLoading() {
-    document.getElementById('loading').classList.remove('hidden');
-}
-
-function hideLoading() {
-    document.getElementById('loading').classList.add('hidden');
-}
-
-function showNoResults() {
-    document.getElementById('no-results').classList.remove('hidden');
-}
 </script>
 @endsection

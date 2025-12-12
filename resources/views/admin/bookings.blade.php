@@ -138,6 +138,11 @@
                                                     data-bs-target="#bookingModal{{ $booking->id }}">
                                                 <i class="fas fa-eye"></i>
                                             </button>
+                                            <a href="{{ route('admin.bookings.receipt', $booking->id) }}" 
+                                               class="btn btn-sm btn-outline-success" 
+                                               target="_blank">
+                                                <i class="fas fa-receipt"></i>
+                                            </a>
                                             <button type="button" 
                                                     class="btn btn-sm btn-outline-danger delete-booking" 
                                                     data-booking-id="{{ $booking->id }}">
