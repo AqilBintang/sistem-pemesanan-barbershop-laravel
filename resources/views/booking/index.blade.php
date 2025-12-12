@@ -1,4 +1,4 @@
-@extends('layouts.barbershop')
+@extends('layouts.app')
 
 @section('title', 'Booking Appointment - Sisbar Hairstudio')
 

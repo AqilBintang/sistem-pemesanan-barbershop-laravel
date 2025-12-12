@@ -10,7 +10,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::where('is_active', true)->orderBy('type')->orderBy('price')->get();
-        return view('barbershop.index', compact('services'));
+        return view('barbershop.services', compact('services'));
     }
 
     public function getServices()

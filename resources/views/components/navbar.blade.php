@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="/" data-navigate="home" class="flex items-center space-x-3 navbar-logo-container">
+                <a href="/" class="flex items-center space-x-3 navbar-logo-container">
                     <img src="{{ asset('images/logo-sisbar.png') }}" alt="Sisbar Hairstudio" class="h-10 w-auto object-contain filter brightness-0 invert" 
                          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <span class="text-accent font-bold text-lg hidden">Sisbar Hairstudio</span>
@@ -14,11 +14,11 @@
             <!-- Desktop Navigation -->
             <div class="hidden md:block">
                 <div class="flex items-center space-x-8">
-                    <a href="#" data-navigate="home" data-nav-item="home" 
+                    <a href="/" 
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Home
                     </a>
-                    <a href="#" data-navigate="services" data-nav-item="services"
+                    <a href="{{ route('services') }}" 
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Layanan
                     </a>
@@ -29,6 +29,10 @@
                     <a href="{{ route('booking.index') }}" 
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Booking
+                    </a>
+                    <a href="{{ route('admin.login') }}" 
+                       class="nav-link text-white hover:text-accent transition-colors font-medium text-sm">
+                        Admin
                     </a>
                 </div>
             </div>
@@ -101,12 +105,11 @@
     <!-- Mobile Navigation Menu -->
     <div id="mobile-menu" class="md:hidden hidden">
         <div class="px-4 pt-2 pb-3 space-y-1 bg-black border-t border-gray-800">
-            <a href="#" data-navigate="home" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="#" data-navigate="services" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
+            <a href="/" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{{ route('services') }}" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Layanan</a>
             <a href="{{ route('barbers') }}" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Kapster</a>
             <a href="{{ route('booking.index') }}" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Booking</a>
-            <a href="#" data-navigate="notifications" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Notifikasi</a>
-            <a href="#" data-navigate="admin" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Admin</a>
+            <a href="{{ route('admin.login') }}" class="text-white hover:text-accent block px-3 py-2 rounded-md text-base font-medium">Admin</a>
             
             <!-- Mobile Profile Section -->
             <div class="border-t border-gray-700 pt-4 mt-4">

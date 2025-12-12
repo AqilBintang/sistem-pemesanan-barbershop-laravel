@@ -16,9 +16,9 @@ Route::get('/layanan', function () {
     return view('users.layanan');
 });
 
-Route::get('/booking', function () {
-    return view('users.booking');
-});
+// Route::get('/booking', function () {
+//     return view('users.booking');
+// }); // Commented out - conflicts with new booking system
 
 Route::get('/history', function () {
     return view('users.history');
@@ -33,7 +33,7 @@ Route::get('/barbershop', function () {
     return view('barbershop.index');
 });
 
-Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index']);
+Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('services');
 Route::get('/api/services', [App\Http\Controllers\ServiceController::class, 'getServices']);
 
 // Test route untuk melihat data services
@@ -45,8 +45,8 @@ Route::get('/test-services', function() {
 
 
 Route::get('/barbers', function () {
-    $barbers = App\Models\Barber::active()->orderBy('level', 'desc')->orderBy('rating', 'desc')->get();
-    return view('barbershop.index', compact('barbers'));
+    $barbers = App\Models\Barber::with('schedules')->active()->orderBy('level', 'desc')->orderBy('rating', 'desc')->get();
+    return view('barbershop.barbers', compact('barbers'));
 })->name('barbers');
 
 Route::get('/confirmation', function () {
@@ -94,3 +94,15 @@ Route::get('/test-schedule', function () {
     $allBarbers = App\Models\Barber::with('schedules')->get();
     return view('test-schedule', compact('allBarbers'));
 })->name('test.schedule');
+
+// Debug route for services
+Route::get('/debug-services', function () {
+    $services = App\Models\Service::where('is_active', true)->get();
+    return response()->json([
+        'success' => true,
+        'count' => $services->count(),
+        'services' => $services->toArray()
+    ]);
+});
+
+
