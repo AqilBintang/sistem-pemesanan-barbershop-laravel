@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Service;
 use App\Models\Barber;
 use App\Models\BarberSchedule;
+use App\Models\Booking;
 
 class AdminController extends Controller
 {
@@ -55,6 +56,9 @@ class AdminController extends Controller
             'total_barbers' => Barber::count(),
             'active_services' => Service::active()->count(),
             'active_barbers' => Barber::active()->count(),
+            'total_bookings' => Booking::count(),
+            'pending_bookings' => Booking::where('status', 'pending')->count(),
+            'today_bookings' => Booking::whereDate('booking_date', today())->count(),
         ];
 
         return view('admin.dashboard', compact('stats'));
@@ -394,5 +398,53 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Gagal menghapus kapster: ' . $e->getMessage()]);
         }
+    }
+
+    // Booking Management
+    public function bookings()
+    {
+        $bookings = Booking::with(['barber', 'service'])
+            ->orderBy('booking_date', 'desc')
+            ->orderBy('booking_time', 'desc')
+            ->paginate(20);
+        
+        $stats = [
+            'total' => Booking::count(),
+            'pending' => Booking::where('status', 'pending')->count(),
+            'confirmed' => Booking::where('status', 'confirmed')->count(),
+            'completed' => Booking::where('status', 'completed')->count(),
+            'cancelled' => Booking::where('status', 'cancelled')->count(),
+            'today' => Booking::whereDate('booking_date', today())->count(),
+        ];
+
+        return view('admin.bookings', compact('bookings', 'stats'));
+    }
+
+    public function updateBookingStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,confirmed,completed,cancelled'
+        ]);
+
+        $booking = Booking::findOrFail($id);
+        $booking->status = $request->status;
+        $booking->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Status booking berhasil diupdate',
+            'status' => $booking->status_display
+        ]);
+    }
+
+    public function deleteBooking($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Booking berhasil dihapus'
+        ]);
     }
 }
