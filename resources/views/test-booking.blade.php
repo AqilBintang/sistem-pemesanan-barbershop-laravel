@@ -29,6 +29,55 @@
                 </p>
             </div>
 
+            <!-- Progress Indicator -->
+            <div class="bg-slate-800 rounded-2xl p-4 mb-6">
+                <!-- Desktop Progress -->
+                <div class="hidden md:flex items-center justify-between">
+                    <div class="flex items-center space-x-2 lg:space-x-4">
+                        <div id="progress-1" class="flex items-center">
+                            <div class="w-8 h-8 bg-yellow-500 text-black rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                            <span class="ml-2 text-white text-sm hidden lg:block">Tanggal</span>
+                        </div>
+                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-1"></div>
+                        <div id="progress-2" class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Kapster</span>
+                        </div>
+                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-2"></div>
+                        <div id="progress-3" class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Waktu</span>
+                        </div>
+                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-3"></div>
+                        <div id="progress-4" class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Layanan</span>
+                        </div>
+                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-4"></div>
+                        <div id="progress-5" class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">5</div>
+                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Data</span>
+                        </div>
+                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-5"></div>
+                        <div id="progress-6" class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">6</div>
+                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Konfirmasi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Progress -->
+                <div class="md:hidden">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-white font-semibold">Step <span id="mobile-current-step">1</span> dari 6</span>
+                        <span class="text-gray-400 text-sm" id="mobile-step-name">Pilih Tanggal</span>
+                    </div>
+                    <div class="w-full bg-gray-600 rounded-full h-2">
+                        <div class="bg-yellow-500 h-2 rounded-full transition-all duration-300" id="mobile-progress-bar" style="width: 16.67%"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Booking Form -->
             <div class="bg-slate-800 rounded-3xl shadow-2xl p-8 mb-8">
                 <form id="booking-form" class="space-y-6">
@@ -132,6 +181,10 @@
                         <button type="button" id="next-btn" onclick="nextStep()" 
                                 class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded-xl transition-colors hidden">
                             Selanjutnya
+                        </button>
+                        <button type="button" id="confirm-btn" onclick="goToConfirmation()" 
+                                class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-xl transition-colors hidden">
+                            Lanjut ke Konfirmasi
                         </button>
                     </div>
                 </form>
@@ -365,6 +418,8 @@ function selectService(service) {
 }
 
 function showStep(step) {
+    console.log('Showing step:', step);
+    
     // Hide all steps
     for (let i = 1; i <= 6; i++) {
         document.getElementById(`step-${i}`).classList.add('hidden');
@@ -374,6 +429,9 @@ function showStep(step) {
     document.getElementById(`step-${step}`).classList.remove('hidden');
     currentStep = step;
     
+    // Update progress indicator
+    updateProgressIndicator(step);
+    
     // Update navigation buttons
     updateNavigationButtons();
     
@@ -381,14 +439,61 @@ function showStep(step) {
     if (step === 6) {
         populateBookingSummary();
     }
+    
+    // Scroll to top of form
+    document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateProgressIndicator(step) {
+    const stepNames = ['', 'Pilih Tanggal', 'Pilih Kapster', 'Pilih Waktu', 'Pilih Layanan', 'Isi Data', 'Konfirmasi'];
+    
+    // Update desktop progress
+    for (let i = 1; i <= 6; i++) {
+        const progressElement = document.getElementById(`progress-${i}`);
+        if (progressElement) {
+            const circle = progressElement.querySelector('div');
+            const text = progressElement.querySelector('span');
+            const line = document.getElementById(`line-${i}`);
+            
+            if (i <= step) {
+                // Active/completed step
+                circle.className = 'w-8 h-8 bg-yellow-500 text-black rounded-full flex items-center justify-center font-bold text-sm';
+                if (text) text.className = 'ml-2 text-white text-sm hidden lg:block';
+                if (line && i < step) {
+                    line.className = 'w-4 lg:w-8 h-0.5 bg-yellow-500';
+                }
+            } else {
+                // Inactive step
+                circle.className = 'w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm';
+                if (text) text.className = 'ml-2 text-gray-400 text-sm hidden lg:block';
+                if (line) {
+                    line.className = 'w-4 lg:w-8 h-0.5 bg-gray-600';
+                }
+            }
+        }
+    }
+    
+    // Update mobile progress
+    const mobileCurrentStep = document.getElementById('mobile-current-step');
+    const mobileStepName = document.getElementById('mobile-step-name');
+    const mobileProgressBar = document.getElementById('mobile-progress-bar');
+    
+    if (mobileCurrentStep) mobileCurrentStep.textContent = step;
+    if (mobileStepName) mobileStepName.textContent = stepNames[step];
+    if (mobileProgressBar) {
+        const percentage = (step / 6) * 100;
+        mobileProgressBar.style.width = percentage + '%';
+    }
 }
 
 function updateNavigationButtons() {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
     
     prevBtn.classList.toggle('hidden', currentStep === 1);
     nextBtn.classList.toggle('hidden', currentStep >= 5);
+    confirmBtn.classList.toggle('hidden', currentStep !== 5);
 }
 
 function previousStep() {
@@ -401,6 +506,25 @@ function nextStep() {
     if (currentStep < 6) {
         showStep(currentStep + 1);
     }
+}
+
+function goToConfirmation() {
+    // Validate required fields in step 5
+    const customerName = document.getElementById('customer-name').value;
+    const customerPhone = document.getElementById('customer-phone').value;
+    
+    if (!customerName.trim()) {
+        alert('Nama lengkap harus diisi');
+        return;
+    }
+    
+    if (!customerPhone.trim()) {
+        alert('Nomor telepon harus diisi');
+        return;
+    }
+    
+    // Go to confirmation step
+    showStep(6);
 }
 
 function populateBookingSummary() {
