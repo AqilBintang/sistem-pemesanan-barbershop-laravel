@@ -33,9 +33,16 @@ Route::get('/barbershop', function () {
     return view('barbershop.index');
 });
 
-Route::get('/services', function () {
-    return view('barbershop.index');
+Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index']);
+Route::get('/api/services', [App\Http\Controllers\ServiceController::class, 'getServices']);
+
+// Test route untuk melihat data services
+Route::get('/test-services', function() {
+    $services = App\Models\Service::all();
+    return response()->json($services);
 });
+
+
 
 Route::get('/barbers', function () {
     return view('barbershop.index');
@@ -49,8 +56,24 @@ Route::get('/notifications', function () {
     return view('barbershop.index');
 });
 
-Route::get('/admin', function () {
-    return view('barbershop.index');
+// Admin routes
+Route::prefix('admin')->group(function () {
+    // Public routes (no middleware)
+    Route::get('/', [App\Http\Controllers\AdminController::class, 'showLogin'])->name('admin.login');
+    Route::post('/login', [App\Http\Controllers\AdminController::class, 'login'])->name('admin.login.post');
+    
+    // Protected routes (require admin middleware)
+    Route::middleware('admin')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('/services', [App\Http\Controllers\AdminController::class, 'services'])->name('admin.services');
+        Route::post('/services', [App\Http\Controllers\AdminController::class, 'storeService'])->name('admin.services.store');
+        Route::get('/services/{id}/edit', [App\Http\Controllers\AdminController::class, 'editService'])->name('admin.services.edit');
+        Route::put('/services/{id}', [App\Http\Controllers\AdminController::class, 'updateService'])->name('admin.services.update');
+        Route::delete('/services/{id}', [App\Http\Controllers\AdminController::class, 'destroyService'])->name('admin.services.destroy');
+        Route::get('/barbers', [App\Http\Controllers\AdminController::class, 'barbers'])->name('admin.barbers');
+        Route::post('/barbers', [App\Http\Controllers\AdminController::class, 'storeBarber'])->name('admin.barbers.store');
+        Route::post('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
+    });
 });
 
 Route::get('/gallery', function () {

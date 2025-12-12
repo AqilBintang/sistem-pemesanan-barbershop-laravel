@@ -31,7 +31,10 @@
 
         <!-- Services Page -->
         <div data-page="services" style="display: {{ request()->is('services*') ? 'block' : 'none' }}">
-            @include('components.service-list')
+            @php
+                $services = \App\Models\Service::where('is_active', true)->orderBy('type')->orderBy('price')->get();
+            @endphp
+            @include('components.service-list-dynamic', ['services' => $services])
         </div>
 
         <!-- Barbers Page -->
