@@ -75,6 +75,7 @@
                                     <th>Layanan</th>
                                     <th>Tanggal & Waktu</th>
                                     <th>Harga</th>
+                                    <th>Pembayaran</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -119,6 +120,14 @@
                                     </td>
                                     <td>
                                         <strong>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</strong>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span class="badge bg-{{ $booking->payment_method === 'qris' ? 'primary' : 'secondary' }}">
+                                                {{ $booking->payment_method_display }}
+                                            </span>
+                                        </div>
+                                        <small class="text-muted">{{ $booking->payment_status_display }}</small>
                                     </td>
                                     <td>
                                         <select class="form-select form-select-sm status-select" 
@@ -201,6 +210,15 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td><strong>Pembayaran:</strong></td>
+                                                                <td>
+                                                                    <span class="badge bg-{{ $booking->payment_method === 'qris' ? 'primary' : 'secondary' }}">
+                                                                        {{ $booking->payment_method_display }}
+                                                                    </span>
+                                                                    <br><small>{{ $booking->payment_status_display }}</small>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td><strong>Total:</strong></td>
                                                                 <td><strong>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</strong></td>
                                                             </tr>
@@ -260,7 +278,7 @@
                                 </div>
                                 @empty
                                 <tr>
-                                    <td colspan="9" class="text-center py-4">
+                                    <td colspan="10" class="text-center py-4">
                                         <div class="text-muted">
                                             <i class="fas fa-calendar-times fa-3x mb-3"></i>
                                             <p>Belum ada booking yang masuk</p>

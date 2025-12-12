@@ -17,13 +17,18 @@ class Booking extends Model
         'booking_time',
         'status',
         'notes',
-        'total_price'
+        'total_price',
+        'payment_method',
+        'payment_status',
+        'payment_reference',
+        'payment_date'
     ];
 
     protected $casts = [
         'booking_date' => 'date',
         'booking_time' => 'datetime:H:i',
-        'total_price' => 'decimal:2'
+        'total_price' => 'decimal:2',
+        'payment_date' => 'datetime'
     ];
 
     public function barber()
@@ -53,6 +58,25 @@ class Booking extends Model
             'confirmed' => 'Dikonfirmasi',
             'completed' => 'Selesai',
             'cancelled' => 'Dibatalkan',
+            default => 'Unknown'
+        };
+    }
+
+    public function getPaymentMethodDisplayAttribute()
+    {
+        return match($this->payment_method) {
+            'cash' => 'Tunai',
+            'qris' => 'QRIS',
+            default => 'Unknown'
+        };
+    }
+
+    public function getPaymentStatusDisplayAttribute()
+    {
+        return match($this->payment_status) {
+            'pending' => 'Menunggu Pembayaran',
+            'paid' => 'Sudah Dibayar',
+            'failed' => 'Gagal',
             default => 'Unknown'
         };
     }

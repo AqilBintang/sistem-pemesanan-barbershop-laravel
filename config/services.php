@@ -41,4 +41,18 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URL'),
     ],
 
+    'gopay' => [
+        'base_url' => env('GOPAY_BASE_URL', 'https://api.gopay.co.id/v1'),
+        'merchant_id' => env('GOPAY_MERCHANT_ID'),
+        'api_key' => env('GOPAY_API_KEY'),
+        'secret_key' => env('GOPAY_SECRET_KEY'),
+        'environment' => env('GOPAY_ENVIRONMENT', 'sandbox'),
+    ],
+
+    'midtrans' => [
+        'server_key' => env('MIDTRANS_SERVER_KEY'),
+        'client_key' => env('MIDTRANS_CLIENT_KEY'),
+        'is_production' => env('MIDTRANS_IS_PRODUCTION', false),
+    ],
+
 ];

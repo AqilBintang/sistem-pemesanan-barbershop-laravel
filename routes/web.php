@@ -131,6 +131,14 @@ Route::post('/test-booking/available-barbers', [App\Http\Controllers\BookingCont
 Route::post('/test-booking/time-slots', [App\Http\Controllers\BookingController::class, 'getTimeSlots'])->name('test.booking.time-slots');
 Route::get('/test-booking/services', [App\Http\Controllers\BookingController::class, 'getServices'])->name('test.booking.services');
 Route::post('/test-booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('test.booking.store');
+Route::post('/test-booking/generate-qris', [App\Http\Controllers\BookingController::class, 'generateQRIS'])->name('test.booking.generate-qris');
+
+// Payment Gateway Webhooks (no CSRF protection needed)
+Route::post('/gopay/webhook', [App\Http\Controllers\GopayWebhookController::class, 'handleWebhook'])->name('gopay.webhook');
+Route::post('/gopay/check-status', [App\Http\Controllers\GopayWebhookController::class, 'checkPaymentStatus'])->name('gopay.check-status');
+
+Route::post('/midtrans/notification', [App\Http\Controllers\MidtransWebhookController::class, 'handleNotification'])->name('midtrans.notification');
+Route::post('/midtrans/check-status', [App\Http\Controllers\MidtransWebhookController::class, 'checkPaymentStatus'])->name('midtrans.check-status');
 
 // Booking receipt page (accessible without auth for testing)
 Route::get('/booking-receipt', function () {

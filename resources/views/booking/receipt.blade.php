@@ -96,11 +96,28 @@
                     </div>
                 </div>
 
+                <!-- Payment Method -->
+                <div class="border-t border-gray-200 pt-4 mb-4">
+                    <h4 class="font-bold text-gray-800 mb-3">Metode Pembayaran</h4>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-semibold text-blue-800" id="receipt-payment-method">-</p>
+                                <p class="text-sm text-blue-600" id="receipt-payment-status">-</p>
+                            </div>
+                            <div id="receipt-payment-reference" class="text-right hidden">
+                                <p class="text-xs text-gray-600">Ref:</p>
+                                <p class="text-sm font-mono" id="receipt-payment-ref-text">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Status -->
                 <div class="text-center mb-6">
-                    <div class="inline-flex items-center px-4 py-2 bg-yellow-100 border border-yellow-300 rounded-full">
+                    <div id="receipt-status-badge" class="inline-flex items-center px-4 py-2 bg-yellow-100 border border-yellow-300 rounded-full">
                         <div class="w-3 h-3 bg-yellow-500 rounded-full mr-2"></div>
-                        <span class="text-yellow-800 font-semibold">Menunggu Konfirmasi</span>
+                        <span class="text-yellow-800 font-semibold" id="receipt-status-text">Menunggu Konfirmasi</span>
                     </div>
                 </div>
 
@@ -234,30 +251,75 @@ function loadFromLocalStorage() {
 }
 
 function displayBookingData(booking) {
+    console.log('Booking data:', booking); // Debug log
+    
     // Populate receipt with booking data
-    document.getElementById('receipt-booking-id').textContent = '#' + booking.id;
-    document.getElementById('receipt-date').textContent = booking.date || formatDate(booking.booking_date);
-    document.getElementById('receipt-time').textContent = booking.time || booking.booking_time;
-    document.getElementById('receipt-customer').textContent = booking.customer_name;
+    document.getElementById('receipt-booking-id').textContent = '#' + (booking.id || '0000');
+    document.getElementById('receipt-date').textContent = booking.date || formatDate(booking.booking_date) || '-';
+    document.getElementById('receipt-time').textContent = booking.time || booking.booking_time || '-';
+    document.getElementById('receipt-customer').textContent = booking.customer_name || '-';
     document.getElementById('receipt-phone').textContent = booking.customer_phone || '-';
-    document.getElementById('receipt-service').textContent = booking.service_name || booking.service?.name;
-    document.getElementById('receipt-barber').textContent = booking.barber_name || booking.barber?.name;
-    document.getElementById('receipt-duration').textContent = booking.service?.duration || '30';
+    document.getElementById('receipt-service').textContent = booking.service_name || (booking.service && booking.service.name) || '-';
+    document.getElementById('receipt-barber').textContent = booking.barber_name || (booking.barber && booking.barber.name) || '-';
+    document.getElementById('receipt-duration').textContent = (booking.service && booking.service.duration) || '30';
     
     // Format price
     const price = booking.total_price || 0;
-    const formattedPrice = 'Rp ' + price.toLocaleString('id-ID');
+    const formattedPrice = 'Rp ' + parseInt(price).toLocaleString('id-ID');
     document.getElementById('receipt-price').textContent = formattedPrice;
     document.getElementById('receipt-total').textContent = formattedPrice;
     
+    // Payment method and status
+    document.getElementById('receipt-payment-method').textContent = booking.payment_method || 'Tunai';
+    document.getElementById('receipt-payment-status').textContent = booking.payment_status || 'Menunggu Pembayaran';
+    
+    // Payment reference for QRIS
+    if (booking.payment_reference) {
+        document.getElementById('receipt-payment-reference').classList.remove('hidden');
+        document.getElementById('receipt-payment-ref-text').textContent = booking.payment_reference;
+    }
+    
+    // Update status badge
+    updateStatusBadge(booking.status || 'pending', booking.payment_status || 'pending');
+    
     // Show notes if available
-    if (booking.notes) {
+    if (booking.notes && booking.notes.trim()) {
         document.getElementById('receipt-notes').textContent = booking.notes;
         document.getElementById('receipt-notes-section').classList.remove('hidden');
     }
     
     // Set print time
     document.getElementById('receipt-print-time').textContent = new Date().toLocaleString('id-ID');
+}
+
+function updateStatusBadge(status, paymentStatus) {
+    const statusBadge = document.getElementById('receipt-status-badge');
+    const statusText = document.getElementById('receipt-status-text');
+    
+    // Remove existing classes
+    statusBadge.className = 'inline-flex items-center px-4 py-2 rounded-full';
+    
+    if (status === 'confirmed' && paymentStatus === 'paid') {
+        statusBadge.classList.add('bg-green-100', 'border', 'border-green-300');
+        statusBadge.querySelector('.w-3').className = 'w-3 h-3 bg-green-500 rounded-full mr-2';
+        statusText.className = 'text-green-800 font-semibold';
+        statusText.textContent = 'Booking Dikonfirmasi & Dibayar';
+    } else if (status === 'confirmed') {
+        statusBadge.classList.add('bg-blue-100', 'border', 'border-blue-300');
+        statusBadge.querySelector('.w-3').className = 'w-3 h-3 bg-blue-500 rounded-full mr-2';
+        statusText.className = 'text-blue-800 font-semibold';
+        statusText.textContent = 'Booking Dikonfirmasi';
+    } else if (paymentStatus === 'paid') {
+        statusBadge.classList.add('bg-purple-100', 'border', 'border-purple-300');
+        statusBadge.querySelector('.w-3').className = 'w-3 h-3 bg-purple-500 rounded-full mr-2';
+        statusText.className = 'text-purple-800 font-semibold';
+        statusText.textContent = 'Sudah Dibayar - Menunggu Konfirmasi';
+    } else {
+        statusBadge.classList.add('bg-yellow-100', 'border', 'border-yellow-300');
+        statusBadge.querySelector('.w-3').className = 'w-3 h-3 bg-yellow-500 rounded-full mr-2';
+        statusText.className = 'text-yellow-800 font-semibold';
+        statusText.textContent = 'Menunggu Konfirmasi';
+    }
 }
 
 function formatDate(dateString) {
