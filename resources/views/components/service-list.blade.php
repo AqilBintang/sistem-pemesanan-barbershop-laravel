@@ -542,10 +542,12 @@ ter Section -->
             <!-- Brand Section -->
             <div>
                 <div class="flex items-center mb-4">
-                    <div class="w-6 h-6 bg-accent rounded flex items-center justify-center mr-2">
-                        <span class="text-black font-bold text-xs">P</span>
+                    <img src="{{ asset('images/logo-sisbar.png') }}" alt="Sisbar Hairstudio" class="h-8 w-auto object-contain mr-3 filter brightness-0 invert" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-6 h-6 bg-accent rounded flex items-center justify-center mr-2 hidden">
+                        <span class="text-black font-bold text-xs">S</span>
                     </div>
-                    <span class="text-lg font-bold">Pangling Hairstudio</span>
+                    <span class="text-lg font-bold">Sisbar Hairstudio</span>
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">
                     Premium barbershop untuk pria modern
@@ -567,7 +569,7 @@ ter Section -->
             <div>
                 <h3 class="text-base font-bold mb-4">Kontak</h3>
                 <div class="space-y-2 text-gray-400 text-sm">
-                    <p>Email: info@panglinghairstudio.com</p>
+                    <p>Email: info@sisbarhairstudio.com</p>
                     <p>Telepon: +62 812 3456 7890</p>
                     <p>Alamat: Jl. Premium No. 123, Jakarta</p>
                 </div>
@@ -576,7 +578,7 @@ ter Section -->
 
         <div class="border-t border-gray-800 mt-8 pt-6 text-center">
             <p class="text-gray-400 text-sm">
-                © {{ date('Y') }} <span class="text-accent font-semibold">Pangling Hairstudio</span>. All rights reserved.
+                © {{ date('Y') }} <span class="text-accent font-semibold">Sisbar Hairstudio</span>. All rights reserved.
             </p>
         </div>
     </div>

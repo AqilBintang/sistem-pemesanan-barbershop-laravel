@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     else if (path.includes('/booking')) initialPage = 'booking';
     else if (path.includes('/confirmation')) initialPage = 'confirmation';
     else if (path.includes('/notifications')) initialPage = 'notifications';
-    else if (path.includes('/gallery')) initialPage = 'gallery';
     else if (path.includes('/admin')) initialPage = 'admin';
     
     window.barbershopApp.navigateTo(initialPage);

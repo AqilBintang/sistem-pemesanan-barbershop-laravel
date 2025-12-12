@@ -9,8 +9,8 @@
     <!-- Animated Background Pattern -->
     <div class="absolute inset-0 barbershop-pattern"></div>
     
-    <!-- Barbershop Interior Simulation -->
-    <div class="absolute inset-0 opacity-8">
+    <!-- Barbershop Interior Simulation - Enhanced Visibility -->
+    <div class="absolute inset-0 opacity-20 z-5">
         <!-- Barber Chairs -->
         <div class="absolute bottom-0 left-1/4 w-16 h-32 bg-accent/30 rounded-t-full barber-chair"></div>
         <div class="absolute bottom-0 left-1/2 w-16 h-32 bg-accent/20 rounded-t-full barber-chair"></div>
@@ -36,8 +36,8 @@
         </div>
     </div>
     
-    <!-- Floating Elements -->
-    <div class="absolute inset-0 opacity-15">
+    <!-- Floating Elements - Enhanced Visibility -->
+    <div class="absolute inset-0 opacity-25 z-6">
         <!-- Barbershop Tools -->
         <div class="absolute top-1/4 left-1/3 text-6xl text-accent/30 animate-float parallax-element tool-shimmer">✂️</div>
         <div class="absolute bottom-1/3 right-1/4 text-5xl text-accent/25 animate-float-delayed parallax-element tool-shimmer">💇‍♂️</div>
@@ -57,8 +57,8 @@
         <div class="absolute top-1/2 left-10 w-6 h-6 bg-accent/30 rotate-45 animate-spin-slow parallax-element" style="animation-delay: 2s;"></div>
     </div>
     
-    <!-- Dynamic Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-br from-black/90 via-black/70 to-black/85 z-10"></div>
+    <!-- Dynamic Gradient Overlay - Reduced for Better Background Visibility -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70 z-10"></div>
     
     <!-- Spotlight Effect -->
     <div class="absolute inset-0 z-5">
@@ -74,7 +74,7 @@
         <div class="absolute bottom-0 right-1/4 w-1 h-1 bg-accent/25 rounded-full floating-particle"></div>
     </div>
     
-    <div class="container mx-auto px-4 relative z-20">
+    <div class="container mx-auto px-4 relative z-30">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <!-- Content Section -->
             <div class="max-w-2xl">
@@ -101,7 +101,7 @@
                     <!-- Compact Barber Image -->
                     <div class="aspect-[4/5] relative">
                         <img src="{{ asset('images/barber-hal-utama.jpg') }}" 
-                             alt="Executive Barber at Pangling Hairstudio" 
+                             alt="Executive Barber at Sisbar Hairstudio" 
                              class="w-full h-full object-cover object-center transition-all duration-700 group-hover:scale-101"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         
@@ -143,8 +143,28 @@
 
 <!-- About Section - Barber King Style -->
 <section class="relative py-20 bg-black text-white scroll-animate">
-    <!-- Animated Yellow Accent Background -->
-    <div class="absolute top-0 left-0 w-full h-16 bg-yellow-400 transform -skew-y-0.5 origin-top-left animate-slide-in-left"></div>
+    <!-- Animated Yellow Accent Background - Unrolling Effect -->
+    <div class="absolute top-0 left-0 w-full h-16 bg-yellow-400 transform -skew-y-0.5 origin-top-left yellow-stripe-scroll scroll-animate">
+        <!-- Paper Roll Shadow Effect -->
+        <div class="absolute -top-1 -left-2 w-4 h-18 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-l-full transform rotate-12 opacity-60"></div>
+        <!-- Roll Highlight -->
+        <div class="absolute top-1 left-1 w-full h-2 bg-gradient-to-r from-yellow-300 to-transparent opacity-50"></div>
+        <!-- Bottom Shadow -->
+        <div class="absolute -bottom-1 left-0 w-full h-2 bg-gradient-to-r from-transparent via-black/20 to-transparent"></div>
+        
+        <!-- Unrolling Particles -->
+        <div class="absolute top-2 left-4 w-1 h-1 bg-yellow-200 rounded-full opacity-70 animate-bounce" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-4 left-8 w-0.5 h-0.5 bg-yellow-300 rounded-full opacity-60 animate-pulse" style="animation-delay: 0.8s;"></div>
+        <div class="absolute top-6 left-12 w-1.5 h-1.5 bg-yellow-100 rounded-full opacity-50 animate-ping" style="animation-delay: 1.2s;"></div>
+        
+        <!-- Paper Texture Lines -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute top-2 left-0 w-full h-px bg-yellow-200"></div>
+            <div class="absolute top-6 left-0 w-full h-px bg-yellow-200"></div>
+            <div class="absolute top-10 left-0 w-full h-px bg-yellow-200"></div>
+            <div class="absolute top-14 left-0 w-full h-px bg-yellow-200"></div>
+        </div>
+    </div>
     
     <div class="container mx-auto px-4 relative z-10">
         <div class="max-w-6xl mx-auto">
@@ -158,7 +178,7 @@
                 
                 <!-- Main Title -->
                 <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                    <span class="text-white">Pangling</span>
+                    <span class="text-white">Sisbar</span>
                     <span class="text-yellow-400"> Hairstudio</span>
                 </h2>
                 
@@ -169,7 +189,7 @@
                         dapat setelah potong rambut.
                     </p>
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        Kami bangga dan senang <span class="text-yellow-400 font-semibold">Pangling Hairstudio</span> menjadi 
+                        Kami bangga dan senang <span class="text-yellow-400 font-semibold">Sisbar Hairstudio</span> menjadi 
                         bagian dari dimulainya kembali hidup Anda.
                     </p>
                 </div>
@@ -217,7 +237,7 @@
                     <!-- Well-formatted Description Text -->
                     <div class="text-gray-300 leading-relaxed mb-8 space-y-4">
                         <p>
-                            <span class="text-yellow-400 font-semibold">Pangling Hairstudio</span> konsisten memberikan pelayanan haircut & hair styling pria terbaik 
+                            <span class="text-yellow-400 font-semibold">Sisbar Hairstudio</span> konsisten memberikan pelayanan haircut & hair styling pria terbaik 
                             dan kualitas terstandard di seluruh outletnya.
                         </p>
                         <p>
@@ -322,10 +342,12 @@
             <!-- Brand Section -->
             <div>
                 <div class="flex items-center mb-4">
-                    <div class="w-6 h-6 bg-accent rounded flex items-center justify-center mr-2">
-                        <span class="text-black font-bold text-xs">P</span>
+                    <img src="{{ asset('images/logo-sisbar.png') }}" alt="Sisbar Hairstudio" class="h-8 w-auto object-contain mr-3 filter brightness-0 invert" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="w-6 h-6 bg-accent rounded flex items-center justify-center mr-2 hidden">
+                        <span class="text-black font-bold text-xs">S</span>
                     </div>
-                    <span class="text-lg font-bold">Pangling Hairstudio</span>
+                    <span class="text-lg font-bold">Sisbar Hairstudio</span>
                 </div>
                 <p class="text-gray-400 text-sm leading-relaxed">
                     Premium barbershop untuk pria modern
@@ -347,7 +369,7 @@
             <div>
                 <h3 class="text-base font-bold mb-4">Kontak</h3>
                 <div class="space-y-2 text-gray-400 text-sm">
-                    <p>Email: info@panglinghairstudio.com</p>
+                    <p>Email: info@sisbarhairstudio.com</p>
                     <p>Telepon: +62 812 3456 7890</p>
                     <p>Alamat: Jl. Premium No. 123, Jakarta</p>
                 </div>
@@ -356,7 +378,7 @@
 
         <div class="border-t border-gray-800 mt-8 pt-6 text-center">
             <p class="text-gray-400 text-sm">
-                © {{ date('Y') }} <span class="text-accent font-semibold">Pangling Hairstudio</span>. All rights reserved.
+                © {{ date('Y') }} <span class="text-accent font-semibold">Sisbar Hairstudio</span>. All rights reserved.
             </p>
         </div>
     </div>
