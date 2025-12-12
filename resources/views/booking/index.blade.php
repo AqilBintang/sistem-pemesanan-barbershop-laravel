@@ -124,6 +124,10 @@
                                 class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded-xl transition-colors hidden">
                             Selanjutnya
                         </button>
+                        <button type="button" id="confirm-btn" onclick="goToConfirmation()" 
+                                class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-xl transition-colors hidden">
+                            Lanjut ke Konfirmasi
+                        </button>
                     </div>
                 </form>
             </div>
@@ -401,9 +405,11 @@ function showStep(step) {
 function updateNavigationButtons() {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
+    const confirmBtn = document.getElementById('confirm-btn');
     
     prevBtn.classList.toggle('hidden', currentStep === 1);
     nextBtn.classList.toggle('hidden', currentStep >= 5);
+    confirmBtn.classList.toggle('hidden', currentStep !== 5);
 }
 
 function previousStep() {
@@ -416,6 +422,25 @@ function nextStep() {
     if (currentStep < 6) {
         showStep(currentStep + 1);
     }
+}
+
+function goToConfirmation() {
+    // Validate required fields in step 5
+    const customerName = document.getElementById('customer-name').value;
+    const customerPhone = document.getElementById('customer-phone').value;
+    
+    if (!customerName.trim()) {
+        alert('Nama lengkap harus diisi');
+        return;
+    }
+    
+    if (!customerPhone.trim()) {
+        alert('Nomor telepon harus diisi');
+        return;
+    }
+    
+    // Go to confirmation step
+    showStep(6);
 }
 
 function populateBookingSummary() {
@@ -468,15 +493,11 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         const result = await response.json();
         
         if (result.success) {
-            // Store booking data in localStorage for confirmation page
+            // Store booking data in localStorage for receipt page
             localStorage.setItem('lastBooking', JSON.stringify(result.booking));
             
-            // Redirect to confirmation page
-            if (result.redirect_url) {
-                window.location.href = result.redirect_url;
-            } else {
-                window.location.href = '/booking-confirmation?booking_id=' + result.booking_id;
-            }
+            // Redirect to receipt page
+            window.location.href = '/booking-receipt?booking_id=' + result.booking_id;
         } else {
             alert(result.message || 'Terjadi kesalahan saat membuat booking.');
         }

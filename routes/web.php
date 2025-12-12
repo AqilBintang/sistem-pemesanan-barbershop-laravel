@@ -77,6 +77,10 @@ Route::prefix('admin')->group(function () {
         Route::put('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'updateBarber'])->name('admin.barbers.update');
         Route::delete('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'destroyBarber'])->name('admin.barbers.destroy');
         Route::get('/bookings', [App\Http\Controllers\AdminController::class, 'bookings'])->name('admin.bookings');
+        Route::get('/bookings/{id}/receipt', function($id) {
+            $booking = App\Models\Booking::with(['barber', 'service'])->findOrFail($id);
+            return view('booking.receipt', compact('booking'));
+        })->name('admin.bookings.receipt');
         Route::put('/bookings/{id}/status', [App\Http\Controllers\AdminController::class, 'updateBookingStatus'])->name('admin.bookings.status');
         Route::delete('/bookings/{id}', [App\Http\Controllers\AdminController::class, 'deleteBooking'])->name('admin.bookings.destroy');
         Route::post('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
@@ -120,6 +124,26 @@ Route::get('/test-schedule', function () {
     $allBarbers = App\Models\Barber::with('schedules')->get();
     return view('test-schedule', compact('allBarbers'));
 })->name('test.schedule');
+
+// Temporary routes for testing without authentication
+Route::get('/test-booking', [App\Http\Controllers\BookingController::class, 'index'])->name('test.booking');
+Route::post('/test-booking/available-barbers', [App\Http\Controllers\BookingController::class, 'getAvailableBarbers'])->name('test.booking.available-barbers');
+Route::post('/test-booking/time-slots', [App\Http\Controllers\BookingController::class, 'getTimeSlots'])->name('test.booking.time-slots');
+Route::get('/test-booking/services', [App\Http\Controllers\BookingController::class, 'getServices'])->name('test.booking.services');
+Route::post('/test-booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('test.booking.store');
+Route::post('/test-booking/generate-qris', [App\Http\Controllers\BookingController::class, 'generateQRIS'])->name('test.booking.generate-qris');
+
+// Payment Gateway Webhooks (no CSRF protection needed)
+Route::post('/gopay/webhook', [App\Http\Controllers\GopayWebhookController::class, 'handleWebhook'])->name('gopay.webhook');
+Route::post('/gopay/check-status', [App\Http\Controllers\GopayWebhookController::class, 'checkPaymentStatus'])->name('gopay.check-status');
+
+Route::post('/midtrans/notification', [App\Http\Controllers\MidtransWebhookController::class, 'handleNotification'])->name('midtrans.notification');
+Route::post('/midtrans/check-status', [App\Http\Controllers\MidtransWebhookController::class, 'checkPaymentStatus'])->name('midtrans.check-status');
+
+// Booking receipt page (accessible without auth for testing)
+Route::get('/booking-receipt', function () {
+    return view('booking.receipt');
+})->name('booking.receipt');
 
 
 

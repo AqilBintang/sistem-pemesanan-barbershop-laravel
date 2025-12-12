@@ -75,6 +75,7 @@
                                     <th>Layanan</th>
                                     <th>Tanggal & Waktu</th>
                                     <th>Harga</th>
+                                    <th>Pembayaran</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -121,6 +122,14 @@
                                         <strong>Rp {{ number_format($booking->total_price, 0, ',', '.') }}</strong>
                                     </td>
                                     <td>
+                                        <div>
+                                            <span class="badge bg-{{ $booking->payment_method === 'qris' ? 'primary' : 'secondary' }}">
+                                                {{ $booking->payment_method_display }}
+                                            </span>
+                                        </div>
+                                        <small class="text-muted">{{ $booking->payment_status_display }}</small>
+                                    </td>
+                                    <td>
                                         <select class="form-select form-select-sm status-select" 
                                                 data-booking-id="{{ $booking->id }}"
                                                 style="min-width: 120px;">
@@ -138,6 +147,11 @@
                                                     data-bs-target="#bookingModal{{ $booking->id }}">
                                                 <i class="fas fa-eye"></i>
                                             </button>
+                                            <a href="{{ route('admin.bookings.receipt', $booking->id) }}" 
+                                               class="btn btn-sm btn-outline-success" 
+                                               target="_blank">
+                                                <i class="fas fa-receipt"></i>
+                                            </a>
                                             <button type="button" 
                                                     class="btn btn-sm btn-outline-danger delete-booking" 
                                                     data-booking-id="{{ $booking->id }}">
@@ -193,6 +207,15 @@
                                                                     <span class="badge bg-{{ $booking->status_color }}">
                                                                         {{ $booking->status_display }}
                                                                     </span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Pembayaran:</strong></td>
+                                                                <td>
+                                                                    <span class="badge bg-{{ $booking->payment_method === 'qris' ? 'primary' : 'secondary' }}">
+                                                                        {{ $booking->payment_method_display }}
+                                                                    </span>
+                                                                    <br><small>{{ $booking->payment_status_display }}</small>
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -255,7 +278,7 @@
                                 </div>
                                 @empty
                                 <tr>
-                                    <td colspan="9" class="text-center py-4">
+                                    <td colspan="10" class="text-center py-4">
                                         <div class="text-muted">
                                             <i class="fas fa-calendar-times fa-3x mb-3"></i>
                                             <p>Belum ada booking yang masuk</p>
