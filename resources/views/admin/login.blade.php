@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login - Pangling Hairstudio</title>
+    <title>Admin Login - Sisbar Hairstudio</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" type="image/png" href="{{ asset('images/logo barber.png') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
                     </div>
                     <div>
                         <h1 class="text-2xl font-playfair font-semibold text-white mb-1">Admin Panel</h1>
-                        <p class="text-gray-400 text-sm">Pangling Hairstudio</p>
+                        <p class="text-gray-400 text-sm">Sisbar Hairstudio</p>
                     </div>
                 </div>
 
@@ -116,7 +116,7 @@
 
             <!-- Footer -->
             <div class="text-center mt-8">
-                <p class="text-gray-500 text-sm">© 2024 Pangling Hairstudio. All rights reserved.</p>
+                <p class="text-gray-500 text-sm">© 2024 Sisbar Hairstudio. All rights reserved.</p>
             </div>
         </div>
     </div>

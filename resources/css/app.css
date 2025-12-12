@@ -43,6 +43,108 @@
   transition: all 0.3s ease;
 }
 
+/* Profile Dropdown Animations */
+.profile-dropdown {
+  transform: translateY(-10px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-dropdown.show {
+  transform: translateY(0);
+}
+
+/* Profile Avatar Hover Effect */
+.profile-avatar {
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-avatar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.profile-avatar:hover::before {
+  transform: translateX(100%);
+}
+
+/* Navbar Profile Integration */
+.navbar-profile-section {
+  position: relative;
+}
+
+.navbar-profile-section:hover .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Mobile Profile Section */
+.mobile-profile-avatar {
+  background: linear-gradient(135deg, var(--accent), #f59e0b);
+  box-shadow: 0 2px 8px rgba(252, 211, 77, 0.3);
+}
+
+/* Simple Profile Icon Styling */
+.profile-icon {
+  position: relative;
+}
+
+.profile-icon svg {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.profile-icon:hover svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 2px 4px rgba(252, 211, 77, 0.3));
+}
+
+/* Logo Styling for Visibility */
+.navbar-logo-container {
+  position: relative;
+}
+
+.navbar-logo-container img {
+  filter: brightness(0) invert(1);
+}
+
+/* Footer Logo Styling */
+.footer-logo {
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+/* Admin Logo Styling */
+.admin-logo {
+  filter: brightness(0) invert(1);
+}
+
+/* Barbershop Theme Enhancements */
+@keyframes barberPole {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 20px;
+  }
+}
+
+.barber-pole-effect {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--accent),
+    var(--accent) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: barberPole 1s linear infinite;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -265,22 +367,367 @@ button:hover {
 }
 
 @keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100px);
+  0% {
+    transform: translateX(-100%) skewY(-0.5deg);
     opacity: 0;
   }
-  to {
-    transform: translateX(0);
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0) skewY(-0.5deg);
     opacity: 1;
   }
 }
 
 .animate-slide-in-right {
-  animation: slideInFromRight 0.8s ease-out;
+  animation: slideInFromRight 0.8s ease-in-out;
 }
 
 .animate-slide-in-left {
-  animation: slideInFromLeft 0.8s ease-out;
+  animation: slideInFromLeft 1.2s ease-in-out;
+}
+
+/* Unrolling Yellow Stripe Animation */
+@keyframes unrollStripe {
+  0% {
+    transform: translateX(-100%) skewY(-0.5deg) scaleX(0);
+    transform-origin: left center;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.2;
+  }
+  30% {
+    transform: translateX(-70%) skewY(-0.5deg) scaleX(0.3);
+    opacity: 0.5;
+  }
+  60% {
+    transform: translateX(-30%) skewY(-0.5deg) scaleX(0.7);
+    opacity: 0.8;
+  }
+  85% {
+    transform: translateX(-5%) skewY(-0.5deg) scaleX(0.95);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateX(0) skewY(-0.5deg) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes stripeGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(252, 211, 77, 0.4),
+      0 0 40px rgba(252, 211, 77, 0.2),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(252, 211, 77, 0.6),
+      0 0 80px rgba(252, 211, 77, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes rollEffect {
+  0% {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(252, 211, 77, 0.8) 50%, 
+      transparent 100%);
+    background-size: 0% 100%;
+  }
+  100% {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(252, 211, 77, 1) 50%, 
+      transparent 100%);
+    background-size: 100% 100%;
+  }
+}
+
+/* Yellow Stripe for Scroll Animation */
+.yellow-stripe-scroll {
+  position: relative;
+  overflow: hidden;
+  transform: translateX(-100%) skewY(-0.5deg) scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate {
+  animation: unrollStripe 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation-fill-mode: forwards;
+}
+
+/* Ensure final state is crisp and clear */
+.yellow-stripe-scroll.animate {
+  animation-fill-mode: forwards;
+}
+
+.yellow-stripe-scroll.animate:not(:hover) {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.yellow-stripe-scroll.animate::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(255, 255, 255, 0.3) 100%);
+  animation: rollEffect 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-scroll.animate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: stripeGlow 3s ease-in-out infinite 1.8s;
+}
+
+.yellow-stripe-enhanced {
+  position: relative;
+  overflow: hidden;
+  animation: unrollStripe 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-enhanced::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0.3) 0%, 
+    transparent 30%, 
+    transparent 70%, 
+    rgba(255, 255, 255, 0.3) 100%);
+  animation: rollEffect 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-enhanced::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: stripeGlow 3s ease-in-out infinite 1.8s;
+}
+
+/* Paper Roll Animation */
+@keyframes paperRoll {
+  0% {
+    transform: rotate(12deg) scaleX(3) scaleY(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(8deg) scaleX(2) scaleY(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(12deg) scaleX(1) scaleY(1);
+    opacity: 0.4;
+  }
+}
+
+@keyframes rollHighlight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes bottomShadow {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.2;
+  }
+}
+
+/* Enhanced Roll Effects */
+.yellow-stripe-enhanced > div:nth-child(1) {
+  animation: paperRoll 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-enhanced > div:nth-child(2) {
+  animation: rollHighlight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-enhanced > div:nth-child(3) {
+  animation: bottomShadow 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Scroll-triggered Roll Effects */
+.yellow-stripe-scroll > div:nth-child(1) {
+  transform: rotate(12deg) scaleX(3) scaleY(0.8);
+  opacity: 0.8;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(1) {
+  animation: paperRoll 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-scroll > div:nth-child(2) {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(2) {
+  animation: rollHighlight 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-scroll > div:nth-child(3) {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(3) {
+  animation: bottomShadow 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Particle Animations */
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Texture Line Animation */
+@keyframes textureReveal {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0.2;
+  }
+}
+
+/* Apply animations to particles */
+.yellow-stripe-enhanced > div:nth-child(4) > div:nth-child(1) {
+  animation: particleFloat 2s ease-out 0.5s;
+}
+
+.yellow-stripe-enhanced > div:nth-child(4) > div:nth-child(2) {
+  animation: particleFloat 2s ease-out 0.8s;
+}
+
+.yellow-stripe-enhanced > div:nth-child(4) > div:nth-child(3) {
+  animation: particleFloat 2s ease-out 1.2s;
+}
+
+/* Apply animations to texture lines */
+.yellow-stripe-enhanced > div:nth-child(5) > div {
+  animation: textureReveal 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-enhanced > div:nth-child(5) > div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.yellow-stripe-enhanced > div:nth-child(5) > div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.yellow-stripe-enhanced > div:nth-child(5) > div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.yellow-stripe-enhanced > div:nth-child(5) > div:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Scroll-triggered Particle Animations */
+.yellow-stripe-scroll > div:nth-child(4) > div {
+  transform: translateY(0) scale(0);
+  opacity: 0;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(4) > div:nth-child(1) {
+  animation: particleFloat 2s ease-out 0.5s;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(4) > div:nth-child(2) {
+  animation: particleFloat 2s ease-out 0.8s;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(4) > div:nth-child(3) {
+  animation: particleFloat 2s ease-out 1.2s;
+}
+
+/* Scroll-triggered Texture Line Animations */
+.yellow-stripe-scroll > div:nth-child(5) > div {
+  transform: scaleX(0);
+  opacity: 0;
+  transition: none;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(5) > div {
+  animation: textureReveal 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(5) > div:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(5) > div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(5) > div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.yellow-stripe-scroll.animate > div:nth-child(5) > div:nth-child(4) {
+  animation-delay: 0.8s;
 }
 
 /* Staggered animation delays */
@@ -313,56 +760,69 @@ button:hover {
 /* Hero Background Enhancements */
 .hero-background {
   background: 
-    linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.9) 100%);
+    linear-gradient(135deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.85) 50%, rgba(0,0,0,0.95) 100%),
+    linear-gradient(45deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  background-size: 100% 100%, 200px 200px;
 }
 
-/* Diamond Pattern Background - Like in Screenshot */
+/* Diamond Pattern Background - Enhanced Visibility */
 .diamond-pattern {
   background-image: 
-    linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a),
-    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%, transparent 75%, #1a1a1a 75%, #1a1a1a);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
-  opacity: 0.6;
+    linear-gradient(45deg, #2a2a2a 25%, transparent 25%, transparent 75%, #2a2a2a 75%, #2a2a2a),
+    linear-gradient(-45deg, #2a2a2a 25%, transparent 25%, transparent 75%, #2a2a2a 75%, #2a2a2a);
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+  opacity: 0.8;
   animation: diamondMove 20s linear infinite;
 }
 
-/* Moving Diamonds Layer */
+/* Moving Diamonds Layer - Enhanced */
 .moving-diamonds {
   background-image: 
-    linear-gradient(45deg, rgba(212, 175, 55, 0.1) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.1) 75%),
-    linear-gradient(-45deg, rgba(212, 175, 55, 0.05) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.05) 75%);
-  background-size: 80px 80px;
-  background-position: 0 0, 40px 40px;
-  opacity: 0.3;
+    linear-gradient(45deg, rgba(212, 175, 55, 0.15) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.15) 75%),
+    linear-gradient(-45deg, rgba(212, 175, 55, 0.08) 25%, transparent 25%, transparent 75%, rgba(212, 175, 55, 0.08) 75%);
+  background-size: 100px 100px;
+  background-position: 0 0, 50px 50px;
+  opacity: 0.5;
   animation: diamondMoveReverse 30s linear infinite;
 }
 
-/* Diamond Animation */
+/* Diamond Animation - Enhanced */
 @keyframes diamondMove {
   0% { 
-    background-position: 0 0, 20px 20px; 
+    background-position: 0 0, 30px 30px; 
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
   }
   100% { 
-    background-position: 40px 40px, 60px 60px; 
+    background-position: 60px 60px, 90px 90px; 
+    opacity: 0.8;
   }
 }
 
 @keyframes diamondMoveReverse {
   0% { 
-    background-position: 0 0, 40px 40px; 
+    background-position: 0 0, 50px 50px; 
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.7;
   }
   100% { 
-    background-position: -80px -80px, -40px -40px; 
+    background-position: -100px -100px, -50px -50px; 
+    opacity: 0.5;
   }
 }
 
 .barbershop-pattern {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.15) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
-  background-size: 60px 60px, 120px 120px;
-  opacity: 0.4;
+    radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.2) 3px, transparent 3px),
+    radial-gradient(circle at 75% 75%, rgba(212, 175, 55, 0.15) 2px, transparent 2px),
+    linear-gradient(0deg, transparent 49%, rgba(212, 175, 55, 0.05) 50%, transparent 51%);
+  background-size: 80px 80px, 160px 160px, 40px 40px;
+  opacity: 0.6;
   animation: patternMove 25s linear infinite;
 }
 
@@ -442,17 +902,56 @@ button:hover {
 /* Enhanced Background Animations */
 @keyframes backgroundShift {
   0%, 100% { 
-    background-position: 0% 50%; 
+    background-position: 0% 50%, 0% 0%; 
     transform: scale(1);
   }
   50% { 
-    background-position: 100% 50%; 
-    transform: scale(1.02);
+    background-position: 100% 50%, 200px 200px; 
+    transform: scale(1.01);
   }
 }
 
 .hero-background {
   animation: backgroundShift 20s ease-in-out infinite;
+  position: relative;
+}
+
+/* Additional Background Texture */
+.hero-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(212, 175, 55, 0.02) 2px,
+      rgba(212, 175, 55, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(212, 175, 55, 0.02) 2px,
+      rgba(212, 175, 55, 0.02) 4px
+    );
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* Enhanced Contrast Overlay */
+.hero-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 20%,
+    rgba(0, 0, 0, 0.1) 70%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 2;
 }
 
 /* Spotlight Pulse Effect */

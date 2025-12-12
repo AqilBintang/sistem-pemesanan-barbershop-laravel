@@ -133,6 +133,6 @@
 <!-- Welcome Message -->
 <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-6 text-black">
     <h2 class="text-xl font-bold mb-2">Selamat Datang di Admin Panel!</h2>
-    <p class="text-black/80">Kelola layanan dan kapster Pangling Hairstudio dengan mudah melalui panel admin ini.</p>
+    <p class="text-black/80">Kelola layanan dan kapster Sisbar Hairstudio dengan mudah melalui panel admin ini.</p>
 </div>
 @endsection

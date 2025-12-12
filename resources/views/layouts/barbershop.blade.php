@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Pangling Barbershop')</title>
+    <title>@yield('title', 'Sisbar Hairstudio')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/logo barber.png') }}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo barber.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-sisbar.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-sisbar.png') }}">
     
     <!-- Google Fonts - Elegant Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

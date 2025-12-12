@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Panel') - Pangling Hairstudio</title>
+    <title>@yield('title', 'Admin Panel') - Sisbar Hairstudio</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="icon" type="image/png" href="{{ asset('images/logo barber.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo-sisbar.png') }}">
 </head>
 <body class="bg-gray-100 font-sans">
     <div class="min-h-screen">
@@ -24,10 +24,11 @@
             <div class="p-6">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <div class="w-8 h-8 bg-yellow-400 rounded flex items-center justify-center mr-3">
-                            <span class="text-black font-bold text-sm">P</span>
-                        </div>
+                        <img src="{{ asset('images/logo-sisbar.png') }}" alt="Logo" class="h-8 w-auto object-contain mr-3 filter brightness-0 invert" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span class="text-yellow-400 font-bold text-sm hidden">S</span>
                         <span class="text-lg font-bold">Admin Panel</span>
+                    </div>
                     </div>
                     <button id="close-sidebar" class="lg:hidden text-gray-400 hover:text-white">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

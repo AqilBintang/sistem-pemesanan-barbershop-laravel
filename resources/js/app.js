@@ -77,9 +77,7 @@ class BarbershopApp {
                 <button data-navigate="confirmation" class="nav-btn quick-nav-item">
                     <span>✅</span> Confirmation
                 </button>
-                <button data-navigate="gallery" class="nav-btn quick-nav-item">
-                    <span>📸</span> Gallery
-                </button>
+
                 <button data-navigate="notifications" class="nav-btn quick-nav-item">
                     <span>🔔</span> Notifications
                 </button>
@@ -188,6 +186,25 @@ class BarbershopApp {
         });
 
         animateElements.forEach(el => observer.observe(el));
+
+        // Special observer for yellow stripe with different threshold
+        const stripeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Observe yellow stripe elements
+        setTimeout(() => {
+            document.querySelectorAll('.yellow-stripe-scroll').forEach(stripe => {
+                stripeObserver.observe(stripe);
+            });
+        }, 100);
 
         // Add scroll animation classes to sections
         setTimeout(() => {
