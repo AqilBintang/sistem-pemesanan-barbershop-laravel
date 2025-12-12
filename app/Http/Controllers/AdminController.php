@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Service;
 use App\Models\Barber;
+use App\Models\BarberSchedule;
 
 class AdminController extends Controller
 {
@@ -74,7 +75,7 @@ class AdminController extends Controller
 
     public function barbers()
     {
-        $barbers = Barber::orderBy('created_at', 'desc')->get();
+        $barbers = Barber::with('schedules')->orderBy('created_at', 'desc')->get();
 
         return view('admin.barbers', compact('barbers'));
     }
@@ -221,21 +222,177 @@ class AdminController extends Controller
 
     public function storeBarber(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'experience' => 'required|string|max:255',
-            'specialty' => 'required|string|max:255',
-            'bio' => 'nullable|string',
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'experience' => 'required|string|max:255',
+                'specialty' => 'required|string|max:255',
+                'bio' => 'nullable|string',
+                'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'rating' => 'nullable|numeric|min:0|max:5',
+                'level' => 'required|in:junior,professional,senior,master,specialist,creative',
+                'schedule' => 'nullable|string',
+                'skills' => 'nullable|string',
+                'schedules' => 'nullable|array',
+                'schedules.*.day' => 'required_with:schedules|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
+                'schedules.*.start_time' => 'required_with:schedules|date_format:H:i',
+                'schedules.*.end_time' => 'required_with:schedules|date_format:H:i|after:schedules.*.start_time',
+            ]);
 
-        Barber::create([
-            'name' => $request->name,
-            'experience' => $request->experience,
-            'specialty' => $request->specialty,
-            'bio' => $request->bio,
-            'rating' => 5.0, // default rating
-        ]);
+            $photoPath = null;
+            if ($request->hasFile('photo')) {
+                // Create barbers directory if it doesn't exist
+                if (!Storage::disk('public')->exists('barbers')) {
+                    Storage::disk('public')->makeDirectory('barbers');
+                }
+                
+                $file = $request->file('photo');
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                $photoPath = $file->storeAs('barbers', $filename, 'public');
+            }
 
-        return redirect()->route('admin.barbers')->with('success', 'Kapster berhasil ditambahkan!');
+            $skills = null;
+            if ($request->skills) {
+                $skills = array_map('trim', explode(',', $request->skills));
+            }
+
+            $barber = Barber::create([
+                'name' => $request->name,
+                'experience' => $request->experience,
+                'specialty' => $request->specialty,
+                'bio' => $request->bio,
+                'photo' => $photoPath,
+                'rating' => $request->rating ?? 5.0,
+                'level' => $request->level,
+                'schedule' => $request->schedule,
+                'skills' => $skills,
+                'is_active' => true,
+            ]);
+
+            // Create schedules if provided
+            if ($request->schedules) {
+                foreach ($request->schedules as $scheduleData) {
+                    if (!empty($scheduleData['day']) && !empty($scheduleData['start_time']) && !empty($scheduleData['end_time'])) {
+                        BarberSchedule::create([
+                            'barber_id' => $barber->id,
+                            'day_of_week' => $scheduleData['day'],
+                            'start_time' => $scheduleData['start_time'],
+                            'end_time' => $scheduleData['end_time'],
+                            'is_available' => true,
+                        ]);
+                    }
+                }
+            }
+
+            return redirect()->route('admin.barbers')->with('success', 'Kapster berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal menambahkan kapster: ' . $e->getMessage()])->withInput();
+        }
+    }
+
+    public function editBarber($id)
+    {
+        $barber = Barber::with('schedules')->findOrFail($id);
+        $barbers = Barber::with('schedules')->orderBy('created_at', 'desc')->get();
+
+        return view('admin.barbers', compact('barbers', 'barber'));
+    }
+
+    public function updateBarber(Request $request, $id)
+    {
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'experience' => 'required|string|max:255',
+                'specialty' => 'required|string|max:255',
+                'bio' => 'nullable|string',
+                'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'rating' => 'nullable|numeric|min:0|max:5',
+                'level' => 'required|in:junior,professional,senior,master,specialist,creative',
+                'schedule' => 'nullable|string',
+                'skills' => 'nullable|string',
+                'schedules' => 'nullable|array',
+                'schedules.*.day' => 'required_with:schedules|in:monday,tuesday,wednesday,thursday,friday,saturday,sunday',
+                'schedules.*.start_time' => 'required_with:schedules|date_format:H:i',
+                'schedules.*.end_time' => 'required_with:schedules|date_format:H:i|after:schedules.*.start_time',
+            ]);
+
+            $barber = Barber::findOrFail($id);
+
+            $photoPath = $barber->photo;
+            if ($request->hasFile('photo')) {
+                // Create barbers directory if it doesn't exist
+                if (!Storage::disk('public')->exists('barbers')) {
+                    Storage::disk('public')->makeDirectory('barbers');
+                }
+                
+                // Delete old photo if exists
+                if ($barber->photo && Storage::disk('public')->exists($barber->photo)) {
+                    Storage::disk('public')->delete($barber->photo);
+                }
+                
+                $file = $request->file('photo');
+                $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
+                $photoPath = $file->storeAs('barbers', $filename, 'public');
+            }
+
+            $skills = null;
+            if ($request->skills) {
+                $skills = array_map('trim', explode(',', $request->skills));
+            }
+
+            $barber->update([
+                'name' => $request->name,
+                'experience' => $request->experience,
+                'specialty' => $request->specialty,
+                'bio' => $request->bio,
+                'photo' => $photoPath,
+                'rating' => $request->rating ?? $barber->rating,
+                'level' => $request->level,
+                'schedule' => $request->schedule,
+                'skills' => $skills,
+            ]);
+
+            // Update schedules
+            if ($request->schedules) {
+                // Delete existing schedules
+                $barber->schedules()->delete();
+                
+                // Create new schedules
+                foreach ($request->schedules as $scheduleData) {
+                    if (!empty($scheduleData['day']) && !empty($scheduleData['start_time']) && !empty($scheduleData['end_time'])) {
+                        BarberSchedule::create([
+                            'barber_id' => $barber->id,
+                            'day_of_week' => $scheduleData['day'],
+                            'start_time' => $scheduleData['start_time'],
+                            'end_time' => $scheduleData['end_time'],
+                            'is_available' => true,
+                        ]);
+                    }
+                }
+            }
+
+            return redirect()->route('admin.barbers')->with('success', 'Kapster berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal memperbarui kapster: ' . $e->getMessage()])->withInput();
+        }
+    }
+
+    public function destroyBarber($id)
+    {
+        try {
+            $barber = Barber::findOrFail($id);
+            
+            // Delete photo if exists
+            if ($barber->photo && Storage::disk('public')->exists($barber->photo)) {
+                Storage::disk('public')->delete($barber->photo);
+            }
+
+            $barber->delete();
+
+            return redirect()->route('admin.barbers')->with('success', 'Kapster berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal menghapus kapster: ' . $e->getMessage()]);
+        }
     }
 }

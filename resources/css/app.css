@@ -276,83 +276,7 @@ button:hover {
   transform: translateY(0);
 }
 
-/* Quick Navigation Animations */
-.quick-nav-container {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  z-index: 50;
-}
 
-.quick-nav-toggle {
-  width: 56px;
-  height: 56px;
-  background: #000;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid var(--accent);
-}
-
-.quick-nav-toggle:hover {
-  background: var(--accent);
-  color: #000;
-  transform: scale(1.1);
-}
-
-.quick-nav-menu {
-  position: absolute;
-  bottom: 70px;
-  right: 0;
-  background: #000;
-  border-radius: 1rem;
-  padding: 1rem;
-  min-width: 200px;
-  border: 1px solid #333;
-  transform: translateY(20px) scale(0.8);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.quick-nav-menu.show {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-  visibility: visible;
-}
-
-.quick-nav-item {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-align: left;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s ease;
-  color: white;
-  text-decoration: none;
-  margin-bottom: 0.25rem;
-}
-
-.quick-nav-item:hover {
-  background: var(--accent);
-  color: #000;
-  transform: translateX(5px);
-}
-
-.quick-nav-item.active {
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
-}
-
-.quick-nav-item span:first-child {
-  margin-right: 0.75rem;
-  font-size: 1.1rem;
-}
 
 /* Additional animations for enhanced UX */
 @keyframes slideInFromRight {
@@ -747,10 +671,7 @@ button:hover {
   will-change: transform;
 }
 
-/* Loading state for quick nav */
-.quick-nav-toggle.loading {
-  animation: spin 1s linear infinite;
-}
+
 
 @keyframes spin {
   from { transform: rotate(0deg); }
@@ -2403,4 +2324,21 @@ html {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+}
+/* Barber Background Section */
+.barber-bg-section {
+    background: linear-gradient(rgba(31, 41, 55, 0.7), rgba(31, 41, 55, 0.7)), url('/images/bg-barber.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* Excellence Background Section */
+.excellence-bg-section {
+    background: linear-gradient(rgba(31, 41, 55, 0.8), rgba(31, 41, 55, 0.8)), url('/images/bg-barber.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
