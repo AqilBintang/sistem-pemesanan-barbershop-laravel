@@ -76,6 +76,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/barbers/{id}/edit', [App\Http\Controllers\AdminController::class, 'editBarber'])->name('admin.barbers.edit');
         Route::put('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'updateBarber'])->name('admin.barbers.update');
         Route::delete('/barbers/{id}', [App\Http\Controllers\AdminController::class, 'destroyBarber'])->name('admin.barbers.destroy');
+        Route::get('/bookings', [App\Http\Controllers\AdminController::class, 'bookings'])->name('admin.bookings');
+        Route::put('/bookings/{id}/status', [App\Http\Controllers\AdminController::class, 'updateBookingStatus'])->name('admin.bookings.status');
+        Route::delete('/bookings/{id}', [App\Http\Controllers\AdminController::class, 'deleteBooking'])->name('admin.bookings.destroy');
         Route::post('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
     });
 });
@@ -84,10 +87,33 @@ Route::get('/gallery', function () {
     return view('barbershop.index');
 });
 
-// Booking routes
-Route::get('/booking', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
-Route::post('/booking/available-barbers', [App\Http\Controllers\BookingController::class, 'getAvailableBarbers'])->name('booking.available-barbers');
-Route::post('/booking/check-availability', [App\Http\Controllers\BookingController::class, 'checkAvailability'])->name('booking.check-availability');
+// Authentication routes
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
+Route::get('/auth/google', [App\Http\Controllers\AuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('/auth/google/callback', [App\Http\Controllers\AuthController::class, 'handleGoogleCallback'])->name('auth.google.callback');
+Route::post('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+// Test login routes (remove in production)
+Route::get('/test-login', [App\Http\Controllers\AuthController::class, 'showTestLogin'])->name('auth.test-login');
+Route::post('/test-login', [App\Http\Controllers\AuthController::class, 'testLogin'])->name('auth.test-login');
+
+// Booking routes (protected by authentication)
+Route::middleware('auth.user')->group(function () {
+    Route::get('/booking', [App\Http\Controllers\BookingController::class, 'index'])->name('booking.index');
+    Route::post('/booking/available-barbers', [App\Http\Controllers\BookingController::class, 'getAvailableBarbers'])->name('booking.available-barbers');
+    Route::post('/booking/time-slots', [App\Http\Controllers\BookingController::class, 'getTimeSlots'])->name('booking.time-slots');
+    Route::get('/booking/services', [App\Http\Controllers\BookingController::class, 'getServices'])->name('booking.services');
+    Route::post('/booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('booking.store');
+    Route::get('/booking/{id}', [App\Http\Controllers\BookingController::class, 'show'])->name('booking.show');
+    Route::get('/booking-confirmation', function () {
+        return view('booking.confirmation');
+    })->name('booking.confirmation');
+    Route::post('/booking/check-availability', [App\Http\Controllers\BookingController::class, 'checkAvailability'])->name('booking.check-availability');
+    Route::get('/booking-status', function () {
+        return view('booking.status');
+    })->name('booking.status');
+    Route::post('/booking/check-status', [App\Http\Controllers\BookingController::class, 'checkStatus'])->name('booking.check-status');
+});
 
 // Test route for schedule system
 Route::get('/test-schedule', function () {
@@ -95,14 +121,6 @@ Route::get('/test-schedule', function () {
     return view('test-schedule', compact('allBarbers'));
 })->name('test.schedule');
 
-// Debug route for services
-Route::get('/debug-services', function () {
-    $services = App\Models\Service::where('is_active', true)->get();
-    return response()->json([
-        'success' => true,
-        'count' => $services->count(),
-        'services' => $services->toArray()
-    ]);
-});
+
 
 
