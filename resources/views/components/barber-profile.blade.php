@@ -54,7 +54,7 @@
                                 <div class="relative">
                                     <div class="w-48 h-48 rounded-2xl overflow-hidden border-4 {{ $colorScheme['border'] }} shadow-2xl transform @if($isEven) rotate-3 @else -rotate-3 @endif hover:rotate-0 transition-transform duration-300">
                                         @if($barber->photo)
-                                            <img src="{{ asset('storage/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
+                                            <img src="{{ asset('image/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
                                         @else
                                             <img src="{{ asset('images/child haircut.jpg') }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
                                         @endif

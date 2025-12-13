@@ -248,14 +248,20 @@ class AdminController extends Controller
 
             $photoPath = null;
             if ($request->hasFile('photo')) {
-                // Create barbers directory if it doesn't exist
-                if (!Storage::disk('public')->exists('barbers')) {
-                    Storage::disk('public')->makeDirectory('barbers');
+                // Create image directory if it doesn't exist
+                $imageDir = public_path('image');
+                if (!file_exists($imageDir)) {
+                    mkdir($imageDir, 0755, true);
                 }
                 
                 $file = $request->file('photo');
                 $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
-                $photoPath = $file->storeAs('barbers', $filename, 'public');
+                
+                // Move file to public/image directory
+                $file->move($imageDir, $filename);
+                $photoPath = $filename; // Store only filename, not full path
+                
+                \Log::info('Barber photo uploaded:', ['filename' => $filename, 'path' => $imageDir . '/' . $filename]);
             }
 
             $skills = null;
@@ -326,21 +332,29 @@ class AdminController extends Controller
 
             $barber = Barber::findOrFail($id);
 
-            $photoPath = $barber->photo;
+            // Handle photo update - KEEP OLD PHOTO IF NO NEW UPLOAD
+            $photoPath = $barber->photo; // Keep existing photo by default
             if ($request->hasFile('photo')) {
-                // Create barbers directory if it doesn't exist
-                if (!Storage::disk('public')->exists('barbers')) {
-                    Storage::disk('public')->makeDirectory('barbers');
+                // Create image directory if it doesn't exist
+                $imageDir = public_path('image');
+                if (!file_exists($imageDir)) {
+                    mkdir($imageDir, 0755, true);
                 }
                 
                 // Delete old photo if exists
-                if ($barber->photo && Storage::disk('public')->exists($barber->photo)) {
-                    Storage::disk('public')->delete($barber->photo);
+                if ($barber->photo && file_exists(public_path('image/' . $barber->photo))) {
+                    unlink(public_path('image/' . $barber->photo));
+                    \Log::info('Old barber photo deleted:', ['filename' => $barber->photo]);
                 }
                 
                 $file = $request->file('photo');
                 $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
-                $photoPath = $file->storeAs('barbers', $filename, 'public');
+                
+                // Move file to public/image directory
+                $file->move($imageDir, $filename);
+                $photoPath = $filename; // Store only filename, not full path
+                
+                \Log::info('Barber photo updated:', ['old' => $barber->photo, 'new' => $filename]);
             }
 
             $skills = null;
@@ -390,9 +404,10 @@ class AdminController extends Controller
         try {
             $barber = Barber::findOrFail($id);
             
-            // Delete photo if exists
-            if ($barber->photo && Storage::disk('public')->exists($barber->photo)) {
-                Storage::disk('public')->delete($barber->photo);
+            // Delete photo if exists in public/image directory
+            if ($barber->photo && file_exists(public_path('image/' . $barber->photo))) {
+                unlink(public_path('image/' . $barber->photo));
+                \Log::info('Barber photo deleted:', ['filename' => $barber->photo]);
             }
 
             $barber->delete();

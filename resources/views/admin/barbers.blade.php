@@ -148,7 +148,8 @@
                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
                         @if(isset($barber) && $barber->photo)
                             <div class="mt-2">
-                                <img src="{{ asset('storage/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-16 h-16 object-cover rounded-lg">
+                                <img src="{{ asset('image/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-16 h-16 object-cover rounded-lg">
+                                <p class="text-xs text-gray-500 mt-1">Foto saat ini: {{ $barber->photo }}</p>
                             </div>
                         @endif
                     </div>
@@ -191,7 +192,7 @@
                         <div class="flex items-center mb-3">
                             @if($barber->photo)
                                 <div class="w-12 h-12 rounded-full overflow-hidden mr-3">
-                                    <img src="{{ asset('storage/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
+                                    <img src="{{ asset('image/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
                                 </div>
                             @else
                                 <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
