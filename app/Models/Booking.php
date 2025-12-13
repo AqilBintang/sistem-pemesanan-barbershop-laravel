@@ -20,7 +20,7 @@ class Booking extends Model
         'total_price',
         'payment_method',
         'payment_status',
-        'payment_reference',
+
         'payment_date'
     ];
 
@@ -64,11 +64,7 @@ class Booking extends Model
 
     public function getPaymentMethodDisplayAttribute()
     {
-        return match($this->payment_method) {
-            'cash' => 'Tunai',
-            'qris' => 'QRIS',
-            default => 'Unknown'
-        };
+        return 'Tunai';
     }
 
     public function getPaymentStatusDisplayAttribute()

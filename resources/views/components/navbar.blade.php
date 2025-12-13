@@ -30,6 +30,10 @@
                        class="nav-link text-white hover:text-accent transition-colors font-medium">
                         Booking
                     </a>
+                    <a href="{{ route('booking.dashboard') }}" 
+                       class="nav-link text-white hover:text-accent transition-colors font-medium">
+                        Dashboard
+                    </a>
                 </div>
             </div>
 

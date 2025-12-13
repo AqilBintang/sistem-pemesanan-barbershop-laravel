@@ -105,10 +105,7 @@
                                 <p class="font-semibold text-blue-800" id="receipt-payment-method">-</p>
                                 <p class="text-sm text-blue-600" id="receipt-payment-status">-</p>
                             </div>
-                            <div id="receipt-payment-reference" class="text-right hidden">
-                                <p class="text-xs text-gray-600">Ref:</p>
-                                <p class="text-sm font-mono" id="receipt-payment-ref-text">-</p>
-                            </div>
+                            <!-- Cash payment - no reference needed -->
                         </div>
                     </div>
                 </div>
@@ -273,11 +270,7 @@ function displayBookingData(booking) {
     document.getElementById('receipt-payment-method').textContent = booking.payment_method || 'Tunai';
     document.getElementById('receipt-payment-status').textContent = booking.payment_status || 'Menunggu Pembayaran';
     
-    // Payment reference for QRIS
-    if (booking.payment_reference) {
-        document.getElementById('receipt-payment-reference').classList.remove('hidden');
-        document.getElementById('receipt-payment-ref-text').textContent = booking.payment_reference;
-    }
+    // Cash payment only - no payment reference needed
     
     // Update status badge
     updateStatusBadge(booking.status || 'pending', booking.payment_status || 'pending');

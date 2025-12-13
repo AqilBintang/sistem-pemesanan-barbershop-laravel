@@ -7,7 +7,7 @@ use App\Models\Barber;
 use App\Models\BarberSchedule;
 use App\Models\Booking;
 use App\Models\Service;
-use App\Services\QRISService;
+
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -95,7 +95,7 @@ class BookingController extends Controller
             'service_id' => 'required|exists:services,id',
             'booking_date' => 'required|date|after_or_equal:today',
             'booking_time' => 'required|date_format:H:i',
-            'payment_method' => 'required|in:cash,qris',
+            'payment_method' => 'required|in:cash',
             'notes' => 'nullable|string|max:500'
         ]);
 
@@ -117,34 +117,11 @@ class BookingController extends Controller
             // Get service price
             $service = Service::findOrFail($request->service_id);
 
-            // Handle QRIS payment
+            // Cash payment only - always pending until admin approval
             $paymentReference = null;
             $paymentDate = null;
             $status = 'pending';
             $paymentStatus = 'pending';
-
-            if ($request->payment_method === 'qris') {
-                // Generate QRIS payment
-                $qrisPayment = QRISService::generatePaymentCode(
-                    $service->price, 
-                    time(),
-                    $request->customer_name
-                );
-                $paymentReference = $qrisPayment['payment_reference'];
-                
-                // For GoPay dynamic QRIS, keep as pending until webhook confirms payment
-                // For static QRIS, mark as paid immediately for demo
-                if (config('app.qris_type') === 'gopay') {
-                    $status = 'pending';
-                    $paymentStatus = 'pending';
-                    $paymentDate = null;
-                } else {
-                    // Demo mode - mark as paid immediately
-                    $status = 'confirmed';
-                    $paymentStatus = 'paid';
-                    $paymentDate = now();
-                }
-            }
 
             // Create booking (handle both authenticated and test users)
             $booking = Booking::create([
@@ -159,14 +136,12 @@ class BookingController extends Controller
                 'total_price' => $service->price,
                 'payment_method' => $request->payment_method,
                 'payment_status' => $paymentStatus,
-                'payment_reference' => $paymentReference,
+
                 'payment_date' => $paymentDate,
                 'status' => $status
             ]);
 
-            $message = $request->payment_method === 'qris' 
-                ? 'Pembayaran berhasil! Booking Anda telah dikonfirmasi.' 
-                : 'Booking berhasil dibuat! Kami akan menghubungi Anda untuk konfirmasi.';
+            $message = 'Booking berhasil dibuat! Kami akan menghubungi Anda untuk konfirmasi.';
 
             return response()->json([
                 'success' => true,
@@ -184,7 +159,7 @@ class BookingController extends Controller
                     'total_price' => $booking->total_price,
                     'payment_method' => $booking->payment_method_display,
                     'payment_status' => $booking->payment_status_display,
-                    'payment_reference' => $booking->payment_reference,
+
                     'status' => $booking->status_display,
                     'notes' => $booking->notes,
                     'booking_date' => $booking->booking_date,
@@ -265,47 +240,7 @@ class BookingController extends Controller
         ]);
     }
 
-    public function generateQRIS(Request $request)
-    {
-        $request->validate([
-            'amount' => 'required|numeric|min:1',
-            'booking_id' => 'required|string',
-            'customer_name' => 'nullable|string'
-        ]);
 
-        try {
-            $qrisPayment = QRISService::generatePaymentCode(
-                $request->amount, 
-                $request->booking_id,
-                $request->customer_name
-            );
-            
-            $qrImageUrl = QRISService::getQRCodeImageUrl(
-                $qrisPayment['qr_code'],
-                $qrisPayment['qr_code_url'] ?? null
-            );
-
-            return response()->json([
-                'success' => true,
-                'qr_code_url' => $qrImageUrl,
-                'payment_reference' => $qrisPayment['payment_reference'],
-                'amount' => $qrisPayment['amount'],
-                'expires_at' => $qrisPayment['expires_at']->format('Y-m-d H:i:s'),
-                'type' => $qrisPayment['type'] ?? 'static'
-            ]);
-
-        } catch (\Exception $e) {
-            Log::error('QRIS Generation Error', [
-                'message' => $e->getMessage(),
-                'request' => $request->all()
-            ]);
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal generate QRIS code. Silakan coba lagi.'
-            ], 500);
-        }
-    }
 
     public function checkStatus(Request $request)
     {

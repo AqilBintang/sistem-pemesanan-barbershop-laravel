@@ -131,8 +131,8 @@
                                 <label class="flex items-center p-4 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
                                     <input type="radio" name="payment_method" value="ewallet" required class="mr-3">
                                     <div>
-                                        <div class="font-semibold">E-Wallet</div>
-                                        <div class="text-sm text-gray-600">GoPay, OVO, DANA</div>
+                                        <div class="font-semibold">Cash</div>
+                                        <div class="text-sm text-gray-600">Bayar di tempat</div>
                                     </div>
                                 </label>
                             </div>
