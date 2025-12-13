@@ -130,7 +130,7 @@
             <div class="col-md-4 text-center">
                 <i class="bi bi-cash text-success mb-3" style="font-size: 2.5rem;"></i>
                 <h5 class="fw-bold">Metode Pembayaran</h5>
-                <p class="text-muted">Cash, Transfer Bank, E-Wallet (GoPay, OVO, DANA)</p>
+                <p class="text-muted">Cash (Bayar di tempat)</p>
             </div>
         </div>
     </div>

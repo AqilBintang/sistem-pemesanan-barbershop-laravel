@@ -83,7 +83,27 @@ Route::prefix('admin')->group(function () {
         })->name('admin.bookings.receipt');
         Route::put('/bookings/{id}/status', [App\Http\Controllers\AdminController::class, 'updateBookingStatus'])->name('admin.bookings.status');
         Route::delete('/bookings/{id}', [App\Http\Controllers\AdminController::class, 'deleteBooking'])->name('admin.bookings.destroy');
+        Route::get('/barber-users', [App\Http\Controllers\AdminController::class, 'barberUsers'])->name('admin.barber-users');
+        Route::post('/barber-users', [App\Http\Controllers\AdminController::class, 'storeBarberUser'])->name('admin.barber-users.store');
+        Route::get('/barber-users/{id}/edit', [App\Http\Controllers\AdminController::class, 'editBarberUser'])->name('admin.barber-users.edit');
+        Route::put('/barber-users/{id}', [App\Http\Controllers\AdminController::class, 'updateBarberUser'])->name('admin.barber-users.update');
+        Route::delete('/barber-users/{id}', [App\Http\Controllers\AdminController::class, 'destroyBarberUser'])->name('admin.barber-users.destroy');
         Route::post('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('admin.logout');
+    });
+});
+
+// Barber routes
+Route::prefix('barber')->group(function () {
+    // Public routes (no middleware)
+    Route::get('/', [App\Http\Controllers\BarberController::class, 'showLogin'])->name('barber.login');
+    Route::post('/', [App\Http\Controllers\BarberController::class, 'login'])->name('barber.login.post');
+    
+    // Protected routes (require barber middleware)
+    Route::middleware('auth.barber')->group(function () {
+        Route::get('/dashboard', [App\Http\Controllers\BarberController::class, 'dashboard'])->name('barber.dashboard');
+        Route::get('/bookings', [App\Http\Controllers\BarberController::class, 'bookings'])->name('barber.bookings');
+        Route::put('/bookings/{id}/status', [App\Http\Controllers\BarberController::class, 'updateBookingStatus'])->name('barber.bookings.status');
+        Route::post('/logout', [App\Http\Controllers\BarberController::class, 'logout'])->name('barber.logout');
     });
 });
 
@@ -131,19 +151,16 @@ Route::post('/test-booking/available-barbers', [App\Http\Controllers\BookingCont
 Route::post('/test-booking/time-slots', [App\Http\Controllers\BookingController::class, 'getTimeSlots'])->name('test.booking.time-slots');
 Route::get('/test-booking/services', [App\Http\Controllers\BookingController::class, 'getServices'])->name('test.booking.services');
 Route::post('/test-booking/store', [App\Http\Controllers\BookingController::class, 'store'])->name('test.booking.store');
-Route::post('/test-booking/generate-qris', [App\Http\Controllers\BookingController::class, 'generateQRIS'])->name('test.booking.generate-qris');
 
-// Payment Gateway Webhooks (no CSRF protection needed)
-Route::post('/gopay/webhook', [App\Http\Controllers\GopayWebhookController::class, 'handleWebhook'])->name('gopay.webhook');
-Route::post('/gopay/check-status', [App\Http\Controllers\GopayWebhookController::class, 'checkPaymentStatus'])->name('gopay.check-status');
-
-Route::post('/midtrans/notification', [App\Http\Controllers\MidtransWebhookController::class, 'handleNotification'])->name('midtrans.notification');
-Route::post('/midtrans/check-status', [App\Http\Controllers\MidtransWebhookController::class, 'checkPaymentStatus'])->name('midtrans.check-status');
 
 // Booking receipt page (accessible without auth for testing)
 Route::get('/booking-receipt', function () {
     return view('booking.receipt');
 })->name('booking.receipt');
+
+// Booking Dashboard (public access to view all bookings)
+Route::get('/booking-dashboard', [App\Http\Controllers\BookingDashboardController::class, 'index'])->name('booking.dashboard');
+Route::post('/booking-dashboard/date-bookings', [App\Http\Controllers\BookingDashboardController::class, 'getBookingsForDate'])->name('booking.dashboard.date-bookings');
 
 
 

@@ -125,17 +125,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | QRIS Configuration
+    | Payment Configuration
     |--------------------------------------------------------------------------
     |
-    | Configuration for QRIS payment integration
+    | Simple cash-only payment configuration
     |
     */
 
-    'qris_type' => env('QRIS_TYPE', 'static'), // static, gopay, midtrans
-    'qris_static_data' => env('QRIS_STATIC_DATA'),
-    'qris_static_image_path' => env('QRIS_STATIC_IMAGE_PATH'),
-    'qris_merchant_name' => env('QRIS_MERCHANT_NAME', 'Sisbar Hairstudio'),
-    'qris_merchant_id' => env('QRIS_MERCHANT_ID'),
+    'payment_method' => env('PAYMENT_METHOD', 'cash'),
 
 ];

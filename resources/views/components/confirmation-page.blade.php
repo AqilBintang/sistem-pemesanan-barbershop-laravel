@@ -192,8 +192,7 @@ function populateBookingDetails(data) {
 
     // Payment method mapping
     const paymentMethods = {
-        'cash': 'Cash (Bayar di tempat)',
-        'ewallet': 'E-Wallet (GoPay, OVO, DANA)'
+        'cash': 'Cash (Bayar di tempat)'
     };
 
     // Populate fields

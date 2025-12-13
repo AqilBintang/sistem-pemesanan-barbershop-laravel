@@ -14,13 +14,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'auth.user' => \App\Http\Middleware\AuthenticateUser::class,
+            'auth.barber' => \App\Http\Middleware\AuthenticateBarber::class,
         ]);
         
-        // Exclude webhook routes from CSRF protection
-        $middleware->validateCsrfTokens(except: [
-            'gopay/webhook',
-            'midtrans/notification',
-        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

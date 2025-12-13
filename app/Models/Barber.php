@@ -53,6 +53,16 @@ class Barber extends Model
         return $this->hasMany(BarberSchedule::class);
     }
 
+    public function barberUser()
+    {
+        return $this->hasOne(BarberUser::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     public function getScheduleDisplayAttribute()
     {
         if ($this->schedules->isEmpty()) {

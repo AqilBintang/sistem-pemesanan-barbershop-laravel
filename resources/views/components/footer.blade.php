@@ -25,6 +25,8 @@
                     <li><a href="{{ route('services') }}" class="text-gray-400 hover:text-accent transition-colors text-sm">Layanan</a></li>
                     <li><a href="{{ route('barbers') }}" class="text-gray-400 hover:text-accent transition-colors text-sm">Kapster</a></li>
                     <li><a href="{{ route('booking.index') }}" class="text-gray-400 hover:text-accent transition-colors text-sm">Booking</a></li>
+                    <li><a href="{{ route('booking.dashboard') }}" class="text-gray-400 hover:text-accent transition-colors text-sm">Dashboard</a></li>
+                    <li><a href="{{ route('barber.login') }}" class="text-gray-400 hover:text-accent transition-colors text-sm">Login Kapster</a></li>
                 </ul>
             </div>
 

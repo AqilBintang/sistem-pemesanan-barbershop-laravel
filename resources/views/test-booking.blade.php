@@ -61,11 +61,6 @@
                         <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-5"></div>
                         <div id="progress-6" class="flex items-center">
                             <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">6</div>
-                            <span class="ml-2 text-gray-400 text-sm hidden lg:block">Pembayaran</span>
-                        </div>
-                        <div class="w-4 lg:w-8 h-0.5 bg-gray-600" id="line-6"></div>
-                        <div id="progress-7" class="flex items-center">
-                            <div class="w-8 h-8 bg-gray-600 text-gray-400 rounded-full flex items-center justify-center font-bold text-sm">7</div>
                             <span class="ml-2 text-gray-400 text-sm hidden lg:block">Konfirmasi</span>
                         </div>
                     </div>
@@ -74,11 +69,11 @@
                 <!-- Mobile Progress -->
                 <div class="md:hidden">
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-white font-semibold">Step <span id="mobile-current-step">1</span> dari 7</span>
+                        <span class="text-white font-semibold">Step <span id="mobile-current-step">1</span> dari 6</span>
                         <span class="text-gray-400 text-sm" id="mobile-step-name">Pilih Tanggal</span>
                     </div>
                     <div class="w-full bg-gray-600 rounded-full h-2">
-                        <div class="bg-yellow-500 h-2 rounded-full transition-all duration-300" id="mobile-progress-bar" style="width: 14.29%"></div>
+                        <div class="bg-yellow-500 h-2 rounded-full transition-all duration-300" id="mobile-progress-bar" style="width: 16.67%"></div>
                     </div>
                 </div>
             </div>
@@ -163,83 +158,35 @@
                         </div>
                     </div>
 
-                    <!-- Step 6: Payment Method -->
+                    <!-- Step 6: Confirmation -->
                     <div id="step-6" class="hidden">
-                        <h2 class="text-2xl font-bold text-white mb-6">6. Pilih Metode Pembayaran</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                            <!-- Cash Payment -->
-                            <div class="payment-method-card bg-slate-700 border border-slate-600 rounded-2xl p-6 cursor-pointer hover:border-yellow-400 transition-colors" 
-                                 onclick="selectPaymentMethod('cash')">
-                                <div class="text-center">
-                                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-white mb-2">Bayar Tunai</h3>
-                                    <p class="text-gray-300 text-sm mb-4">Bayar langsung di tempat saat datang</p>
-                                    <div class="bg-yellow-100 border border-yellow-300 rounded-lg p-3">
-                                        <p class="text-yellow-800 text-xs font-semibold">✓ Admin akan konfirmasi booking Anda</p>
-                                        <p class="text-yellow-800 text-xs">✓ Bayar saat datang ke barbershop</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- QRIS Payment -->
-                            <div class="payment-method-card bg-slate-700 border border-slate-600 rounded-2xl p-6 cursor-pointer hover:border-yellow-400 transition-colors" 
-                                 onclick="selectPaymentMethod('qris')">
-                                <div class="text-center">
-                                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                                        </svg>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-white mb-2">QRIS</h3>
-                                    <p class="text-gray-300 text-sm mb-4">Bayar sekarang dengan scan QR Code</p>
-                                    <div class="bg-blue-100 border border-blue-300 rounded-lg p-3">
-                                        <p class="text-blue-800 text-xs font-semibold">✓ Booking langsung dikonfirmasi</p>
-                                        <p class="text-blue-800 text-xs">✓ Pembayaran aman dan cepat</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Selected Payment Method Info -->
-                        <div id="payment-info" class="hidden bg-slate-700 rounded-xl p-4 mb-6">
-                            <div class="flex items-center">
-                                <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
-                                    <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <p class="text-white font-semibold">Metode Pembayaran Dipilih:</p>
-                                    <p class="text-yellow-400" id="selected-payment-text">-</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 7: Confirmation -->
-                    <div id="step-7" class="hidden">
-                        <h2 class="text-2xl font-bold text-white mb-6">7. Konfirmasi Booking</h2>
+                        <h2 class="text-2xl font-bold text-white mb-6">6. Konfirmasi Booking</h2>
                         <div class="bg-slate-700 rounded-xl p-6 mb-6">
                             <div id="booking-summary" class="space-y-3 text-gray-300">
                                 <!-- Booking summary will be populated here -->
                             </div>
                         </div>
                         
-                        <!-- QRIS Payment Section -->
-                        <div id="qris-payment-section" class="hidden bg-slate-700 rounded-xl p-6 mb-6">
-                            <h3 class="text-xl font-bold text-white mb-4 text-center">Scan QR Code untuk Pembayaran</h3>
-                            <div class="text-center">
-                                <div class="bg-white rounded-xl p-6 inline-block mb-4">
-                                    <div id="qris-code" class="w-48 h-48 bg-gray-200 rounded-lg flex items-center justify-center mx-auto">
-                                        <p class="text-gray-600 text-sm">QR Code akan muncul di sini</p>
-                                    </div>
+                        <!-- Cash Payment Info -->
+                        <div class="bg-green-500/10 border border-green-500/30 rounded-xl p-6 mb-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
                                 </div>
-                                <p class="text-gray-300 mb-2">Total Pembayaran: <span class="text-yellow-400 font-bold" id="qris-total">Rp 0</span></p>
-                                <p class="text-gray-400 text-sm">Scan dengan aplikasi mobile banking atau e-wallet Anda</p>
+                                <div>
+                                    <h3 class="text-green-400 font-bold text-lg">Pembayaran Tunai</h3>
+                                    <p class="text-gray-300 text-sm">Bayar langsung di tempat saat datang</p>
+                                </div>
+                            </div>
+                            <div class="bg-yellow-100 border border-yellow-300 rounded-lg p-4">
+                                <p class="text-yellow-800 text-sm font-semibold mb-2">📋 Informasi Penting:</p>
+                                <ul class="text-yellow-800 text-sm space-y-1">
+                                    <li>✓ Admin akan menghubungi Anda untuk konfirmasi booking</li>
+                                    <li>✓ Pembayaran dilakukan saat datang ke barbershop</li>
+                                    <li>✓ Harap datang 10 menit sebelum jadwal</li>
+                                </ul>
                             </div>
                         </div>
                         
@@ -259,12 +206,8 @@
                                 class="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded-xl transition-colors hidden">
                             Selanjutnya
                         </button>
-                        <button type="button" id="confirm-btn" onclick="goToPaymentMethod()" 
+                        <button type="button" id="confirm-btn" onclick="goToConfirmation()" 
                                 class="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-xl transition-colors hidden">
-                            Lanjut ke Pembayaran
-                        </button>
-                        <button type="button" id="payment-btn" onclick="goToConfirmation()" 
-                                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-xl transition-colors hidden">
                             Lanjut ke Konfirmasi
                         </button>
                     </div>
@@ -291,8 +234,9 @@ let currentStep = 1;
 let selectedBarber = null;
 let selectedTime = null;
 let selectedService = null;
-let selectedPaymentMethod = null;
-let bookingData = {};
+let bookingData = {
+    payment_method: 'cash' // Always cash payment
+};
 
 // Initialize
 document.getElementById('booking-date').min = new Date().toISOString().split('T')[0];
@@ -503,7 +447,7 @@ function showStep(step) {
     console.log('Showing step:', step);
     
     // Hide all steps
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 6; i++) {
         document.getElementById(`step-${i}`).classList.add('hidden');
     }
     
@@ -517,10 +461,9 @@ function showStep(step) {
     // Update navigation buttons
     updateNavigationButtons();
     
-    // If step 7, populate summary and handle payment
-    if (step === 7) {
+    // If step 6, populate summary
+    if (step === 6) {
         populateBookingSummary();
-        handlePaymentDisplay();
     }
     
     // Scroll to top of form
@@ -528,10 +471,10 @@ function showStep(step) {
 }
 
 function updateProgressIndicator(step) {
-    const stepNames = ['', 'Pilih Tanggal', 'Pilih Kapster', 'Pilih Waktu', 'Pilih Layanan', 'Isi Data', 'Pembayaran', 'Konfirmasi'];
+    const stepNames = ['', 'Pilih Tanggal', 'Pilih Kapster', 'Pilih Waktu', 'Pilih Layanan', 'Isi Data', 'Konfirmasi'];
     
     // Update desktop progress
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 6; i++) {
         const progressElement = document.getElementById(`progress-${i}`);
         if (progressElement) {
             const circle = progressElement.querySelector('div');
@@ -564,21 +507,18 @@ function updateProgressIndicator(step) {
     if (mobileCurrentStep) mobileCurrentStep.textContent = step;
     if (mobileStepName) mobileStepName.textContent = stepNames[step];
     if (mobileProgressBar) {
-        const percentage = (step / 7) * 100;
+        const percentage = (step / 6) * 100;
         mobileProgressBar.style.width = percentage + '%';
     }
-}
-
+}assName = 'w-4 lg:w-8 h-0.5 bg-gray-600';
 function updateNavigationButtons() {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const confirmBtn = document.getElementById('confirm-btn');
-    const paymentBtn = document.getElementById('payment-btn');
     
     prevBtn.classList.toggle('hidden', currentStep === 1);
     nextBtn.classList.toggle('hidden', currentStep >= 5);
     confirmBtn.classList.toggle('hidden', currentStep !== 5);
-    paymentBtn.classList.toggle('hidden', currentStep !== 6);
 }
 
 function previousStep() {
@@ -588,12 +528,12 @@ function previousStep() {
 }
 
 function nextStep() {
-    if (currentStep < 7) {
+    if (currentStep < 6) {
         showStep(currentStep + 1);
     }
 }
 
-function goToPaymentMethod() {
+function goToConfirmation() {
     // Validate required fields in step 5
     const customerName = document.getElementById('customer-name').value;
     const customerPhone = document.getElementById('customer-phone').value;
@@ -608,131 +548,15 @@ function goToPaymentMethod() {
         return;
     }
     
-    // Go to payment method step
+    // Go to confirmation step
     showStep(6);
 }
 
-function goToConfirmation() {
-    // Validate payment method selection
-    if (!selectedPaymentMethod) {
-        alert('Silakan pilih metode pembayaran terlebih dahulu');
-        return;
-    }
-    
-    // Go to confirmation step
-    showStep(7);
-}
 
-function selectPaymentMethod(method) {
-    selectedPaymentMethod = method;
-    bookingData.payment_method = method;
-    
-    // Highlight selected payment method
-    document.querySelectorAll('.payment-method-card').forEach(card => {
-        card.classList.remove('border-yellow-400', 'bg-slate-600');
-        card.classList.add('border-slate-600');
-    });
-    event.currentTarget.classList.add('border-yellow-400', 'bg-slate-600');
-    
-    // Show payment info
-    const paymentInfo = document.getElementById('payment-info');
-    const paymentText = document.getElementById('selected-payment-text');
-    
-    paymentInfo.classList.remove('hidden');
-    paymentText.textContent = method === 'cash' ? 'Bayar Tunai di Tempat' : 'QRIS (Scan QR Code)';
-}
-
-function handlePaymentDisplay() {
-    const qrisSection = document.getElementById('qris-payment-section');
-    const submitButton = document.getElementById('submit-button-text');
-    const qrisTotal = document.getElementById('qris-total');
-    
-    if (selectedPaymentMethod === 'qris') {
-        qrisSection.classList.remove('hidden');
-        submitButton.textContent = 'Bayar Sekarang';
-        qrisTotal.textContent = selectedService.formatted_price;
-        
-        // Generate QRIS code (placeholder)
-        generateQRISCode();
-    } else {
-        qrisSection.classList.add('hidden');
-        submitButton.textContent = 'Konfirmasi Booking (Test)';
-    }
-}
-
-async function generateQRISCode() {
-    const qrisCode = document.getElementById('qris-code');
-    
-    // Show loading state
-    qrisCode.innerHTML = `
-        <div class="w-full h-full bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
-            <div class="text-center">
-                <div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto mb-2"></div>
-                <p class="text-sm text-gray-600">Generating QR Code...</p>
-            </div>
-        </div>
-    `;
-
-    try {
-        const customerName = document.getElementById('customer-name').value || 'Test User';
-        
-        const response = await fetch('/test-booking/generate-qris', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({
-                amount: selectedService.price,
-                booking_id: 'TEMP-' + Date.now(),
-                customer_name: customerName
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            qrisCode.innerHTML = `
-                <div class="w-full h-full bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
-                    <div class="text-center">
-                        <img src="${data.qr_code_url}" alt="QRIS Code" class="w-48 h-48 mx-auto mb-2 rounded-lg">
-                        <p class="text-xs text-gray-600">Scan dengan aplikasi ${data.type === 'gopay_dynamic' ? 'GoPay' : 'mobile banking'}</p>
-                        <p class="text-xs text-gray-500 mt-1">Ref: ${data.payment_reference}</p>
-                        ${data.type === 'gopay_dynamic' ? '<p class="text-xs text-blue-600 mt-1">✓ Nominal otomatis terisi</p>' : ''}
-                    </div>
-                </div>
-            `;
-            
-            // Start payment status polling for GoPay
-            if (data.type === 'gopay_dynamic') {
-                startPaymentStatusPolling(data.payment_reference);
-            }
-        } else {
-            throw new Error(data.message || 'Failed to generate QR code');
-        }
-    } catch (error) {
-        console.error('Error generating QRIS:', error);
-        qrisCode.innerHTML = `
-            <div class="w-full h-full bg-white border-2 border-red-300 rounded-lg flex items-center justify-center">
-                <div class="text-center">
-                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                        <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <p class="text-xs text-red-600">Gagal generate QR Code</p>
-                    <button onclick="generateQRISCode()" class="text-xs text-blue-500 underline mt-1">Coba Lagi</button>
-                </div>
-            </div>
-        `;
-    }
-}
 
 function populateBookingSummary() {
     const date = document.getElementById('booking-date').value;
     const summary = document.getElementById('booking-summary');
-    
-    const paymentMethodText = selectedPaymentMethod === 'cash' ? 'Bayar Tunai di Tempat' : 'QRIS (Scan QR Code)';
     
     summary.innerHTML = `
         <div class="grid grid-cols-2 gap-4">
@@ -752,7 +576,7 @@ function populateBookingSummary() {
             <div>${selectedService.duration} menit</div>
             
             <div><strong>Metode Pembayaran:</strong></div>
-            <div class="text-blue-400 font-semibold">${paymentMethodText}</div>
+            <div class="text-green-400 font-semibold">Bayar Tunai di Tempat</div>
             
             <div><strong>Total Harga:</strong></div>
             <div class="text-yellow-400 font-bold">${selectedService.formatted_price}</div>
@@ -760,98 +584,7 @@ function populateBookingSummary() {
     `;
 }
 
-let paymentStatusInterval = null;
 
-// Payment status polling for real-time updates
-function startPaymentStatusPolling(paymentReference) {
-    // Clear any existing interval
-    if (paymentStatusInterval) {
-        clearInterval(paymentStatusInterval);
-    }
-    
-    // Poll every 3 seconds
-    paymentStatusInterval = setInterval(async () => {
-        try {
-            const response = await fetch('/gopay/check-status', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    transaction_id: paymentReference
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.success && data.status === 'paid') {
-                // Payment successful!
-                clearInterval(paymentStatusInterval);
-                showPaymentSuccess();
-                
-                // Auto-submit form after payment success
-                setTimeout(() => {
-                    document.getElementById('booking-form').dispatchEvent(new Event('submit'));
-                }, 2000);
-            }
-        } catch (error) {
-            console.error('Payment status check error:', error);
-        }
-    }, 3000);
-    
-    // Stop polling after 15 minutes
-    setTimeout(() => {
-        if (paymentStatusInterval) {
-            clearInterval(paymentStatusInterval);
-            showPaymentTimeout();
-        }
-    }, 15 * 60 * 1000);
-}
-
-function showPaymentSuccess() {
-    const qrisSection = document.getElementById('qris-payment-section');
-    const successMessage = document.createElement('div');
-    successMessage.className = 'bg-green-100 border border-green-300 rounded-lg p-4 mb-4';
-    successMessage.innerHTML = `
-        <div class="flex items-center">
-            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="text-green-800 font-semibold">Pembayaran Berhasil!</p>
-                <p class="text-green-600 text-sm">Booking akan otomatis dikonfirmasi...</p>
-            </div>
-        </div>
-    `;
-    qrisSection.insertBefore(successMessage, qrisSection.firstChild);
-    
-    // Update submit button
-    const submitButton = document.getElementById('submit-button-text');
-    submitButton.textContent = 'Menyelesaikan Booking...';
-}
-
-function showPaymentTimeout() {
-    const qrisSection = document.getElementById('qris-payment-section');
-    const timeoutMessage = document.createElement('div');
-    timeoutMessage.className = 'bg-yellow-100 border border-yellow-300 rounded-lg p-4 mb-4';
-    timeoutMessage.innerHTML = `
-        <div class="flex items-center">
-            <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-            </div>
-            <div>
-                <p class="text-yellow-800 font-semibold">Waktu Pembayaran Habis</p>
-                <p class="text-yellow-600 text-sm">Silakan generate ulang QR Code atau pilih metode lain</p>
-            </div>
-        </div>
-    `;
-    qrisSection.insertBefore(timeoutMessage, qrisSection.firstChild);
-}
 
 // Form submission
 document.getElementById('booking-form').addEventListener('submit', async function(e) {

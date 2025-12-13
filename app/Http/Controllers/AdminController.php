@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Barber;
 use App\Models\BarberSchedule;
 use App\Models\Booking;
+use App\Models\BarberUser;
 
 class AdminController extends Controller
 {
@@ -59,6 +60,8 @@ class AdminController extends Controller
             'total_bookings' => Booking::count(),
             'pending_bookings' => Booking::where('status', 'pending')->count(),
             'today_bookings' => Booking::whereDate('booking_date', today())->count(),
+            'total_barber_users' => BarberUser::count(),
+            'active_barber_users' => BarberUser::where('is_active', true)->count(),
         ];
 
         return view('admin.dashboard', compact('stats'));
@@ -401,10 +404,25 @@ class AdminController extends Controller
     }
 
     // Booking Management
-    public function bookings()
+    public function bookings(Request $request)
     {
-        $bookings = Booking::with(['barber', 'service'])
-            ->orderBy('booking_date', 'desc')
+        $query = Booking::with(['barber', 'service']);
+
+        // Filter by date range
+        if ($request->date_from) {
+            $query->whereDate('booking_date', '>=', $request->date_from);
+        }
+        
+        if ($request->date_to) {
+            $query->whereDate('booking_date', '<=', $request->date_to);
+        }
+
+        // Filter by status
+        if ($request->status && $request->status !== 'all') {
+            $query->where('status', $request->status);
+        }
+
+        $bookings = $query->orderBy('booking_date', 'desc')
             ->orderBy('booking_time', 'desc')
             ->paginate(20);
         
@@ -446,5 +464,99 @@ class AdminController extends Controller
             'success' => true,
             'message' => 'Booking berhasil dihapus'
         ]);
+    }
+
+    // Barber User Management
+    public function barberUsers()
+    {
+        $barberUsers = BarberUser::with('barber')->orderBy('created_at', 'desc')->get();
+        $availableBarbers = Barber::whereDoesntHave('barberUser')->get();
+
+        return view('admin.barber-users', compact('barberUsers', 'availableBarbers'));
+    }
+
+    public function storeBarberUser(Request $request)
+    {
+        try {
+            $request->validate([
+                'barber_id' => 'required|exists:barbers,id|unique:barber_users,barber_id',
+                'username' => 'required|string|max:255|unique:barber_users,username',
+                'password' => 'required|string|min:6',
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:barber_users,email',
+                'phone' => 'nullable|string|max:20',
+            ]);
+
+            BarberUser::create([
+                'barber_id' => $request->barber_id,
+                'username' => $request->username,
+                'password' => $request->password, // Will be hashed by mutator
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'is_active' => true,
+            ]);
+
+            return redirect()->route('admin.barber-users')->with('success', 'Akun kapster berhasil dibuat!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal membuat akun kapster: ' . $e->getMessage()])->withInput();
+        }
+    }
+
+    public function editBarberUser($id)
+    {
+        $barberUser = BarberUser::with('barber')->findOrFail($id);
+        $barberUsers = BarberUser::with('barber')->orderBy('created_at', 'desc')->get();
+        $availableBarbers = Barber::whereDoesntHave('barberUser')->orWhere('id', $barberUser->barber_id)->get();
+
+        return view('admin.barber-users', compact('barberUsers', 'availableBarbers', 'barberUser'));
+    }
+
+    public function updateBarberUser(Request $request, $id)
+    {
+        try {
+            $barberUser = BarberUser::findOrFail($id);
+            
+            $request->validate([
+                'barber_id' => 'required|exists:barbers,id|unique:barber_users,barber_id,' . $id,
+                'username' => 'required|string|max:255|unique:barber_users,username,' . $id,
+                'password' => 'nullable|string|min:6',
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:barber_users,email,' . $id,
+                'phone' => 'nullable|string|max:20',
+                'is_active' => 'boolean',
+            ]);
+
+            $updateData = [
+                'barber_id' => $request->barber_id,
+                'username' => $request->username,
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'is_active' => $request->has('is_active'),
+            ];
+
+            if ($request->password) {
+                $updateData['password'] = $request->password; // Will be hashed by mutator
+            }
+
+            $barberUser->update($updateData);
+
+            return redirect()->route('admin.barber-users')->with('success', 'Akun kapster berhasil diperbarui!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal memperbarui akun kapster: ' . $e->getMessage()])->withInput();
+        }
+    }
+
+    public function destroyBarberUser($id)
+    {
+        try {
+            $barberUser = BarberUser::findOrFail($id);
+            $barberUser->delete();
+
+            return redirect()->route('admin.barber-users')->with('success', 'Akun kapster berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Gagal menghapus akun kapster: ' . $e->getMessage()]);
+        }
     }
 }
