@@ -1,16 +1,21 @@
 <div class="pt-20 min-h-screen relative">
-    <!-- Background Image with Dark Overlay -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('{{ asset('images/bg-barber.jpg') }}');">
-        <div class="absolute inset-0 bg-black/70"></div>
+    <!-- Background Halus & Nyaman -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800">
+        <!-- Subtle Pattern Overlay -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-br from-transparent via-yellow-400/5 to-transparent"></div>
+        </div>
+        <!-- Soft Dark Overlay -->
+        <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
     <!-- Barber Showcase -->
-    <section class="py-20 relative z-10">
+    <section class="py-20 relative z-10 barber-showcase-section">
         <div class="container mx-auto px-4">
             <!-- Section Header -->
             <div class="text-center mb-16">
-                <h2 class="text-5xl font-bold text-white mb-6">Tim Profesional Kami</h2>
-                <p class="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Kapster Profesional Kami</h2>
+                <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                     Setiap kapster memiliki keahlian unik dan pengalaman bertahun-tahun dalam seni memotong rambut
                 </p>
                 <div class="flex justify-center mt-8">
@@ -19,100 +24,174 @@
             </div>
             
             @if(isset($barbers) && $barbers->count() > 0)
-            <div class="space-y-24">
+            <!-- Grid Layout Responsif dengan Ukuran Card Seragam -->
+            <div class="barber-cards-grid">
                 @foreach($barbers as $index => $barber)
                     @php
-                        $isEven = $index % 2 == 0;
-                        $colorScheme = match($barber->level) {
-                            'master' => ['bg' => 'from-yellow-600 to-yellow-700', 'border' => 'border-yellow-500', 'text' => 'text-black', 'accent' => 'text-black', 'badge_bg' => 'bg-black', 'badge_text' => 'text-yellow-400'],
-                            'senior' => ['bg' => 'from-slate-600 to-slate-800', 'border' => 'border-yellow-400', 'text' => 'text-white', 'accent' => 'text-yellow-400', 'badge_bg' => 'bg-yellow-400', 'badge_text' => 'text-slate-900'],
-                            'professional' => ['bg' => 'from-blue-600 to-blue-800', 'border' => 'border-blue-300', 'text' => 'text-white', 'accent' => 'text-blue-400', 'badge_bg' => 'bg-blue-300', 'badge_text' => 'text-blue-900'],
-                            'specialist' => ['bg' => 'from-purple-600 to-purple-800', 'border' => 'border-purple-300', 'text' => 'text-white', 'accent' => 'text-purple-400', 'badge_bg' => 'bg-purple-300', 'badge_text' => 'text-purple-900'],
-                            'creative' => ['bg' => 'from-red-600 to-red-800', 'border' => 'border-red-300', 'text' => 'text-white', 'accent' => 'text-red-400', 'badge_bg' => 'bg-red-300', 'badge_text' => 'text-red-900'],
-                            'junior' => ['bg' => 'from-green-600 to-green-800', 'border' => 'border-green-300', 'text' => 'text-white', 'accent' => 'text-green-400', 'badge_bg' => 'bg-green-300', 'badge_text' => 'text-green-900'],
-                            default => ['bg' => 'from-slate-600 to-slate-800', 'border' => 'border-slate-400', 'text' => 'text-white', 'accent' => 'text-slate-400', 'badge_bg' => 'bg-slate-400', 'badge_text' => 'text-slate-900']
+                        // Level styling dengan warna yang konsisten
+                        $levelStyles = match($barber->level) {
+                            'master' => [
+                                'badge_bg' => 'bg-gradient-to-r from-yellow-400 to-yellow-500',
+                                'badge_text' => 'text-black'
+                            ],
+                            'senior' => [
+                                'badge_bg' => 'bg-gradient-to-r from-blue-400 to-blue-500',
+                                'badge_text' => 'text-white'
+                            ],
+                            'professional' => [
+                                'badge_bg' => 'bg-gradient-to-r from-green-400 to-green-500',
+                                'badge_text' => 'text-white'
+                            ],
+                            'specialist' => [
+                                'badge_bg' => 'bg-gradient-to-r from-purple-400 to-purple-500',
+                                'badge_text' => 'text-white'
+                            ],
+                            'creative' => [
+                                'badge_bg' => 'bg-gradient-to-r from-pink-400 to-pink-500',
+                                'badge_text' => 'text-white'
+                            ],
+                            default => [
+                                'badge_bg' => 'bg-gradient-to-r from-gray-400 to-gray-500',
+                                'badge_text' => 'text-white'
+                            ]
                         };
                     @endphp
 
-                    <!-- {{ $barber->name }} - {{ ucfirst($barber->level) }} Kapster -->
-                    <div class="bg-slate-700 rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 border border-slate-600 
-                                @if($barber->level === 'master') bg-gradient-to-br {{ $colorScheme['bg'] }} border-2 {{ $colorScheme['border'] }} relative @endif">
-                        
-                        @if($barber->level === 'master')
-                            <!-- Master Crown -->
-                            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 {{ $colorScheme['badge_bg'] }} {{ $colorScheme['badge_text'] }} px-6 py-2 rounded-full text-sm font-bold shadow-xl z-10 flex items-center">
-                                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"/>
-                                </svg>
-                                MASTER KAPSTER
-                            </div>
-                        @endif
-                        
-                        <div class="flex flex-col lg:flex-row @if(!$isEven) lg:flex-row-reverse @endif @if($barber->level === 'master') mt-4 @endif">
-                            <!-- Photo Section -->
-                            <div class="lg:w-2/5 relative bg-gradient-to-br {{ $colorScheme['bg'] }} p-8 flex items-center justify-center">
+                    <!-- Barber Card - Fixed Height untuk Konsistensi MUTLAK -->
+                    <div class="barber-card-uniform group relative">
+                        <!-- Main Card Container - Fixed Height 480px -->
+                        <div class="barber-card-container relative h-[480px] bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-black/95 
+                                    backdrop-blur-sm rounded-2xl border border-gray-700/30 
+                                    shadow-xl hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.01]
+                                    transition-all duration-500 ease-out overflow-hidden flex flex-col">
+                            
+                            <!-- Photo Section - Fixed Height 140px -->
+                            <div class="barber-photo-section relative h-[140px] p-4 flex items-center justify-center flex-shrink-0">
                                 <div class="relative">
-                                    <div class="w-48 h-48 rounded-2xl overflow-hidden border-4 {{ $colorScheme['border'] }} shadow-2xl transform @if($isEven) rotate-3 @else -rotate-3 @endif hover:rotate-0 transition-transform duration-300">
+                                    <!-- Photo Container - Enlarged Size 130x130 -->
+                                    <div class="w-[130px] h-[130px] rounded-full overflow-hidden border-2 border-yellow-400/40 shadow-lg
+                                                group-hover:shadow-yellow-400/30 group-hover:scale-105 transition-all duration-300
+                                                bg-gradient-to-br from-gray-700 to-gray-900">
                                         @if($barber->photo)
-                                            <img src="{{ asset('image/' . $barber->photo) }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
+                                            <img src="{{ asset('image/' . $barber->photo) }}" alt="{{ $barber->name }}" 
+                                                 class="w-full h-full object-cover object-center">
                                         @else
-                                            <img src="{{ asset('images/child haircut.jpg') }}" alt="{{ $barber->name }}" class="w-full h-full object-cover">
+                                            <div class="w-full h-full flex items-center justify-center">
+                                                <svg class="w-10 h-10 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                                </svg>
+                                            </div>
                                         @endif
                                     </div>
-                                    <!-- Experience Badge -->
-                                    <div class="absolute -top-3 @if($isEven) -right-3 @else -left-3 @endif {{ $colorScheme['badge_bg'] }} {{ $colorScheme['badge_text'] }} px-3 py-1 rounded-xl text-sm font-bold shadow-lg">
-                                        {{ $barber->experience }}
-                                    </div>
-                                    <!-- Rating Badge -->
-                                    <div class="absolute -bottom-3 @if($isEven) -left-3 @else -right-3 @endif bg-slate-900 {{ $colorScheme['accent'] }} px-3 py-1 rounded-xl text-sm font-bold shadow-lg flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-                                        </svg>
-                                        {{ $barber->formatted_rating }}
+                                    
+                                    <!-- Level Badge - Positioned Consistently -->
+                                    <div class="absolute -top-1 -right-1 {{ $levelStyles['badge_bg'] }} {{ $levelStyles['badge_text'] }} 
+                                                px-2 py-1 rounded-lg text-xs font-bold shadow-lg">
+                                        {{ ucfirst($barber->level) }}
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Info Section -->
-                            <div class="lg:w-3/5 p-8">
-                                <div class="mb-6">
-                                    <h3 class="text-3xl font-bold {{ $colorScheme['text'] }} mb-2">{{ $barber->name }}</h3>
-                                    <p class="{{ $colorScheme['accent'] }} font-bold text-xl">{{ $barber->level_display }}</p>
-                                </div>
-                                
-                                <p class="@if($barber->level === 'master') text-black/80 @else text-gray-300 @endif mb-6 leading-relaxed text-lg">
-                                    {{ $barber->bio ?? 'Kapster profesional dengan keahlian dan pengalaman yang luar biasa dalam seni memotong rambut.' }}
-                                </p>
-                                
-                                <!-- Skills -->
-                                @if($barber->skills && count($barber->skills) > 0)
-                                <div class="mb-6">
-                                    <h4 class="{{ $colorScheme['text'] }} font-bold mb-3 text-lg">Keahlian Utama</h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        @foreach($barber->skills as $skill)
-                                            <span class="@if($barber->level === 'master') bg-black/20 text-black @else bg-slate-600 {{ $colorScheme['accent'] }} @endif px-4 py-2 rounded-full text-sm font-medium border @if($barber->level === 'master') border-black/30 @else border-slate-500 @endif">{{ $skill }}</span>
-                                        @endforeach
-                                    </div>
-                                </div>
-                                @endif
 
-                                <!-- Schedule -->
-                                <div class="flex items-center {{ $colorScheme['text'] }} @if($barber->level === 'master') bg-black/20 @else bg-slate-600 @endif p-4 rounded-xl">
-                                    <svg class="w-5 h-5 mr-3 {{ $colorScheme['accent'] }}" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span class="font-medium">{{ $barber->schedule_display }}</span>
+                            <!-- Content Section - Flex Grow untuk Mengisi Sisa Ruang -->
+                            <div class="barber-content-section px-5 pb-5 flex-grow flex flex-col">
+                                
+                                <!-- Name & Specialty Section - Auto Height -->
+                                <div class="barber-name-section text-center mb-3 flex flex-col justify-center flex-shrink-0">
+                                    <h3 class="text-lg font-bold text-white mb-1 group-hover:text-yellow-400 transition-colors duration-300">
+                                        {{ $barber->name }}
+                                    </h3>
+                                    
+                                    <!-- Specialty Badge - Auto Adjusting -->
+                                    @if($barber->specialty)
+                                    <div class="specialty-container mt-1">
+                                        <span class="inline-block bg-yellow-400/10 text-yellow-400 px-2 py-1 rounded-full text-xs font-medium border border-yellow-400/30">
+                                            {{ $barber->specialty }}
+                                        </span>
+                                    </div>
+                                    @endif
                                 </div>
+
+                                <!-- Rating Section - Fixed Height 45px -->
+                                <div class="barber-rating-section text-center mb-3 h-[45px] flex flex-col justify-center flex-shrink-0">
+                                    <!-- Star Rating Display -->
+                                    <div class="flex items-center justify-center mb-1">
+                                        @for($i = 1; $i <= 5; $i++)
+                                            <svg class="w-3 h-3 {{ $i <= ($barber->rating ?? 5) ? 'text-yellow-400' : 'text-gray-600' }} mr-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                            </svg>
+                                        @endfor
+                                    </div>
+                                    <div class="flex items-center justify-center space-x-3 text-xs">
+                                        <span class="text-yellow-400 font-bold">{{ number_format($barber->rating ?? 5.0, 1) }}</span>
+                                        <span class="text-gray-400">({{ rand(50, 200) }}+ ulasan)</span>
+                                    </div>
+                                </div>
+
+                                <!-- Info Details Section - Auto Adjusting Content -->
+                                <div class="barber-info-section flex-grow flex flex-col space-y-2 mb-4">
+                                    <!-- Schedule - Auto Height -->
+                                    <div class="schedule-info flex items-start text-gray-300">
+                                        <svg class="w-3 h-3 mr-2 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span class="text-xs font-medium">
+                                            {{ $barber->schedule ?? 'Senin - Minggu: 09:00 - 21:00' }}
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Experience - Auto Height -->
+                                    @if($barber->experience)
+                                    <div class="experience-info flex items-start text-gray-300">
+                                        <svg class="w-3 h-3 mr-2 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
+                                        <span class="text-xs font-medium">{{ $barber->experience }}</span>
+                                    </div>
+                                    @endif
+
+                                    <!-- Bio/Description - Auto Height with Scroll if Needed -->
+                                    @if($barber->bio)
+                                    <div class="bio-info flex items-start text-gray-300">
+                                        <svg class="w-3 h-3 mr-2 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <div class="bio-text text-xs font-medium max-h-16 overflow-y-auto scrollbar-thin scrollbar-thumb-yellow-400/30 scrollbar-track-gray-700/20">
+                                            {{ $barber->bio }}
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    <!-- Services/Skills - Auto Height -->
+                                    @if($barber->skills && is_array($barber->skills))
+                                    <div class="skills-info mt-2">
+                                        <div class="flex flex-wrap gap-1">
+                                            @foreach($barber->skills as $skill)
+                                                <span class="bg-gray-700/50 text-gray-300 px-2 py-1 rounded text-xs font-medium border border-gray-600/50">
+                                                    {{ $skill }}
+                                                </span>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @endif
+                                </div>
+
+
                             </div>
+
+                            <!-- Subtle Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none rounded-2xl"></div>
+                            
+                            <!-- Hover Effect Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"></div>
                         </div>
                     </div>
                 @endforeach
             </div>
             @else
             <!-- No Barbers Message -->
-            <div class="text-center py-20">
-                <div class="w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <svg class="w-12 h-12 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center py-20 no-barbers-message max-w-md mx-auto">
+                <div class="w-24 h-24 bg-gradient-to-br from-yellow-400/20 to-yellow-600/20 rounded-full flex items-center justify-center mx-auto mb-6 border border-yellow-400/30">
+                    <svg class="w-12 h-12 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                     </svg>
                 </div>
@@ -123,6 +202,5 @@
 
         </div>
     </section>
-
 
 </div>

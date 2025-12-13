@@ -2342,3 +2342,1698 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+/* Line 
+Clamp Utilities untuk Konsistensi Layout Barber Cards */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Barber Card Layout Consistency */
+.barber-card-container {
+  height: 620px;
+  display: flex;
+  flex-direction: column;
+}
+
+.barber-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.barber-card-footer {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+/* Ensure consistent spacing and sizing */
+.barber-photo-section {
+  flex-shrink: 0;
+  height: auto;
+}
+
+.barber-info-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.barber-skills-section {
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barber-bio-section {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 
+Barber Card Enhancements - Modern Design */
+.barber-card-container {
+  height: 480px;
+}
+
+/* Line Clamp Utilities untuk Text Truncation */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Enhanced Card Hover Effects */
+.barber-card {
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.barber-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Professional Badge Animations */
+.professional-badge {
+  position: relative;
+  overflow: hidden;
+}
+
+.professional-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.professional-badge:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Photo Container */
+.barber-photo-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.barber-photo-container::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(252, 211, 77, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.barber-photo-container:hover::after {
+  opacity: 1;
+}
+
+/* Skill Tags Animation */
+.skill-tag {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: scale(1.05);
+  background-color: rgba(252, 211, 77, 0.2);
+}
+
+/* Rating Stars Enhancement */
+.rating-star {
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 1px 2px rgba(252, 211, 77, 0.3));
+}
+
+.rating-star:hover {
+  transform: scale(1.1);
+}
+
+/* Button Enhancement */
+.barber-action-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #FCD34D, #F59E0B);
+  transition: all 0.3s ease;
+}
+
+.barber-action-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.barber-action-btn:hover::before {
+  left: 100%;
+}
+
+.barber-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(252, 211, 77, 0.4);
+}
+
+/* Responsive Grid Enhancements */
+@media (max-width: 768px) {
+  .barber-card-container {
+    height: 420px;
+  }
+  
+  .barber-photo-container {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .barber-card-container {
+    height: 380px;
+  }
+}
+
+/* Enhanced Shadow Effects */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Border Glow Animation */
+@keyframes borderPulse {
+  0%, 100% {
+    border-color: rgba(252, 211, 77, 0.3);
+    box-shadow: 0 0 20px rgba(252, 211, 77, 0.1);
+  }
+  50% {
+    border-color: rgba(252, 211, 77, 0.6);
+    box-shadow: 0 0 40px rgba(252, 211, 77, 0.3);
+  }
+}
+
+.border-pulse {
+  animation: borderPulse 3s ease-in-out infinite;
+}
+
+/* Staggered Animation for Cards */
+.barber-card:nth-child(1) { animation-delay: 0.1s; }
+.barber-card:nth-child(2) { animation-delay: 0.2s; }
+.barber-card:nth-child(3) { animation-delay: 0.3s; }
+.barber-card:nth-child(4) { animation-delay: 0.4s; }
+.barber-card:nth-child(5) { animation-delay: 0.5s; }
+.barber-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Enhanced Backdrop Blur */
+.backdrop-blur-enhanced {
+  backdrop-filter: blur(12px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(180%) brightness(1.1);
+}
+
+/* Professional Level Indicators */
+.level-master {
+  background: linear-gradient(135deg, #FCD34D, #F59E0B);
+  box-shadow: 0 4px 15px rgba(252, 211, 77, 0.4);
+}
+
+.level-senior {
+  background: linear-gradient(135deg, #60A5FA, #3B82F6);
+  box-shadow: 0 4px 15px rgba(96, 165, 250, 0.4);
+}
+
+.level-professional {
+  background: linear-gradient(135deg, #34D399, #10B981);
+  box-shadow: 0 4px 15px rgba(52, 211, 153, 0.4);
+}
+
+.level-junior {
+  background: linear-gradient(135deg, #A78BFA, #8B5CF6);
+  box-shadow: 0 4px 15px rgba(167, 139, 250, 0.4);
+}
+
+/* Card Content Spacing */
+.barber-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.barber-card-header {
+  flex-shrink: 0;
+}
+
+.barber-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.barber-card-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Enhanced Text Hierarchy */
+.barber-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+.barber-specialty {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.barber-info {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+/* Smooth Transitions */
+* {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading State for Images */
+.barber-image-loading {
+  background: linear-gradient(90deg, #374151 25%, #4B5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Focus States for Accessibility */
+.barber-action-btn:focus {
+  outline: 2px solid #FCD34D;
+  outline-offset: 2px;
+}
+
+.barber-card:focus-within {
+  outline: 2px solid #FCD34D;
+  outline-offset: 4px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .barber-card {
+    border-width: 2px;
+    border-color: #FCD34D;
+  }
+  
+  .barber-name {
+    color: #FFFFFF;
+  }
+  
+  .barber-specialty {
+    color: #FCD34D;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .barber-card,
+  .barber-photo-container,
+  .professional-badge,
+  .barber-action-btn {
+    transition: none;
+    animation: none;
+  }
+  
+  .barber-card:hover {
+    transform: none;
+  }
+}/* 
+Enhanced Barber Card Design - Sesuai Gambar Referensi */
+.barber-card-modern {
+  height: 520px;
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(0, 0, 0, 0.9), rgba(17, 24, 39, 0.95));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Border Width Utilities */
+.border-3 {
+  border-width: 3px;
+}
+
+/* Enhanced Shadow Effects */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Professional Card Hover Effects */
+.barber-card-hover {
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.barber-card-hover:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 40px 80px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Photo Container Enhancement */
+.barber-photo-modern {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #374151, #1f2937);
+}
+
+.barber-photo-modern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(252, 211, 77, 0.1) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.barber-photo-modern:hover::after {
+  opacity: 1;
+}
+
+/* Badge Enhancement */
+.professional-badge-modern {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.professional-badge-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.professional-badge-modern:hover::before {
+  left: 100%;
+}
+
+/* Rating Stars Enhancement */
+.rating-stars-modern {
+  filter: drop-shadow(0 2px 4px rgba(252, 211, 77, 0.3));
+}
+
+.rating-star-modern {
+  transition: all 0.2s ease;
+}
+
+.rating-star-modern:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 2px 8px rgba(252, 211, 77, 0.6));
+}
+
+/* Button Enhancement - Modern Gradient */
+.barber-action-btn-modern {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FCD34D, #F59E0B, #D97706);
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.barber-action-btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s ease;
+}
+
+.barber-action-btn-modern:hover::before {
+  left: 100%;
+}
+
+.barber-action-btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(252, 211, 77, 0.4);
+}
+
+.barber-action-btn-modern:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Skill Tags Modern Design */
+.skill-tag-modern {
+  background: rgba(55, 65, 81, 0.6);
+  border: 1px solid rgba(75, 85, 99, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.skill-tag-modern:hover {
+  background: rgba(75, 85, 99, 0.8);
+  border-color: rgba(252, 211, 77, 0.5);
+  color: #FCD34D;
+  transform: translateY(-1px);
+}
+
+/* Text Hierarchy Enhancement */
+.barber-name-modern {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.barber-specialty-modern {
+  font-size: 0.75rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.barber-info-modern {
+  font-size: 0.875rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Card Content Layout */
+.barber-card-content-modern {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.barber-card-header-modern {
+  flex-shrink: 0;
+}
+
+.barber-card-body-modern {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.barber-card-footer-modern {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+/* Responsive Enhancements */
+@media (max-width: 1024px) {
+  .barber-card-modern {
+    height: 500px;
+  }
+  
+  .barber-name-modern {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-card-modern {
+    height: 480px;
+  }
+  
+  .barber-name-modern {
+    font-size: 1rem;
+  }
+  
+  .barber-info-modern {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .barber-card-modern {
+    height: 460px;
+  }
+}
+
+/* Loading State Enhancement */
+.barber-image-loading-modern {
+  background: linear-gradient(90deg, #374151 25%, #4B5563 50%, #374151 75%);
+  background-size: 200% 100%;
+  animation: shimmerModern 1.5s infinite;
+}
+
+@keyframes shimmerModern {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Accessibility Enhancements */
+.barber-action-btn-modern:focus {
+  outline: 3px solid #FCD34D;
+  outline-offset: 2px;
+}
+
+.barber-card-modern:focus-within {
+  outline: 2px solid #FCD34D;
+  outline-offset: 4px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .barber-card-modern {
+    border: 2px solid #FCD34D;
+    background: #000000;
+  }
+  
+  .barber-name-modern {
+    color: #FFFFFF;
+  }
+  
+  .barber-specialty-modern {
+    color: #FCD34D;
+    background: #000000;
+    border-color: #FCD34D;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .barber-card-hover,
+  .barber-photo-modern,
+  .professional-badge-modern,
+  .barber-action-btn-modern,
+  .rating-star-modern {
+    transition: none;
+    animation: none;
+  }
+  
+  .barber-card-hover:hover {
+    transform: none;
+  }
+  
+  .barber-action-btn-modern {
+    animation: none;
+  }
+}
+
+/* Staggered Animation for Cards */
+.barber-card-modern:nth-child(1) { 
+  animation: fadeInUp 0.8s ease-out 0.1s both; 
+}
+.barber-card-modern:nth-child(2) { 
+  animation: fadeInUp 0.8s ease-out 0.2s both; 
+}
+.barber-card-modern:nth-child(3) { 
+  animation: fadeInUp 0.8s ease-out 0.3s both; 
+}
+.barber-card-modern:nth-child(4) { 
+  animation: fadeInUp 0.8s ease-out 0.4s both; 
+}
+.barber-card-modern:nth-child(5) { 
+  animation: fadeInUp 0.8s ease-out 0.5s both; 
+}
+.barber-card-modern:nth-child(6) { 
+  animation: fadeInUp 0.8s ease-out 0.6s both; 
+}
+
+/* Enhanced Fade In Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid Gap Enhancement */
+.barber-grid-modern {
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .barber-grid-modern {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .barber-grid-modern {
+    gap: 1rem;
+  }
+}/
+* BARBER CARD UNIFORM DESIGN - Ukuran Seragam & Konsisten */
+
+/* Container utama untuk memastikan ukuran seragam */
+.barber-card-uniform {
+  min-height: 480px;
+  max-height: 480px;
+}
+
+.barber-card-container {
+  /* Fixed height untuk konsistensi MUTLAK */
+  height: 480px !important;
+  min-height: 480px !important;
+  max-height: 480px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Section-specific heights untuk konsistensi */
+.barber-photo-section {
+  height: 140px !important;
+  min-height: 140px !important;
+  max-height: 140px !important;
+  flex-shrink: 0 !important;
+}
+
+.barber-content-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.barber-name-section {
+  height: 70px !important;
+  min-height: 70px !important;
+  max-height: 70px !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+}
+
+.barber-rating-section {
+  height: 45px !important;
+  min-height: 45px !important;
+  max-height: 45px !important;
+  flex-shrink: 0 !important;
+}
+
+.barber-info-section {
+  flex: 1 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.barber-action-section {
+  flex-shrink: 0 !important;
+  margin-top: auto !important;
+}
+
+/* Line Clamp Utilities untuk Text Truncation */
+.line-clamp-1 {
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 1 !important;
+  line-clamp: 1 !important;
+}
+
+.line-clamp-2 {
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+}
+
+/* Responsive Design - Ukuran Card Tetap Konsisten */
+@media (max-width: 1024px) {
+  .barber-card-container {
+    height: 480px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-card-container {
+    height: 480px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .barber-card-container {
+    height: 480px !important;
+  }
+  
+  /* Adjust spacing untuk mobile */
+  .barber-photo-section {
+    height: 130px !important;
+    min-height: 130px !important;
+    max-height: 130px !important;
+  }
+  
+  .barber-name-section {
+    height: 65px !important;
+    min-height: 65px !important;
+    max-height: 65px !important;
+  }
+}
+
+/* Enhanced Card Styling */
+.barber-card-container {
+  background: linear-gradient(135deg, rgba(31, 41, 55, 0.95), rgba(0, 0, 0, 0.9), rgba(17, 24, 39, 0.95)) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Hover Effects */
+.barber-card-uniform:hover .barber-card-container {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* Button Styling */
+.barber-action-section button {
+  background: linear-gradient(135deg, #FCD34D, #F59E0B) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.barber-action-section button:hover {
+  background: linear-gradient(135deg, #F59E0B, #D97706) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(252, 211, 77, 0.4) !important;
+}
+
+/* Photo Container Enhancement */
+.barber-photo-section .w-\[100px\] {
+  transition: all 0.3s ease !important;
+}
+
+.barber-card-uniform:hover .barber-photo-section .w-\[100px\] {
+  transform: scale(1.05) !important;
+}
+
+/* Text Hierarchy */
+.barber-name-section h3 {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+.barber-rating-section {
+  font-size: 0.75rem !important;
+}
+
+.barber-info-section {
+  font-size: 0.75rem !important;
+}
+
+/* Skill Tags Styling */
+.barber-info-section span {
+  background: rgba(55, 65, 81, 0.6) !important;
+  border: 1px solid rgba(75, 85, 99, 0.5) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  transition: all 0.2s ease !important;
+}
+
+.barber-info-section span:hover {
+  background: rgba(75, 85, 99, 0.8) !important;
+  border-color: rgba(252, 211, 77, 0.5) !important;
+  color: #FCD34D !important;
+}
+
+/* Loading State */
+.barber-image-loading {
+  background: linear-gradient(90deg, #374151 25%, #4B5563 50%, #374151 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 1.5s infinite !important;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Accessibility */
+.barber-action-section button:focus {
+  outline: 2px solid #FCD34D !important;
+  outline-offset: 2px !important;
+}
+
+.barber-card-container:focus-within {
+  outline: 2px solid #FCD34D !important;
+  outline-offset: 4px !important;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .barber-card-container {
+    border: 2px solid #FCD34D !important;
+    background: #000000 !important;
+  }
+  
+  .barber-name-section h3 {
+    color: #FFFFFF !important;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .barber-card-uniform,
+  .barber-photo-section .w-\[100px\],
+  .barber-action-section button {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .barber-card-uniform:hover .barber-card-container {
+    transform: none !important;
+  }
+}
+
+/* Grid Gap Consistency */
+.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+  gap: 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    gap: 1rem !important;
+  }
+}
+
+/* Ensure all cards have same width */
+.barber-card-uniform {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Force consistent spacing */
+.barber-content-section > * {
+  margin-bottom: 0.75rem;
+}
+
+.barber-content-section > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Prevent content overflow */
+.barber-card-container * {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ===== KAPSTER CARD UNIFORM STYLING - CRITICAL FIXES ===== */
+
+/* 1. Grid Container - Ensures Equal Card Heights */
+.barber-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  grid-auto-rows: 1fr; /* CRITICAL: Forces all cards to same height */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* 2. Uniform Card Container - Fixed Height & Consistent Styling */
+.barber-card-uniform {
+  height: 100%; /* Takes full grid cell height */
+  min-height: 480px; /* Minimum height fallback */
+}
+
+.barber-card-container {
+  height: 100% !important; /* Override any conflicting heights */
+  min-height: 450px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  
+  /* Enhanced Card Background - Distinct from Page Background */
+  background: linear-gradient(135deg, 
+    rgba(30, 30, 30, 0.95) 0%, 
+    rgba(20, 20, 20, 0.98) 50%, 
+    rgba(15, 15, 15, 0.95) 100%) !important;
+  
+  /* Professional Card Styling */
+  border: 1px solid rgba(75, 85, 99, 0.4) !important;
+  border-radius: 1rem !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  
+  /* Smooth Transitions */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.barber-card-container:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(252, 211, 77, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(252, 211, 77, 0.3) !important;
+}
+
+/* 3. Fixed Section Heights - Prevents Content Shifting */
+.barber-photo-section {
+  height: 160px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 1rem !important;
+}
+
+.barber-name-section {
+  height: 70px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.barber-rating-section {
+  height: 45px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-bottom: 0.75rem !important;
+}
+
+
+
+/* 4. Content Section - Flexible Height */
+.barber-content-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 1.25rem 1.25rem 1.25rem !important;
+}
+
+.barber-info-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+  min-height: 80px !important;
+}
+
+/* 5. Photo Consistency - Enlarged Size & Aspect Ratio */
+.barber-photo-section .w-\[130px\] {
+  width: 130px !important;
+  height: 130px !important;
+  flex-shrink: 0 !important;
+}
+
+.barber-photo-section img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* 6. Text Content Clamping - Prevents Overflow */
+.barber-name-section h3 {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  line-height: 1.3 !important;
+}
+
+.barber-name-section span {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.barber-info-section span {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  line-height: 1.4 !important;
+}
+
+
+
+/* 8. Responsive Grid Adjustments */
+@media (max-width: 1024px) {
+  .barber-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .barber-card-container {
+    min-height: 460px !important;
+  }
+  
+  .barber-photo-section {
+    height: 150px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 400px;
+  }
+  
+  .barber-card-container {
+    min-height: 420px !important;
+  }
+  
+  .barber-photo-section {
+    height: 140px !important;
+  }
+  
+  .barber-name-section {
+    height: 60px !important;
+  }
+  
+  .barber-rating-section {
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .barber-cards-grid {
+    max-width: 320px;
+  }
+  
+  .barber-card-container {
+    min-height: 400px !important;
+  }
+  
+  .barber-photo-section {
+    height: 130px !important;
+  }
+}
+
+/* 9. Enhanced Background Separation */
+.barber-showcase-section {
+  background: linear-gradient(135deg, 
+    rgba(17, 24, 39, 0.95) 0%, 
+    rgba(0, 0, 0, 0.98) 50%, 
+    rgba(17, 24, 39, 0.95) 100%);
+  
+  /* Subtle Pattern Overlay */
+  position: relative;
+}
+
+.barber-showcase-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(252, 211, 77, 0.03) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(252, 211, 77, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px, 40px 40px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* 10. Level Badge Consistency */
+.barber-photo-section .absolute {
+  min-width: 60px !important;
+  height: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.75rem !important;
+  font-weight: 700 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 11. Skills/Services Consistency */
+.barber-info-section .flex-wrap {
+  max-height: 60px !important;
+  overflow: hidden !important;
+}
+
+.barber-info-section .flex-wrap span {
+  font-size: 0.75rem !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0.375rem !important;
+  background: rgba(55, 65, 81, 0.6) !important;
+  border: 1px solid rgba(75, 85, 99, 0.4) !important;
+  color: rgba(209, 213, 219, 1) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* 12. Rating Stars Consistency */
+.barber-rating-section svg {
+  width: 14px !important;
+  height: 14px !important;
+  margin-right: 2px !important;
+}
+
+/* 13. No Barbers Message Enhancement */
+.no-barbers-message {
+  background: rgba(30, 30, 30, 0.8) !important;
+  border: 1px solid rgba(75, 85, 99, 0.3) !important;
+  border-radius: 1rem !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* 14. Animation Performance Optimization */
+.barber-card-container * {
+  will-change: auto !important;
+}
+
+.barber-card-container:hover * {
+  will-change: transform !important;
+}
+
+/* 15. Focus States for Accessibility */
+.barber-card-container:focus-within {
+  border-color: rgba(252, 211, 77, 0.5) !important;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.3),
+    0 0 0 2px rgba(252, 211, 77, 0.3) !important;
+}
+
+/* ===== END KAPSTER CARD UNIFORM STYLING ===== */
+/* =
+==== AUTO-ADJUSTING TEXT INFO SECTIONS - CRITICAL FIXES ===== */
+
+/* 1. Remove Fixed Heights for Text Sections */
+.barber-name-section {
+  min-height: 60px !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-bottom: 0.75rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* 2. Specialty Container - Auto Adjusting */
+.specialty-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 0.25rem !important;
+}
+
+.specialty-container span {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
+}
+
+/* 3. Info Section - Flexible Content Areas */
+.barber-info-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 0.5rem !important;
+  margin-bottom: 1rem !important;
+  min-height: 100px !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+/* 4. Individual Info Items - Auto Height */
+.schedule-info,
+.experience-info,
+.bio-info {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+  min-height: auto !important;
+}
+
+.schedule-info span,
+.experience-info span {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.4 !important;
+}
+
+/* 5. Bio Text - Scrollable Container */
+.bio-text {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-y: auto !important;
+  max-height: 4rem !important;
+  line-height: 1.4 !important;
+  padding-right: 0.25rem !important;
+}
+
+/* 6. Skills Section - Auto Wrapping */
+.skills-info {
+  margin-top: 0.5rem !important;
+}
+
+.skills-info .flex-wrap {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.skills-info span {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  font-size: 0.75rem !important;
+  padding: 0.25rem 0.5rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+/* 7. Custom Scrollbar for Bio Text */
+.bio-text::-webkit-scrollbar {
+  width: 3px !important;
+}
+
+.bio-text::-webkit-scrollbar-track {
+  background: rgba(75, 85, 99, 0.2) !important;
+  border-radius: 2px !important;
+}
+
+.bio-text::-webkit-scrollbar-thumb {
+  background: rgba(252, 211, 77, 0.3) !important;
+  border-radius: 2px !important;
+}
+
+.bio-text::-webkit-scrollbar-thumb:hover {
+  background: rgba(252, 211, 77, 0.5) !important;
+}
+
+/* 8. Card Container Adjustments */
+.barber-card-container {
+  min-height: 450px !important;
+  max-height: 500px !important;
+  overflow: hidden !important;
+}
+
+/* 9. Content Section Flex Management */
+.barber-content-section {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 0 1.25rem 1.25rem 1.25rem !important;
+  overflow: hidden !important;
+}
+
+/* 10. Rating Section - Keep Fixed for Consistency */
+.barber-rating-section {
+  height: 45px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* 11. Responsive Adjustments for Auto Text */
+@media (max-width: 1024px) {
+  .barber-card-container {
+    min-height: 440px !important;
+    max-height: 480px !important;
+  }
+  
+  .barber-info-section {
+    max-height: 180px !important;
+  }
+  
+  .bio-text {
+    max-height: 3.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .barber-card-container {
+    min-height: 420px !important;
+    max-height: 460px !important;
+  }
+  
+  .barber-name-section {
+    min-height: 50px !important;
+  }
+  
+  .barber-info-section {
+    max-height: 160px !important;
+  }
+  
+  .bio-text {
+    max-height: 3rem !important;
+  }
+  
+  .skills-info span {
+    font-size: 0.625rem !important;
+    padding: 0.125rem 0.375rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .barber-card-container {
+    min-height: 400px !important;
+    max-height: 440px !important;
+  }
+  
+  .barber-info-section {
+    max-height: 140px !important;
+  }
+  
+  .bio-text {
+    max-height: 2.5rem !important;
+  }
+}
+
+/* 12. Text Overflow Handling */
+.text-auto-adjust {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+}
+
+/* 13. Smooth Transitions for Dynamic Content */
+.barber-info-section,
+.specialty-container,
+.skills-info {
+  transition: all 0.3s ease !important;
+}
+
+/* 14. Focus States for Scrollable Content */
+.bio-text:focus {
+  outline: 1px solid rgba(252, 211, 77, 0.5) !important;
+  outline-offset: 1px !important;
+}
+
+/* 15. Ensure Grid Consistency Despite Dynamic Content */
+.barber-cards-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  grid-auto-rows: minmax(450px, auto) !important;
+  align-items: stretch !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+}
+
+/* ===== END AUTO-ADJUSTING TEXT INFO SECTIONS ===== *//* =
+==== ADDITIONAL TEXT HANDLING & STABILITY FIXES ===== */
+
+/* 1. Long Text Handling for Specialty */
+.barber-name-section h3 {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  line-height: 1.3 !important;
+  max-width: 100% !important;
+}
+
+/* 2. Specialty Badge Text Wrapping */
+.specialty-container span {
+  display: inline-block !important;
+  max-width: 100% !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+}
+
+/* 3. Skills Container Stability */
+.skills-info .flex-wrap {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.25rem !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+/* 4. Bio Text Enhanced Readability */
+.bio-text {
+  text-align: left !important;
+  font-size: 0.75rem !important;
+  color: rgba(209, 213, 219, 0.9) !important;
+  padding: 0.25rem 0.5rem 0.25rem 0 !important;
+  border-radius: 0.25rem !important;
+}
+
+/* 5. Info Section Scroll Behavior */
+.barber-info-section {
+  scroll-behavior: smooth !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(252, 211, 77, 0.3) rgba(75, 85, 99, 0.2) !important;
+}
+
+.barber-info-section::-webkit-scrollbar {
+  width: 4px !important;
+}
+
+.barber-info-section::-webkit-scrollbar-track {
+  background: rgba(75, 85, 99, 0.2) !important;
+  border-radius: 2px !important;
+}
+
+.barber-info-section::-webkit-scrollbar-thumb {
+  background: rgba(252, 211, 77, 0.3) !important;
+  border-radius: 2px !important;
+}
+
+.barber-info-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(252, 211, 77, 0.5) !important;
+}
+
+/* 6. Content Overflow Protection */
+.barber-content-section {
+  position: relative !important;
+}
+
+.barber-content-section::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 1rem !important;
+  background: linear-gradient(to bottom, transparent, rgba(20, 20, 20, 0.8)) !important;
+  pointer-events: none !important;
+  border-radius: 0 0 1rem 1rem !important;
+}
+
+/* 7. Dynamic Content Animation */
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.schedule-info,
+.experience-info,
+.bio-info,
+.skills-info {
+  animation: contentFadeIn 0.5s ease-out !important;
+}
+
+.schedule-info {
+  animation-delay: 0.1s !important;
+}
+
+.experience-info {
+  animation-delay: 0.2s !important;
+}
+
+.bio-info {
+  animation-delay: 0.3s !important;
+}
+
+.skills-info {
+  animation-delay: 0.4s !important;
+}
+
+/* 8. Text Selection Styling */
+.bio-text::selection,
+.schedule-info span::selection,
+.experience-info span::selection {
+  background: rgba(252, 211, 77, 0.3) !important;
+  color: white !important;
+}
+
+/* 9. Hover Effects for Info Items */
+.schedule-info:hover,
+.experience-info:hover,
+.bio-info:hover {
+  background: rgba(252, 211, 77, 0.05) !important;
+  border-radius: 0.375rem !important;
+  padding: 0.25rem !important;
+  margin: -0.25rem !important;
+  margin-bottom: 0.25rem !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 10. Skills Hover Enhancement */
+.skills-info span:hover {
+  background: rgba(252, 211, 77, 0.2) !important;
+  border-color: rgba(252, 211, 77, 0.4) !important;
+  transform: scale(1.05) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* 11. Loading State for Dynamic Content */
+.content-loading {
+  background: linear-gradient(90deg, 
+    rgba(75, 85, 99, 0.1) 25%, 
+    rgba(75, 85, 99, 0.2) 50%, 
+    rgba(75, 85, 99, 0.1) 75%) !important;
+  background-size: 200% 100% !important;
+  animation: contentLoading 1.5s infinite !important;
+}
+
+@keyframes contentLoading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 12. Accessibility Improvements */
+.bio-text[tabindex="0"]:focus {
+  outline: 2px solid rgba(252, 211, 77, 0.5) !important;
+  outline-offset: 2px !important;
+  background: rgba(252, 211, 77, 0.05) !important;
+}
+
+/* 13. Print Styles for Text Content */
+@media print {
+  .bio-text {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  .barber-info-section {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  .skills-info .flex-wrap {
+    display: block !important;
+  }
+  
+  .skills-info span {
+    display: inline !important;
+    margin-right: 0.5rem !important;
+  }
+}
+
+/* 14. High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .bio-text {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border: 1px solid rgba(252, 211, 77, 0.5) !important;
+  }
+  
+  .schedule-info:hover,
+  .experience-info:hover,
+  .bio-info:hover {
+    background: rgba(252, 211, 77, 0.2) !important;
+    border: 1px solid rgba(252, 211, 77, 0.6) !important;
+  }
+}
+
+/* 15. Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .schedule-info,
+  .experience-info,
+  .bio-info,
+  .skills-info {
+    animation: none !important;
+  }
+  
+  .skills-info span:hover {
+    transform: none !important;
+  }
+  
+  .schedule-info:hover,
+  .experience-info:hover,
+  .bio-info:hover {
+    transition: none !important;
+  }
+}
+
+/* ===== END ADDITIONAL TEXT HANDLING & STABILITY FIXES ===== */
